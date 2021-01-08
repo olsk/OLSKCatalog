@@ -29,6 +29,25 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListItemAccessibilitySummaryFor={ OLSKCatalogItemAccessibilitySummaryFor }	
 	OLSKMobileViewInactive={ OLSKMobileViewInactive }
 	>
+	<div slot="OLSKMasterListToolbarHead">
+		{#if $$slots.OLSKMasterListToolbarHead}
+			<slot name="OLSKMasterListToolbarHead"></slot>	
+		{/if}
+	</div>
+
+	<div slot="OLSKMasterListToolbarTail">
+		{#if $$slots.OLSKMasterListToolbarTail}
+			<slot name="OLSKMasterListToolbarTail"></slot>	
+		{/if}
+	</div>
+
+	<slot></slot>
+
+	<div slot="OLSKMasterListBodyTail">
+		{#if $$slots.OLSKMasterListBodyTail}
+			<slot name="OLSKMasterListBodyTail"></slot>	
+		{/if}
+	</div>
 </OLSKMasterList>
 
 <div class="OLSKCatalogDetail">
