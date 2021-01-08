@@ -34,6 +34,10 @@ describe('OLSKCatalog_Access', function () {
 		browser.assert.elements('.OLSKDetailPlaceholder', 1);
 	});
 
+	it('hides TestDetail', function () {
+		browser.assert.elements('.TestDetail', 0);
+	});
+
 	describe('OLSKMasterList', function test_OLSKMasterList () {
 		
 		it('binds OLSKMasterListToolbarHead', function () {
@@ -52,6 +56,26 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKMasterListBody #TestOLSKMasterListBodyTail', 1);
 		});
 	
+	});
+
+	context('ItemCreate', function test_ItemCreate() {
+
+		before(function () {
+			return browser.pressButton('.TestItemCreateButton');
+		});
+
+		it('shows OLSKMasterListItem', function () {
+			browser.assert.elements('.OLSKMasterListItem', 1);
+		});
+
+		it('hides OLSKDetailPlaceholder', function () {
+			browser.assert.elements('.OLSKDetailPlaceholder', 0);
+		});
+
+		it('binds OLSKCatalogDetailContent', function () {
+			browser.assert.elements('.OLSKCatalogDetail #TestOLSKCatalogDetailContent', 1);
+		});
+
 	});
 
 });

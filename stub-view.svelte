@@ -1,9 +1,37 @@
 <script>
+const mod = {
+
+	// VALUE
+
+	_ValueItems: [],
+	ValueItems (inputData) {
+		mod._ValueItems = inputData;
+	},
+
+	// DATA
+
+	DataItemValid () {
+		return {
+			XYZItemID: Math.random().toString(),
+		};
+	},
+
+	// INTERFACE
+
+	InterfaceCreateButtonDidClick () {
+		const item = mod.DataItemValid();
+		
+		mod.ValueItems([item].concat(mod._ValueItems));
+
+		mod._ValueItemSelected = item;
+	},
+
+};
+
 const inputData = Object.assign({
-	OLSKCatalogItems: [],
 	OLSKCatalogFilterText: '',
 	OLSKCatalogItemAccessibilitySummaryFor (inputData) {
-		return inputData.TestObjectID.repeat(2);
+		return inputData.XYZItemID;
 	},
 	OLSKCatalogDispatchClick: (function  (inputData) {
 		window.TestOLSKCatalogDispatchClick.innerHTML = parseInt(window.TestOLSKCatalogDispatchClick.innerHTML) + 1;
@@ -32,16 +60,28 @@ const inputData = Object.assign({
 })));
 
 import Module from './main.svelte';
+import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
 </script>
 
 <Module
+	OLSKCatalogItems={ mod._ValueItems }
+	OLSKCatalogItemSelected={ mod._ValueItemSelected }
+
 	{ ...inputData }
+
 	let:OLSKResultsListItem={ item }
 	>
 	<em slot="OLSKMasterListToolbarHead" id="TestOLSKMasterListToolbarHead">TestOLSKMasterListToolbarHead</em>
-	<em slot="OLSKMasterListToolbarTail" id="TestOLSKMasterListToolbarTail">TestOLSKMasterListToolbarTail</em>
+	<div class="OLSKToolbarElementGroup" slot="OLSKMasterListToolbarTail" id="TestOLSKMasterListToolbarTail">
+		<div>
+			<button class="TestItemCreateButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceCreateButtonDidClick } accesskey="n">
+				<div>{@html _OLSKSharedCreate }</div>
+			</button>
+		</div>
+	</div>
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
 	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
+	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent">TestOLSKCatalogDetailContent</div>
 </Module>
 
 <style>

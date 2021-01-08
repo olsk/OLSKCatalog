@@ -51,7 +51,15 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 </OLSKMasterList>
 
 <div class="OLSKCatalogDetail OLSKViewportDetail">
-	<OLSKDetailPlaceholder />	
+	{#if !OLSKCatalogItemSelected }
+		<OLSKDetailPlaceholder />
+	{/if}
+
+	{#if OLSKCatalogItemSelected }
+		{#if $$slots.OLSKCatalogDetailContent }
+			<slot name="OLSKCatalogDetailContent"></slot>	
+		{/if}
+	{/if}
 </div>
 
 </div>
