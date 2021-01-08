@@ -2,12 +2,11 @@ const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 
 describe('OLSKCatalog_Misc', function () {
 
-	before(function() {
-		return browser.OLSKVisit(kDefaultRoute, {
-		});
-	});
-
 	describe('OLSKCatalog', function test_OLSKCatalog () {
+
+		before(function() {
+			return browser.OLSKVisit(kDefaultRoute);
+		});
 
 		it('sets OLSKMobileViewInactive', function () {
 			browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMobileViewInactive');
@@ -60,11 +59,23 @@ describe('OLSKCatalog_Misc', function () {
 		
 	});
 
-	context('ItemSelect', function test_ItemSelect() {
+	context('ItemCreate', function test_ItemCreate() {
+
+		before(function() {
+			return browser.OLSKVisit(kDefaultRoute);
+		});
 
 		before(function () {
 			return browser.pressButton('.TestItemCreateButton');
 		});
+
+		it('binds OLSKCatalogItemSelected', function () {
+			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKResultsListItemSelected');
+		});
+
+	});
+
+	context('ItemSelect', function test_ItemSelect() {
 
 		before(function () {
 			return browser.pressButton('.TestItemCreateButton');
