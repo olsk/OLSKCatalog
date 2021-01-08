@@ -7,6 +7,51 @@ describe('OLSKCatalog_Misc', function () {
 		});
 	});
 
+	describe('OLSKCatalog', function test_OLSKCatalog () {
+
+		it('sets OLSKMobileViewInactive', function () {
+			browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMobileViewInactive');
+			browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
+			browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
+			browser.assert.hasClass('.OLSKMasterList', 'OLSKMasterListFocused');
+		});
+
+		it('focuses OLSKMasterListFilterField', function () {
+			browser.assert.hasFocus('.OLSKMasterListFilterField');
+		});
+
+		context('ItemSelect', function () {
+
+			before(function () {
+				return browser.pressButton('.TestItemCreateButton');
+			});
+
+			it('sets OLSKMobileViewInactive', function () {
+				browser.assert.hasClass('.OLSKMasterList', 'OLSKMobileViewInactive');
+				browser.assert.hasNoClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
+				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', 'true');
+				browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMasterListFocused');
+			});
+
+		});
+
+		context('back', function () {
+
+			before(function () {
+				return browser.pressButton('.TestItemBackButton');
+			});
+
+			it('sets OLSKMobileViewInactive', function () {
+				browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMobileViewInactive');
+				browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
+				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
+				browser.assert.hasClass('.OLSKMasterList', 'OLSKMasterListFocused');
+			});
+
+		});
+		
+	});
+
 	describe('OLSKCatalogDetail', function test_OLSKCatalogDetail () {
 
 		it('classes OLSKViewportDetail', function () {

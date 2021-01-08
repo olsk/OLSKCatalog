@@ -22,6 +22,10 @@ const mod = {
 		mod.ControlItemCreate();
 	},
 
+	InterfaceBackButtonDidClick () {
+		mod._OLSKCatalog.modPublic.OLSKCatalogFocusMaster();
+	},
+
 	InterfaceDiscardButtonDidClick () {
 		mod.ControlItemDiscard(mod._ValueItemSelected);
 	},
@@ -46,6 +50,8 @@ const mod = {
 
 	ControlItemSelect (inputData) {
 		mod._ValueItemSelected = inputData;
+
+		mod._OLSKCatalog.modPublic.OLSKCatalogFocusDetail();
 	},
 
 	// MESSAGE
@@ -83,12 +89,15 @@ const inputData = Object.assign({
 	return e;
 })));
 
-import Module from './main.svelte';
+import OLSKCatalog from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
+import _OLSKSharedBack from './node_modules/OLSKUIAssets/_OLSKSharedBack.svg';
 import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.svg';
 </script>
 
-<Module
+<OLSKCatalog
+	bind:this={ mod._OLSKCatalog }
+
 	OLSKCatalogItems={ mod._ValueItemsAll }
 	OLSKCatalogItemSelected={ mod._ValueItemSelected }
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
@@ -121,12 +130,15 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	
 	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent">
 		<header class="OLSKToolbar OLSKCommonEdgeBottom">
+			<button class="TestItemBackButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceBackButtonDidClick }>
+				<div>{@html _OLSKSharedBack }</div>
+			</button>
 			<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>
 				<div>{@html _OLSKSharedDiscard }</div>
 			</button>
 		</header>
 	</div>
-</Module>
+</OLSKCatalog>
 
 <style>
 

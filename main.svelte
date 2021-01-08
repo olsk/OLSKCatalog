@@ -6,11 +6,51 @@ export let OLSKCatalogItemAccessibilitySummaryFor;
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
 export let OLSKCatalogDispatchFilter;
-export let OLSKMobileViewInactive = false;
+
+export const modPublic = {
+	
+	OLSKCatalogFocusDetail () {
+		mod.OLSKMobileViewInactive = true;
+	},
+	
+	OLSKCatalogFocusMaster () {
+		mod.OLSKMobileViewInactive = false;
+
+		mod.ControlFocusMaster();
+	},
+
+};
 
 const mod = {
 
+	OLSKMobileViewInactive: false,
+
+	// CONTROL
+
+	ControlFocusMaster () {
+		document.querySelector('.OLSKMasterListFilterField').focus();
+	},
+
+	// SETUP
+
+	SetupEverything() {
+		mod.SetupFocus();
+	},
+
+	SetupFocus() {
+		setTimeout(mod.ControlFocusMaster);
+	},
+
+	// LIFECYCLE
+
+	LifecycleModuleWillMount() {
+		mod.SetupEverything();
+	},
+
 };
+
+import { onMount } from 'svelte';
+onMount(mod.LifecycleModuleWillMount);
 
 import OLSKMasterList from 'OLSKMasterList';
 import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
@@ -27,7 +67,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListDispatchFilter={ OLSKCatalogDispatchFilter }
 	let:OLSKResultsListItem={ e }
 	OLSKMasterListItemAccessibilitySummaryFor={ OLSKCatalogItemAccessibilitySummaryFor }	
-	OLSKMobileViewInactive={ OLSKMobileViewInactive }
+	OLSKMobileViewInactive={ mod.OLSKMobileViewInactive }
 	>
 	<div slot="OLSKMasterListToolbarHead">
 		{#if $$slots.OLSKMasterListToolbarHead}
@@ -56,7 +96,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	</div>
 </OLSKMasterList>
 
-<div class="OLSKCatalogDetail OLSKViewportDetail">
+<div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ mod.OLSKMobileViewInactive ? true : null }>
 	{#if !OLSKCatalogItemSelected }
 		<OLSKDetailPlaceholder />
 	{/if}
