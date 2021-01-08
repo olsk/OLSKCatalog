@@ -108,6 +108,8 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</div>
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
+
+	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem">{ item.XYZItemID }</div>
 	
 	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
 

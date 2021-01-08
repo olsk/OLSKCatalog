@@ -25,7 +25,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListDispatchClick={ OLSKCatalogDispatchClick }
 	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
 	OLSKMasterListDispatchFilter={ OLSKCatalogDispatchFilter }
-	let:OLSKResultsListItem={ item }
+	let:OLSKResultsListItem={ e }
 	OLSKMasterListItemAccessibilitySummaryFor={ OLSKCatalogItemAccessibilitySummaryFor }	
 	OLSKMobileViewInactive={ OLSKMobileViewInactive }
 	>
@@ -42,6 +42,12 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	</div>
 
 	<slot></slot>
+
+	<div slot="OLSKMasterListItem">
+		{#if $$slots.OLSKMasterListItem}
+			<slot name="OLSKMasterListItem" OLSKResultsListItem={ e }></slot>	
+		{/if}
+	</div>
 
 	<div slot="OLSKMasterListBodyTail">
 		{#if $$slots.OLSKMasterListBodyTail}

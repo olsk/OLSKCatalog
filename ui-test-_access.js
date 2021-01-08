@@ -69,6 +69,10 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKMasterListItem', 1);
 		});
 
+		it('binds OLSKMasterListItem', function () {
+			browser.assert.elements('.OLSKMasterListItem .TestOLSKMasterListItem', 1);
+		});
+
 		it('hides OLSKDetailPlaceholder', function () {
 			browser.assert.elements('.OLSKDetailPlaceholder', 0);
 		});
