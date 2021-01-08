@@ -48,6 +48,16 @@ const mod = {
 		mod._ValueItemSelected = inputData;
 	},
 
+	// MESSAGE
+
+	OLSKCatalogDispatchClick (inputData) {
+		mod.ControlItemSelect(inputData);
+	},
+
+	OLSKCatalogDispatchArrow (inputData) {
+		mod.ControlItemSelect(inputData);
+	},
+
 };
 
 const inputData = Object.assign({
@@ -55,14 +65,6 @@ const inputData = Object.assign({
 	OLSKCatalogItemAccessibilitySummaryFor (inputData) {
 		return inputData.XYZItemID;
 	},
-	OLSKCatalogDispatchClick: (function  (inputData) {
-		window.TestOLSKCatalogDispatchClick.innerHTML = parseInt(window.TestOLSKCatalogDispatchClick.innerHTML) + 1;
-		window.TestOLSKCatalogDispatchClickData.innerHTML = JSON.stringify(inputData);
-	}),
-	OLSKCatalogDispatchArrow: (function  (inputData) {
-		window.TestOLSKCatalogDispatchArrow.innerHTML = parseInt(window.TestOLSKCatalogDispatchArrow.innerHTML) + 1;
-		window.TestOLSKCatalogDispatchArrowData.innerHTML = JSON.stringify(inputData);
-	}),
 	OLSKCatalogDispatchFilter: (function  (inputData) {
 		window.TestOLSKCatalogDispatchFilter.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilter.innerHTML) + 1;
 		window.TestOLSKCatalogDispatchFilterData.innerHTML = inputData;
@@ -89,6 +91,8 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 <Module
 	OLSKCatalogItems={ mod._ValueItemsAll }
 	OLSKCatalogItemSelected={ mod._ValueItemSelected }
+	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
+	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
 
 	{ ...inputData }
 
