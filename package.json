@@ -1,0 +1,10 @@
+{
+  "name": "OLSKCatalog",
+  "main": "main.svelte",
+  "dependencies": {
+    "OLSKDecor": "olsk/OLSKDecor",
+    "OLSKMasterList": "olsk/OLSKMasterList",
+    "OLSKResults": "olsk/OLSKResults",
+    "OLSKDetailPlaceholder": "olsk/OLSKDetailPlaceholder"
+  }
+}
