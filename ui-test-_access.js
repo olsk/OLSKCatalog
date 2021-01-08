@@ -34,4 +34,24 @@ describe('OLSKCatalog_Access', function () {
 		browser.assert.elements('.OLSKDetailPlaceholder', 1);
 	});
 
+	describe('OLSKMasterList', function test_OLSKMasterList () {
+		
+		it('binds OLSKMasterListToolbarHead', function () {
+			browser.assert.elements('.OLSKMasterListToolbar #TestOLSKMasterListToolbarHead', 1);
+		});
+
+		it('binds OLSKMasterListToolbarTail', function () {
+			browser.assert.elements('.OLSKMasterListToolbar #TestOLSKMasterListToolbarTail', 1);
+		});
+		
+		it('binds OLSKMasterListMain', function () {
+			browser.assert.elements('.OLSKMasterListBody #TestOLSKMasterListMain', 1);
+		});
+
+		it('binds OLSKMasterListBodyTail', function () {
+			browser.assert.elements('.OLSKMasterListBody #TestOLSKMasterListBodyTail', 1);
+		});
+	
+	});
+
 });
