@@ -2,30 +2,39 @@
 locals.OLSKPageAssets = [
 	'/node_modules/normalize.css/normalize.css',
 	'/node_modules/OLSKDecor/ui-style.css',
+	'__compiled/ui-style.css',
 ];
 locals.OLSKPagePublicConstants = {
 	OLSKSharedPageCurrentLanguage,
 };
 %>
 
+<div class="OLSKViewport">
+
+<div class="OLSKViewportContent">
+
 <script src="/<%= OLSKSharedPageControllerSlug %>/__compiled/ui-behaviour.js"></script>
 
-<p>
-	<strong>OLSKCatalogDispatchArrow</strong>
-	<span id="TestOLSKCatalogDispatchArrow">0</span>
-	<span id="TestOLSKCatalogDispatchArrowData">undefined</span>
-</p>
+</div>
 
-<p>
-	<strong>OLSKCatalogDispatchClick</strong>
-	<span id="TestOLSKCatalogDispatchClick">0</span>
-	<span id="TestOLSKCatalogDispatchClickData">undefined</span>
-</p>
+<footer class="OLSKMobileViewFooter">
+	<p>
+		<strong>OLSKCatalogDispatchArrow</strong>
+		<span id="TestOLSKCatalogDispatchArrow">0</span>
+		<span id="TestOLSKCatalogDispatchArrowData">undefined</span>
+	</p>
 
-<p>
-	<strong>OLSKCatalogDispatchFilter</strong>
-	<span id="TestOLSKCatalogDispatchFilter">0</span>
-	<span id="TestOLSKCatalogDispatchFilterData">undefined</span>
-</p>
+	<p>
+		<strong>OLSKCatalogDispatchClick</strong>
+		<span id="TestOLSKCatalogDispatchClick">0</span>
+		<span id="TestOLSKCatalogDispatchClickData">undefined</span>
+	</p>
 
-<input id="TestInputAlternative" />
+	<p>
+		<strong>OLSKCatalogDispatchFilter</strong>
+		<span id="TestOLSKCatalogDispatchFilter">0</span>
+		<span id="TestOLSKCatalogDispatchFilterData">undefined</span>
+	</p>
+</footer>
+
+</div>

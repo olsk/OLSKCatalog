@@ -44,3 +44,10 @@ import Module from './main.svelte';
 	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
 </Module>
 
+<style>
+em {
+	display: inline-table;
+	max-width: 16px;
+	overflow: hidden;
+}
+</style>

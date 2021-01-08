@@ -50,8 +50,15 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	</div>
 </OLSKMasterList>
 
-<div class="OLSKCatalogDetail">
+<div class="OLSKCatalogDetail OLSKViewportDetail">
 	<OLSKDetailPlaceholder />	
 </div>
 
 </div>
+
+<style>
+.OLSKCatalog {
+	width: 100%;
+	display: flex;
+}
+</style>

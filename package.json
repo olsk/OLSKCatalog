@@ -2,6 +2,7 @@
   "name": "OLSKCatalog",
   "main": "main.svelte",
   "dependencies": {
+  	"normalize.css": "latest",
     "OLSKDecor": "olsk/OLSKDecor",
     "OLSKMasterList": "olsk/OLSKMasterList",
     "OLSKResults": "olsk/OLSKResults",

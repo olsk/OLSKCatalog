@@ -27,4 +27,12 @@ describe('OLSKCatalog_Misc', function () {
 	
 	});
 
+	describe('OLSKCatalogDetail', function test_OLSKCatalogDetail () {
+
+		it('classes OLSKViewportDetail', function () {
+			browser.assert.hasClass(OLSKCatalogDetail, 'OLSKViewportDetail');
+		});
+		
+	});
+
 });
