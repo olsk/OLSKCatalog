@@ -3,9 +3,9 @@ const mod = {
 
 	// VALUE
 
-	_ValueItems: [],
-	ValueItems (inputData) {
-		mod._ValueItems = inputData;
+	_ValueItemsAll: [],
+	ValueItemsAll (inputData) {
+		mod._ValueItemsAll = inputData;
 	},
 
 	// DATA
@@ -19,11 +19,33 @@ const mod = {
 	// INTERFACE
 
 	InterfaceCreateButtonDidClick () {
+		mod.ControlItemCreate();
+	},
+
+	InterfaceDiscardButtonDidClick () {
+		mod.ControlItemDiscard(mod._ValueItemSelected);
+	},
+
+	// CONTROL
+
+	ControlItemCreate () {
 		const item = mod.DataItemValid();
 		
-		mod.ValueItems([item].concat(mod._ValueItems));
+		mod.ValueItemsAll([item].concat(mod._ValueItemsAll));
 
-		mod._ValueItemSelected = item;
+		mod.ControlItemSelect(item);
+	},
+
+	ControlItemDiscard (inputData) {
+		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
+			return e !== inputData;
+		}));
+
+		mod.ControlItemSelect(null);
+	},
+
+	ControlItemSelect (inputData) {
+		mod._ValueItemSelected = inputData;
 	},
 
 };
@@ -61,17 +83,22 @@ const inputData = Object.assign({
 
 import Module from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
+import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.svg';
 </script>
 
 <Module
-	OLSKCatalogItems={ mod._ValueItems }
+	OLSKCatalogItems={ mod._ValueItemsAll }
 	OLSKCatalogItemSelected={ mod._ValueItemSelected }
 
 	{ ...inputData }
 
 	let:OLSKResultsListItem={ item }
 	>
+
+	<!-- MASTER -->
+
 	<em slot="OLSKMasterListToolbarHead" id="TestOLSKMasterListToolbarHead">TestOLSKMasterListToolbarHead</em>
+	
 	<div class="OLSKToolbarElementGroup" slot="OLSKMasterListToolbarTail" id="TestOLSKMasterListToolbarTail">
 		<div>
 			<button class="TestItemCreateButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceCreateButtonDidClick } accesskey="n">
@@ -79,12 +106,27 @@ import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg
 			</button>
 		</div>
 	</div>
+	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
+	
 	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
-	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent">TestOLSKCatalogDetailContent</div>
+
+	<!-- DETAIL -->
+	
+	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent">
+		<header class="OLSKToolbar OLSKCommonEdgeBottom">
+			<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>
+				<div>{@html _OLSKSharedDiscard }</div>
+			</button>
+		</header>
+	</div>
 </Module>
 
 <style>
+
+:root {
+	font-size: var(--OLSKCommonFontSize);
+}
 em {
 	display: inline-table;
 	max-width: 16px;
