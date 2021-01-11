@@ -54,7 +54,6 @@ const mod = {
 };
 
 const inputData = Object.assign({
-	OLSKCatalogFilterText: '',
 	OLSKCatalogItemAccessibilitySummaryFor (inputData) {
 		return inputData.XYZItemID;
 	},

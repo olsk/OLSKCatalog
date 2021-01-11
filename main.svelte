@@ -1,5 +1,4 @@
 <script>
-export let OLSKCatalogFilterText;
 export let OLSKCatalogItemAccessibilitySummaryFor;
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
@@ -54,6 +53,8 @@ const mod = {
 		mod._ValueItemsAll = inputData;
 	},
 
+	_ValueFilterText: '',
+
 	// CONTROL
 
 	ControlFocusMaster () {
@@ -90,7 +91,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <OLSKMasterList
 	OLSKMasterListItems={ mod._ValueItemsAll }
 	OLSKMasterListItemSelected={ mod._ValueItemSelected }
-	OLSKMasterListFilterText={ OLSKCatalogFilterText }
+	OLSKMasterListFilterText={ mod._ValueFilterText }
 	OLSKMasterListDispatchClick={ OLSKCatalogDispatchClick }
 	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
 	OLSKMasterListDispatchFilter={ OLSKCatalogDispatchFilter }
