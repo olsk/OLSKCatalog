@@ -1,6 +1,5 @@
 <script>
 export let OLSKCatalogFilterText;
-export let OLSKCatalogItems;
 export let OLSKCatalogItemSelected = null;
 export let OLSKCatalogItemAccessibilitySummaryFor;
 export let OLSKCatalogDispatchClick;
@@ -8,6 +7,16 @@ export let OLSKCatalogDispatchArrow;
 export let OLSKCatalogDispatchFilter;
 
 export const modPublic = {
+	
+	OLSKCatalogInsert (inputData) {
+		mod.ValueItemsAll([inputData].concat(mod._ValueItemsAll));
+	},
+	
+	OLSKCatalogRemove (inputData) {
+		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
+			return e !== inputData;
+		}));
+	},
 	
 	OLSKCatalogFocusDetail () {
 		mod.OLSKMobileViewInactive = true;
@@ -24,6 +33,13 @@ export const modPublic = {
 const mod = {
 
 	OLSKMobileViewInactive: false,
+
+	// VALUE
+
+	_ValueItemsAll: [],
+	ValueItemsAll (inputData) {
+		mod._ValueItemsAll = inputData;
+	},
 
 	// CONTROL
 
@@ -59,7 +75,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <div class="OLSKCatalog">
 
 <OLSKMasterList
-	OLSKMasterListItems={ OLSKCatalogItems }
+	OLSKMasterListItems={ mod._ValueItemsAll }
 	OLSKMasterListItemSelected={ OLSKCatalogItemSelected }
 	OLSKMasterListFilterText={ OLSKCatalogFilterText }
 	OLSKMasterListDispatchClick={ OLSKCatalogDispatchClick }

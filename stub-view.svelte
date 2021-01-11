@@ -1,13 +1,6 @@
 <script>
 const mod = {
 
-	// VALUE
-
-	_ValueItemsAll: [],
-	ValueItemsAll (inputData) {
-		mod._ValueItemsAll = inputData;
-	},
-
 	// DATA
 
 	DataItemValid () {
@@ -35,15 +28,13 @@ const mod = {
 	ControlItemCreate () {
 		const item = mod.DataItemValid();
 		
-		mod.ValueItemsAll([item].concat(mod._ValueItemsAll));
+		mod._OLSKCatalog.modPublic.OLSKCatalogInsert(item);
 
 		mod.ControlItemSelect(item);
 	},
 
 	ControlItemDiscard (inputData) {
-		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
-			return e !== inputData;
-		}));
+		mod._OLSKCatalog.modPublic.OLSKCatalogRemove(inputData);
 
 		mod.ControlItemSelect(null);
 	},
@@ -75,19 +66,7 @@ const inputData = Object.assign({
 		window.TestOLSKCatalogDispatchFilter.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilter.innerHTML) + 1;
 		window.TestOLSKCatalogDispatchFilterData.innerHTML = inputData;
 	}),
-}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()).map(function (e, index, coll) {
-	if (['OLSKCatalogItems', 'OLSKCatalogItemSelected', 'OLSKCatalogFilterFieldClearButton', 'OLSKCatalogFilterFieldAutofocus'].includes(e[0])) {
-		e[1] = JSON.parse(e[1]);
-	}
-
-	if (e[0] === 'OLSKCatalogItemSelected') {
-		e[1] = coll[0][1].filter(function (item) {
-			return item.TestObjectID === e[1].TestObjectID;
-		}).shift();
-	}
-
-	return e;
-})));
+}, Array.from((new window.URLSearchParams(window.location.search)).entries()));
 
 import OLSKCatalog from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
@@ -98,7 +77,6 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 <OLSKCatalog
 	bind:this={ mod._OLSKCatalog }
 
-	OLSKCatalogItems={ mod._ValueItemsAll }
 	OLSKCatalogItemSelected={ mod._ValueItemSelected }
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
