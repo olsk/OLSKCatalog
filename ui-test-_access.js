@@ -69,20 +69,12 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKMasterListItem', 1);
 		});
 
-		it('binds OLSKMasterListItem', function () {
-			browser.assert.elements('.OLSKMasterListItem .TestOLSKMasterListItem', 1);
-		});
-
 		it('hides OLSKDetailPlaceholder', function () {
 			browser.assert.elements('.OLSKDetailPlaceholder', 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
 			browser.assert.elements(OLSKCatalogDetailContent, 1);
-		});
-
-		it('binds OLSKCatalogDetailContent', function () {
-			browser.assert.elements('.OLSKCatalogDetail #TestOLSKCatalogDetailContent', 1);
 		});
 
 	});

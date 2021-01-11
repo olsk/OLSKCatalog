@@ -69,8 +69,16 @@ describe('OLSKCatalog_Misc', function () {
 			return browser.pressButton('.TestItemCreateButton');
 		});
 
+		it('binds OLSKMasterListItem', function () {
+			browser.assert.elements('.OLSKMasterListItem .TestOLSKMasterListItem', 1);
+		});
+
 		it('binds OLSKCatalogItemSelected', function () {
 			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKResultsListItemSelected');
+		});
+
+		it('binds OLSKCatalogDetailContent', function () {
+			browser.assert.elements('.OLSKCatalogDetail #TestOLSKCatalogDetailContent', 1);
 		});
 
 	});
