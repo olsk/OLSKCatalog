@@ -20,7 +20,7 @@ const mod = {
 	},
 
 	InterfaceDiscardButtonDidClick () {
-		mod.ControlItemDiscard(mod._ValueItemSelected);
+		mod.ControlItemDiscard(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
 	},
 
 	// CONTROL
@@ -30,21 +30,17 @@ const mod = {
 		
 		mod._OLSKCatalog.modPublic.OLSKCatalogInsert(item);
 
-		mod.ControlItemSelectFocus(item);
+		mod.ControlItemSelect(item);
 	},
 
 	ControlItemDiscard (inputData) {
 		mod._OLSKCatalog.modPublic.OLSKCatalogRemove(inputData);
 
-		mod.ControlItemSelect(null);
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(null);
 	},
 
 	ControlItemSelect (inputData) {
-		mod._ValueItemSelected = inputData;
-	},
-
-	ControlItemSelectFocus (inputData) {
-		mod.ControlItemSelect(inputData);
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 
 		mod._OLSKCatalog.modPublic.OLSKCatalogFocusDetail();
 	},
@@ -52,11 +48,11 @@ const mod = {
 	// MESSAGE
 
 	OLSKCatalogDispatchClick (inputData) {
-		mod.ControlItemSelectFocus(inputData);
+		mod.ControlItemSelect(inputData);
 	},
 
 	OLSKCatalogDispatchArrow (inputData) {
-		mod.ControlItemSelect(inputData);
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 	},
 
 };
@@ -81,7 +77,6 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 <OLSKCatalog
 	bind:this={ mod._OLSKCatalog }
 
-	OLSKCatalogItemSelected={ mod._ValueItemSelected }
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
 

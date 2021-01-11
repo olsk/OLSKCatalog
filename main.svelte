@@ -1,15 +1,26 @@
 <script>
 export let OLSKCatalogFilterText;
-export let OLSKCatalogItemSelected = null;
 export let OLSKCatalogItemAccessibilitySummaryFor;
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
 export let OLSKCatalogDispatchFilter;
 
 export const modPublic = {
+
+	// DATA
+
+	OLSKCatalogDataItemSelected () {
+		return mod._ValueItemSelected;
+	},
+
+	// CONTROL
 	
 	OLSKCatalogInsert (inputData) {
 		mod.ValueItemsAll([inputData].concat(mod._ValueItemsAll));
+	},
+
+	OLSKCatalogSelect (inputData) {
+		mod._ValueItemSelected = inputData;
 	},
 	
 	OLSKCatalogRemove (inputData) {
@@ -76,7 +87,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 <OLSKMasterList
 	OLSKMasterListItems={ mod._ValueItemsAll }
-	OLSKMasterListItemSelected={ OLSKCatalogItemSelected }
+	OLSKMasterListItemSelected={ mod._ValueItemSelected }
 	OLSKMasterListFilterText={ OLSKCatalogFilterText }
 	OLSKMasterListDispatchClick={ OLSKCatalogDispatchClick }
 	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
@@ -113,11 +124,11 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 </OLSKMasterList>
 
 <div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ mod.OLSKMobileViewInactive ? true : null }>
-	{#if !OLSKCatalogItemSelected }
+	{#if !mod._ValueItemSelected }
 		<OLSKDetailPlaceholder />
 	{/if}
 
-	{#if OLSKCatalogItemSelected }
+	{#if mod._ValueItemSelected }
 		{#if $$slots.OLSKCatalogDetailContent }
 			<slot name="OLSKCatalogDetailContent"></slot>	
 		{/if}
