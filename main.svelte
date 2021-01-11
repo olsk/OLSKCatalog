@@ -235,4 +235,19 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	width: 100%;
 	display: flex;
 }
+
+.OLSKCatalogDetail {
+	/* OLSKCatalogDetail:Parent */
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (min-width: 760px) {
+
+.OLSKCatalogDetail > :global(.OLSKDetailPlaceholder) {
+	/* OLSKCatalogDetail:Child */
+	flex-grow: 1;
+}
+
+}
 </style>
