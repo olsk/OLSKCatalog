@@ -7,6 +7,8 @@ export let OLSKCatalogDispatchSort;
 export let OLSKCatalogDispatchFilter;
 export let OLSKCatalogDispatchExact;
 
+export let _OLSKCatalogDispatchKey;
+
 export const modPublic = {
 
 	// DATA
@@ -27,9 +29,15 @@ export const modPublic = {
 		mod._ValueItemSelected = inputData;
 	},
 	
+	OLSKCatalogUpdate (inputData) {
+		mod.ValueItemsAll(mod._ValueItemsAll.map(function (e) {
+			return _OLSKCatalogDispatchKey(e) === _OLSKCatalogDispatchKey(inputData) ? inputData : e;
+		}));
+	},
+	
 	OLSKCatalogRemove (inputData) {
 		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
-			return e !== inputData;
+			return _OLSKCatalogDispatchKey(e) !== _OLSKCatalogDispatchKey(inputData);
 		}));
 	},
 	
