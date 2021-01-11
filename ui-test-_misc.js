@@ -117,6 +117,18 @@ describe('OLSKCatalog_Misc', function () {
 
 		});
 
+		context('escape', function () {
+
+			before(function () {
+				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
+			});
+
+			it('focuses OLSKMasterListFilterField', function () {
+				browser.assert.hasFocus('.OLSKMasterListFilterField');
+			});
+
+		});
+
 	});
 
 });

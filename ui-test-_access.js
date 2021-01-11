@@ -99,4 +99,56 @@ describe('OLSKCatalog_Access', function () {
 
 	});
 
+	context('ItemSelect', function test_ItemSelect() {
+
+		before(function () {
+			return browser.pressButton('.TestItemCreateButton');
+		});
+
+		before(function () {
+			return browser.pressButton('.TestItemCreateButton');
+		});
+
+		before(function () {
+			return browser.pressButton('.TestItemDiscardButton');
+		});
+
+		before(function () {
+			browser.assert.elements('.OLSKDetailPlaceholder', 1);
+		});
+
+		before(function () {
+			browser.assert.elements('.OLSKCatalogDetailContent', 0);
+		});
+
+		before(function () {
+			return browser.click('.OLSKResultsListItem');
+		});
+
+		it('hides OLSKDetailPlaceholder', function () {
+			browser.assert.elements('.OLSKDetailPlaceholder', 0);
+		});
+
+		it('shows OLSKCatalogDetailContent', function () {
+			browser.assert.elements(OLSKCatalogDetailContent, 1);
+		});		
+
+		context('escape', function () {
+
+			before(function () {
+				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
+			});
+
+			it('shows OLSKDetailPlaceholder', function () {
+				browser.assert.elements('.OLSKDetailPlaceholder', 1);
+			});
+
+			it('hides OLSKCatalogDetailContent', function () {
+				browser.assert.elements('.OLSKCatalogDetailContent', 0);
+			});	
+
+		});
+
+	});
+
 });

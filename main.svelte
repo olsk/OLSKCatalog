@@ -55,7 +55,35 @@ const mod = {
 
 	_ValueFilterText: '',
 
+	// INTERFACE
+
+	InterfaceWindowDidKeydown (event) {
+		if (document.querySelector('.LCHLauncher')) { // #spec
+			return;
+		}
+
+		const handlerFunctions = {
+
+			Escape () {
+				mod.ControlFilter('');
+
+				if (typeof OLSK_SPEC_UI !== 'undefined' && !OLSK_SPEC_UI()) {
+					document.querySelector('.OLSKMasterListBody').scrollTo(0, 0);
+				}
+			},
+			
+		};
+
+		handlerFunctions[event.key] && handlerFunctions[event.key]();
+	},
+
 	// CONTROL
+
+	ControlFilter (inputData) {
+		mod._ValueItemSelected = null;
+
+		mod.ControlFocusMaster();
+	},
 
 	ControlFocusMaster () {
 		document.querySelector('.OLSKMasterListFilterField').focus();
@@ -85,6 +113,7 @@ onMount(mod.LifecycleModuleWillMount);
 import OLSKMasterList from 'OLSKMasterList';
 import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 </script>
+<svelte:window on:keydown={ mod.InterfaceWindowDidKeydown } />
 
 <div class="OLSKCatalog">
 
