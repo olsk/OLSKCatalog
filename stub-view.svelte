@@ -5,7 +5,7 @@ const mod = {
 
 	DataItemValid () {
 		return {
-			XYZItemID: Math.random().toString(),
+			XYZItemBlurb: Math.random().toString(),
 		};
 	},
 
@@ -55,7 +55,7 @@ const mod = {
 
 const inputData = Object.assign({
 	OLSKCatalogItemAccessibilitySummaryFor (inputData) {
-		return inputData.XYZItemID;
+		return inputData.XYZItemBlurb;
 	},
 	OLSKCatalogDispatchFilter: (function  (inputData) {
 		window.TestOLSKCatalogDispatchFilter.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilter.innerHTML) + 1;
@@ -94,7 +94,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
 
-	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem">{ item.XYZItemID }</div>
+	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem">{ item.XYZItemBlurb }</div>
 	
 	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
 
