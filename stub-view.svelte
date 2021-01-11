@@ -30,7 +30,7 @@ const mod = {
 		
 		mod._OLSKCatalog.modPublic.OLSKCatalogInsert(item);
 
-		mod.ControlItemSelect(item);
+		mod.ControlItemSelectFocus(item);
 	},
 
 	ControlItemDiscard (inputData) {
@@ -41,6 +41,10 @@ const mod = {
 
 	ControlItemSelect (inputData) {
 		mod._ValueItemSelected = inputData;
+	},
+
+	ControlItemSelectFocus (inputData) {
+		mod.ControlItemSelect(inputData);
 
 		mod._OLSKCatalog.modPublic.OLSKCatalogFocusDetail();
 	},
@@ -48,7 +52,7 @@ const mod = {
 	// MESSAGE
 
 	OLSKCatalogDispatchClick (inputData) {
-		mod.ControlItemSelect(inputData);
+		mod.ControlItemSelectFocus(inputData);
 	},
 
 	OLSKCatalogDispatchArrow (inputData) {
