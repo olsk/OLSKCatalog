@@ -96,7 +96,7 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		it('binds OLSKMasterListItemSelected', function () {
-			browser.assert.OLSKInnerHTML('.TestOLSKMasterListItem', item);
+			browser.assert.text('.TestOLSKMasterListItem', item);
 		});
 
 	});
@@ -136,6 +136,10 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		context('escape', function () {
+
+			before(function () {
+				return browser.focus('.TestOLSKCatalogItemSelected');
+			});
 
 			before(function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');

@@ -6,6 +6,7 @@ const mod = {
 	DataItemValid () {
 		return {
 			XYZItemBlurb: Math.random().toString(),
+			XYZItemDate: new Date(),
 		};
 	},
 
@@ -57,16 +58,24 @@ const mod = {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 	},
 
+	OLSKCatalogDispatchSort (a, b) {
+		return b.XYZItemDate - a.XYZItemDate;
+	},
+
+	OLSKCatalogDispatchFilter (item, text) {
+		return item.XYZItemBlurb.match(text);
+	},
+
+	OLSKCatalogDispatchExact (item, text) {
+		return item.XYZItemBlurb.startsWith(text);
+	},
+
 };
 
 const inputData = Object.assign({
 	OLSKCatalogItemAccessibilitySummaryFor (inputData) {
 		return inputData.XYZItemBlurb;
 	},
-	OLSKCatalogDispatchFilter: (function  (inputData) {
-		window.TestOLSKCatalogDispatchFilter.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilter.innerHTML) + 1;
-		window.TestOLSKCatalogDispatchFilterData.innerHTML = inputData;
-	}),
 }, Array.from((new window.URLSearchParams(window.location.search)).entries()));
 
 import OLSKCatalog from './main.svelte';
@@ -80,6 +89,10 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
+	
+	OLSKCatalogDispatchSort={ mod.OLSKCatalogDispatchSort }
+	OLSKCatalogDispatchFilter={ mod.OLSKCatalogDispatchFilter }
+	OLSKCatalogDispatchExact={ mod.OLSKCatalogDispatchExact }
 
 	{ ...inputData }
 
@@ -118,7 +131,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</header>
 
 	<div class="OLSKDecor">
-		<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } on:input={ mod.InterfaceFieldDidInput } autofocus />
+		<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } on:input={ mod.InterfaceFieldDidInput } />
 	</div>
 	
 	</div>

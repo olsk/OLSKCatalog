@@ -2,7 +2,10 @@
 export let OLSKCatalogItemAccessibilitySummaryFor;
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
+
+export let OLSKCatalogDispatchSort;
 export let OLSKCatalogDispatchFilter;
+export let OLSKCatalogDispatchExact;
 
 export const modPublic = {
 
@@ -50,10 +53,34 @@ const mod = {
 
 	_ValueItemsAll: [],
 	ValueItemsAll (inputData) {
-		mod._ValueItemsAll = inputData;
+		mod.ValueItemsVisible(mod._ValueItemsAll = inputData);
+	},
+
+	_ValueItemsVisible: [],
+	ValueItemsVisible (inputData, shouldSort = true) {
+		const items = !mod._ValueFilterText ? inputData : inputData.filter(function (e) {
+			return OLSKCatalogDispatchFilter(e, mod._ValueFilterText);
+		});
+
+		mod._ValueItemsVisible = shouldSort ? items.sort(OLSKCatalogDispatchSort) : items;
+	},
+
+	_ValueItemSelected: null,
+	ValueItemSelected (inputData) {
+		mod._ValueItemSelected = inputData;
+
+		if (!inputData) {
+			mod.OLSKMobileViewInactive = false;	
+		}
 	},
 
 	_ValueFilterText: '',
+
+	// DATA
+
+	DataIsMobile () {
+		return window.innerWidth <= 760;
+	},
 
 	// INTERFACE
 
@@ -79,14 +106,48 @@ const mod = {
 
 	// CONTROL
 
-	ControlFilter (inputData) {
-		mod._ValueItemSelected = null;
+	ControlSelect(inputData) {
+		mod.ValueItemSelected(inputData);
 
-		mod.ControlFocusMaster();
+		if (!inputData) {
+			return !mod.DataIsMobile() && mod.ControlFocusMaster();
+		}
+
+		// mod.OLSKMobileViewInactive = true;
+
+		// setTimeout(mod.ControlFocusDetail);
+	},
+
+	ControlFilter (inputData) {
+		mod._ValueFilterText = inputData;
+
+		mod.ValueItemsVisible(mod._ValueItemsAll);
+
+		if (!inputData) {
+			return mod.ControlSelect(null);
+		}
+
+		if (!mod._ValueItemsVisible.length) {
+			return mod.ControlSelect(null);
+		}
+
+		mod.ValueItemSelected(mod._ValueItemsVisible.slice().sort(function (a, b) {
+			const isExact = function (e) {
+				return OLSKCatalogDispatchExact(e, inputData);
+			};
+
+			return isExact(a) > isExact(b) ? -1 : 1;
+		}).shift());
 	},
 
 	ControlFocusMaster () {
 		document.querySelector('.OLSKMasterListFilterField').focus();
+	},
+
+	// MESSAGE
+
+	OLSKMasterListDispatchFilter (inputData) {
+		mod.ControlFilter(inputData);
 	},
 
 	// SETUP
@@ -118,12 +179,12 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <div class="OLSKCatalog">
 
 <OLSKMasterList
-	OLSKMasterListItems={ mod._ValueItemsAll }
+	OLSKMasterListItems={ mod._ValueItemsVisible }
 	OLSKMasterListItemSelected={ mod._ValueItemSelected }
 	OLSKMasterListFilterText={ mod._ValueFilterText }
 	OLSKMasterListDispatchClick={ OLSKCatalogDispatchClick }
 	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
-	OLSKMasterListDispatchFilter={ OLSKCatalogDispatchFilter }
+	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	let:OLSKResultsListItem={ e }
 	OLSKMasterListItemAccessibilitySummaryFor={ OLSKCatalogItemAccessibilitySummaryFor }	
 	OLSKMobileViewInactive={ mod.OLSKMobileViewInactive }
