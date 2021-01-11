@@ -111,7 +111,9 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 		</button>
 	</header>
 
-	<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } />
+	<div class="OLSKDecor">
+		<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } />
+	</div>
 	
 	</div>
 </OLSKCatalog>
