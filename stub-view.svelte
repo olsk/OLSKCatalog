@@ -77,7 +77,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 
 	{ ...inputData }
 
-	let:OLSKResultsListItem={ item }
+	let:OLSKResultsListItem
 	>
 
 	<!-- MASTER -->
@@ -94,7 +94,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
 
-	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem">{ item.XYZItemBlurb }</div>
+	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem">{ OLSKResultsListItem.XYZItemBlurb }</div>
 	
 	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
 
