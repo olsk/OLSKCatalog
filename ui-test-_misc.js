@@ -87,6 +87,20 @@ describe('OLSKCatalog_Misc', function () {
 
 	});
 
+	context('ItemEdit', function test_ItemEdit() {
+
+		const item = Math.random().toString();
+
+		before(function () {
+			return browser.fill('.TestOLSKCatalogItemSelected', item);
+		});
+
+		it('binds OLSKMasterListItemSelected', function () {
+			browser.assert.OLSKInnerHTML('.TestOLSKMasterListItem', item);
+		});
+
+	});
+
 	context('ItemSelect', function test_ItemSelect() {
 
 		before(function () {

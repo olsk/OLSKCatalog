@@ -23,6 +23,12 @@ const mod = {
 		mod.ControlItemDiscard(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
 	},
 
+	InterfaceFieldDidInput () {
+		mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected().XYZItemBlurb = this.value;
+
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
+	},
+
 	// CONTROL
 
 	ControlItemCreate () {
@@ -112,7 +118,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</header>
 
 	<div class="OLSKDecor">
-		<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } />
+		<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } on:input={ mod.InterfaceFieldDidInput } autofocus />
 	</div>
 	
 	</div>
