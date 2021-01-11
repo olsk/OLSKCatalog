@@ -162,7 +162,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	{#if mod._ValueItemSelected }
 		{#if $$slots.OLSKCatalogDetailContent }
-			<slot name="OLSKCatalogDetailContent"></slot>	
+			<slot name="OLSKCatalogDetailContent" OLSKCatalogItemSelected={ mod._ValueItemSelected }></slot>	
 		{/if}
 	{/if}
 </div>

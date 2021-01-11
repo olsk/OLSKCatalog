@@ -100,15 +100,19 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 
 	<!-- DETAIL -->
 	
-	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent">
-		<header class="OLSKToolbar OLSKCommonEdgeBottom">
-			<button class="TestItemBackButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceBackButtonDidClick }>
-				<div>{@html _OLSKSharedBack }</div>
-			</button>
-			<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>
-				<div>{@html _OLSKSharedDiscard }</div>
-			</button>
-		</header>
+	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent" let:OLSKCatalogItemSelected>
+	
+	<header class="OLSKToolbar OLSKCommonEdgeBottom">
+		<button class="TestItemBackButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceBackButtonDidClick }>
+			<div>{@html _OLSKSharedBack }</div>
+		</button>
+		<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>
+			<div>{@html _OLSKSharedDiscard }</div>
+		</button>
+	</header>
+
+	<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } />
+	
 	</div>
 </OLSKCatalog>
 
