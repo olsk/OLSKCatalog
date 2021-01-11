@@ -26,11 +26,7 @@ const mod = {
 	// CONTROL
 
 	ControlItemCreate () {
-		const item = mod.DataItemValid();
-		
-		mod._OLSKCatalog.modPublic.OLSKCatalogInsert(item);
-
-		mod.ControlItemSelect(item);
+		mod.ControlItemSelect(mod._OLSKCatalog.modPublic.OLSKCatalogInsert(mod.DataItemValid()));
 	},
 
 	ControlItemDiscard (inputData) {
@@ -118,10 +114,10 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 </OLSKCatalog>
 
 <style>
-
 :root {
 	font-size: var(--OLSKCommonFontSize);
 }
+
 em {
 	display: inline-table;
 	max-width: 16px;

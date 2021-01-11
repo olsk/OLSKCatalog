@@ -17,6 +17,8 @@ export const modPublic = {
 	
 	OLSKCatalogInsert (inputData) {
 		mod.ValueItemsAll([inputData].concat(mod._ValueItemsAll));
+
+		return inputData;
 	},
 
 	OLSKCatalogSelect (inputData) {
