@@ -5,6 +5,7 @@ const mod = {
 
 	DataItemValid () {
 		return {
+			XYZItemID: Math.random().toString(),
 			XYZItemBlurb: Math.random().toString(),
 			XYZItemDate: new Date(),
 		};
@@ -70,6 +71,10 @@ const mod = {
 		return item.XYZItemBlurb.startsWith(text);
 	},
 
+	_OLSKCatalogDispatchKey (inputData) {
+		return inputData.XYZItemID;
+	},
+
 };
 
 const inputData = Object.assign({
@@ -93,6 +98,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	OLSKCatalogDispatchSort={ mod.OLSKCatalogDispatchSort }
 	OLSKCatalogDispatchFilter={ mod.OLSKCatalogDispatchFilter }
 	OLSKCatalogDispatchExact={ mod.OLSKCatalogDispatchExact }
+	_OLSKCatalogDispatchKey={ mod._OLSKCatalogDispatchKey }
 
 	{ ...inputData }
 
