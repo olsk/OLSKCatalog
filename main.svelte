@@ -13,10 +13,6 @@ export const modPublic = {
 
 	// DATA
 
-	OLSKCatalogDataItemsAll () {
-		return mod._ValueItemsAll.slice();
-	},
-
 	OLSKCatalogDataItemSelected () {
 		return mod._ValueItemSelected;
 	},
@@ -246,6 +242,15 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 .OLSKCatalog {
 	width: 100%;
 	display: flex;
+}
+
+@media screen and (max-width: 760px) {
+
+:global(.OLSKMasterList) {
+	/* OLSKCatalogDetail:Child */
+	flex-grow: 1;
+}
+
 }
 
 .OLSKCatalogDetail {
