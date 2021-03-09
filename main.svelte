@@ -13,6 +13,10 @@ export const modPublic = {
 
 	// DATA
 
+	_OLSKCatalogDataItemsAll () {
+		return mod._ValueItemsAll.slice();
+	},
+
 	OLSKCatalogDataItemSelected () {
 		return mod._ValueItemSelected;
 	},
