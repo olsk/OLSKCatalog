@@ -1,5 +1,5 @@
 <script>
-export let OLSKCatalogItemAccessibilitySummaryFor;
+export let OLSKMasterListItemAccessibilitySummaryFor;
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
 
@@ -198,7 +198,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	let:OLSKResultsListItem={ e }
-	OLSKMasterListItemAccessibilitySummaryFor={ OLSKCatalogItemAccessibilitySummaryFor }	
+	OLSKMasterListItemAccessibilitySummaryFor={ OLSKMasterListItemAccessibilitySummaryFor }	
 	OLSKMobileViewInactive={ mod.OLSKMobileViewInactive }
 	>
 	<div slot="OLSKMasterListToolbarHead">

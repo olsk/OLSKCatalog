@@ -71,6 +71,10 @@ const mod = {
 		return item.XYZItemBlurb.startsWith(text);
 	},
 
+	OLSKMasterListItemAccessibilitySummaryFor (inputData) {
+		return inputData.XYZItemBlurb.split('\n').shift();
+	},
+
 	_OLSKCatalogDispatchKey (inputData) {
 		return inputData.XYZItemID;
 	},
@@ -78,9 +82,7 @@ const mod = {
 };
 
 const inputData = Object.assign({
-	OLSKCatalogItemAccessibilitySummaryFor (inputData) {
-		return inputData.XYZItemBlurb;
-	},
+
 }, Array.from((new window.URLSearchParams(window.location.search)).entries()));
 
 import OLSKCatalog from './main.svelte';
@@ -98,6 +100,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	OLSKCatalogDispatchSort={ mod.OLSKCatalogDispatchSort }
 	OLSKCatalogDispatchFilter={ mod.OLSKCatalogDispatchFilter }
 	OLSKCatalogDispatchExact={ mod.OLSKCatalogDispatchExact }
+	OLSKMasterListItemAccessibilitySummaryFor={ mod.OLSKMasterListItemAccessibilitySummaryFor }
 	_OLSKCatalogDispatchKey={ mod._OLSKCatalogDispatchKey }
 
 	{ ...inputData }
@@ -137,7 +140,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</header>
 
 	<div class="OLSKDecor">
-		<input class="TestOLSKCatalogItemSelected" value={ OLSKCatalogItemSelected.XYZItemBlurb } on:input={ mod.InterfaceFieldDidInput } />
+		<textarea class="TestOLSKCatalogItemSelected" on:input={ mod.InterfaceFieldDidInput }>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
 	</div>
 	
 	</div>

@@ -90,13 +90,22 @@ describe('OLSKCatalog_Misc', function () {
 	context('ItemEdit', function test_ItemEdit() {
 
 		const item = Math.random().toString();
+		const body = item + '\n' + Math.random().toString();
 
 		before(function () {
-			return browser.fill('.TestOLSKCatalogItemSelected', item);
+			return browser.fill('.TestOLSKCatalogItemSelected', body);
+		});
+
+		before(function () {
+			return browser.wait({ element: '.OLSKMasterListItem' });
 		});
 
 		it('binds OLSKMasterListItemSelected', function () {
-			browser.assert.text('.TestOLSKMasterListItem', item);
+			browser.assert.text('.TestOLSKMasterListItem', body.replace('\n', ' '));
+		});
+
+		it('calls OLSKMasterListItemAccessibilitySummaryFor', function () {
+			browser.assert.attribute('.OLSKMasterListItem', 'aria-label', item);
 		});
 
 	});
