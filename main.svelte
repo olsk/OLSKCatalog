@@ -47,6 +47,8 @@ export const modPublic = {
 		mod.ValueItemsAll(mod._ValueItemsAll.map(function (e) {
 			return _OLSKCatalogDispatchKey(e) === _OLSKCatalogDispatchKey(inputData) ? inputData : e;
 		}));
+
+		return inputData;
 	},
 	
 	OLSKCatalogRemove (inputData) {
