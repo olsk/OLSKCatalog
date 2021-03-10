@@ -147,7 +147,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			return browser.click('.OLSKResultsListItem:nth-child(3) .OLSKMasterListItem');
+			return browser.click('.OLSKResultsListItem:nth-child(3)');
 		});
 
 		before(function () {
