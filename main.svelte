@@ -7,7 +7,7 @@ export let _OLSKCatalogExcludeField = null;
 
 export let OLSKCatalogSortFunction;
 export let OLSKCatalogFilterFunction;
-export let OLSKCatalogDispatchExactFunction;
+export let OLSKCatalogExactFunction;
 
 export let _OLSKCatalogDispatchKey;
 
@@ -173,7 +173,7 @@ const mod = {
 
 		mod.ValueItemSelected(mod._ValueItemsVisible.slice().sort(function (a, b) {
 			const isExact = function (e) {
-				return OLSKCatalogDispatchExactFunction(e, inputData);
+				return OLSKCatalogExactFunction(e, inputData);
 			};
 
 			return isExact(a) > isExact(b) ? -1 : 1;
