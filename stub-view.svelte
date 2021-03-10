@@ -59,7 +59,7 @@ const mod = {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 	},
 
-	OLSKCatalogDispatchSort (a, b) {
+	OLSKCatalogDispatchSortFunction (a, b) {
 		return b.XYZItemDate - a.XYZItemDate;
 	},
 
@@ -97,7 +97,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
 	
-	OLSKCatalogDispatchSort={ mod.OLSKCatalogDispatchSort }
+	OLSKCatalogDispatchSortFunction={ mod.OLSKCatalogDispatchSortFunction }
 	OLSKCatalogDispatchFilterFunction={ mod.OLSKCatalogDispatchFilterFunction }
 	OLSKCatalogDispatchExactFunction={ mod.OLSKCatalogDispatchExactFunction }
 	OLSKMasterListItemAccessibilitySummaryFor={ mod.OLSKMasterListItemAccessibilitySummaryFor }

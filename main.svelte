@@ -8,7 +8,7 @@ export let _OLSKCatalogExcludeField = null;
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
 
-export let OLSKCatalogDispatchSort;
+export let OLSKCatalogDispatchSortFunction;
 export let OLSKCatalogDispatchFilterFunction;
 export let OLSKCatalogDispatchExactFunction;
 
@@ -83,7 +83,7 @@ const mod = {
 			return OLSKCatalogDispatchFilterFunction(e, mod._ValueFilterText);
 		});
 
-		mod._ValueItemsVisible = shouldSort ? items.sort(OLSKCatalogDispatchSort) : items;
+		mod._ValueItemsVisible = shouldSort ? items.sort(OLSKCatalogDispatchSortFunction) : items;
 	},
 
 	_ValueItemSelected: null,
