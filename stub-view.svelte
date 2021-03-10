@@ -3,12 +3,12 @@ const mod = {
 
 	// DATA
 
-	DataItemValid () {
-		return {
+	DataItemValid (inputData = {}) {
+		return Object.assign({
 			XYZItemID: Math.random().toString(),
 			XYZItemBlurb: Math.random().toString(),
 			XYZItemDate: new Date(),
-		};
+		}, inputData);
 	},
 
 	// INTERFACE
@@ -209,7 +209,24 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</div>
 </OLSKCatalog>
 
-<input class="TestExternalFilter" on:input={ mod.InterfaceExternalFilterDidInput }>
+<p>
+	<input class="TestExternalFilter" on:input={ mod.InterfaceExternalFilterDidInput }>
+</p>
+<p>
+	<button id="FakeRemoteInsert" on:click={ () => mod._OLSKCatalog.modPublic.OLSKCatalogInsert(mod.DataItemValid({
+		XYZItemBlurb: 'add',
+		XYZItemDate: new Date(Date.now() - 1000 * 60 * 60 * 24),
+	})) }></button>
+</p>
+<p>
+	<button id="FakeRemoteUpdate" on:click={ () => mod._OLSKCatalog.modPublic.OLSKCatalogUpdate(Object.assign(mod._OLSKCatalog.modPublic._OLSKCatalogDataItemsAll().sort(mod.OLSKCatalogSortFunction).pop(), {
+		XYZItemBlurb: 'change',
+		XYZItemDate: new Date(),
+	})) }></button>
+</p>
+<p>
+	<button id="FakeRemoteRemove" on:click={ () => mod._OLSKCatalog.modPublic.OLSKCatalogRemove(mod._OLSKCatalog.modPublic._OLSKCatalogDataItemsAll().sort(mod.OLSKCatalogSortFunction).pop()) }></button>
+</p>
 
 <style>
 :root {

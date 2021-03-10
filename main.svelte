@@ -34,7 +34,7 @@ export const modPublic = {
 	// CONTROL
 	
 	OLSKCatalogInsert (inputData) {
-		mod.ValueItemsAll([inputData].concat(mod._ValueItemsAll));
+		mod.ValueItemsAll([inputData].concat(mod._ValueItemsAll), !mod._ValueItemSelected);
 
 		return inputData;
 	},
@@ -46,7 +46,7 @@ export const modPublic = {
 	OLSKCatalogUpdate (inputData) {
 		mod.ValueItemsAll(mod._ValueItemsAll.map(function (e) {
 			return _OLSKCatalogDispatchKey(e) === _OLSKCatalogDispatchKey(inputData) ? inputData : e;
-		}));
+		}), !mod._ValueItemSelected);
 
 		return inputData;
 	},
