@@ -176,4 +176,40 @@ describe('OLSKCatalog_Archive', function () {
 
 	});
 
+	context('discard', function test_discard () {
+		
+		before(function () {
+			return browser.click('.OLSKResultsListItem');
+		});
+
+		before(function () {
+			return browser.pressButton('.TestItemArchiveButton');
+		});
+
+		before(function () {
+			return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
+		});
+
+		before(function () {
+			browser.assert.elements('.TestRevealArchiveButton', 1);
+		});
+
+		before(function () {
+			return browser.pressButton('.TestRevealArchiveButton');
+		});
+
+		before(function () {
+			return browser.click('.OLSKResultsListItem:nth-child(2)');
+		});
+
+		before(function () {
+			return browser.pressButton('.TestItemDiscardButton');
+		});
+
+		it('hides button', function () {
+			browser.assert.elements('.TestRevealArchiveButton', 0);
+		});
+	
+	});
+
 });
