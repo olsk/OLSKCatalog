@@ -3,6 +3,8 @@ export let OLSKMasterListItemAccessibilitySummaryFor;
 
 export let OLSKMasterListFilterFieldPlaceholderText = '';
 
+export let _OLSKCatalogExcludeField = null;
+
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
 
@@ -73,7 +75,11 @@ const mod = {
 
 	_ValueItemsVisible: [],
 	ValueItemsVisible (inputData, shouldSort = true) {
-		const items = !mod._ValueFilterText ? inputData : inputData.filter(function (e) {
+		const items = inputData.filter(function (e) {
+			if (!mod._ValueFilterText) {
+				return !_OLSKCatalogExcludeField || (_OLSKCatalogExcludeField && !e[_OLSKCatalogExcludeField]);
+			}
+			
 			return OLSKCatalogDispatchFilter(e, mod._ValueFilterText);
 		});
 
