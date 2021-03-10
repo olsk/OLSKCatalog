@@ -3,7 +3,7 @@ export let OLSKMasterListItemAccessibilitySummaryFunction;
 
 export let OLSKMasterListFilterFieldPlaceholderText = '';
 
-export let _OLSKCatalogExcludeField = null;
+export let _OLSKCatalogArchiveField = null;
 
 export let OLSKCatalogSortFunction;
 export let OLSKCatalogFilterFunction;
@@ -13,7 +13,8 @@ export let _OLSKCatalogDispatchKey;
 
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
-export let OLSKCatalogDispatchFilterWithNoThrottle;
+export let OLSKCatalogDispatchArchivedHide;
+export let OLSKCatalogDispatchArchivedShow;
 
 import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
@@ -39,7 +40,7 @@ export const modPublic = {
 	},
 
 	OLSKCatalogSelect (inputData) {
-		mod._ValueItemSelected = inputData;
+		return (mod._ValueItemSelected = inputData);
 	},
 	
 	OLSKCatalogUpdate (inputData) {
@@ -52,6 +53,14 @@ export const modPublic = {
 		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
 			return _OLSKCatalogDispatchKey(e) !== _OLSKCatalogDispatchKey(inputData);
 		}));
+	},
+
+	OLSKCatalogRevealArchive () {
+		mod._ValueArchiveIsVisible = true;
+
+		mod.ValueItemsVisible(mod._ValueItemsAll);
+
+		OLSKCatalogDispatchArchivedShow();
 	},
 	
 	OLSKCatalogFocusDetail () {
@@ -74,17 +83,31 @@ const mod = {
 
 	_ValueItemsAll: [],
 	ValueItemsAll (inputData) {
+		mod.ValueArchiveCount(inputData);
+
 		mod.ValueItemsVisible(mod._ValueItemsAll = inputData);
 	},
 
+	_ValueArchiveCount: 0,
+	_ValueArchiveIsVisible: false,
+	ValueArchiveCount (inputData) {
+		if (!_OLSKCatalogArchiveField) {
+			return;
+		}
+
+		mod._ValueArchiveCount = inputData.filter(function (e) {
+			return e[_OLSKCatalogArchiveField];
+		}).length;
+	},
+	
 	_ValueItemsVisible: [],
 	ValueItemsVisible (inputData, shouldSort = true) {
 		const items = inputData.filter(function (e) {
-			if (!mod._ValueFilterText) {
-				return !_OLSKCatalogExcludeField || (_OLSKCatalogExcludeField && !e[_OLSKCatalogExcludeField]);
+			if (!mod._ValueArchiveIsVisible && _OLSKCatalogArchiveField && e[_OLSKCatalogArchiveField]) {
+				return false;
 			}
-			
-			return OLSKCatalogFilterFunction(e, mod._ValueFilterText);
+
+			return !mod._ValueFilterText || OLSKCatalogFilterFunction(e, mod._ValueFilterText);
 		});
 
 		mod._ValueItemsVisible = shouldSort ? items.sort(OLSKCatalogSortFunction) : items;
@@ -117,11 +140,7 @@ const mod = {
 		const handlerFunctions = {
 
 			Escape () {
-				mod.ControlFilterWithThrottle('');
-
-				if (typeof OLSK_SPEC_UI !== 'undefined' && !OLSK_SPEC_UI()) {
-					document.querySelector('.OLSKMasterListBody').scrollTo(0, 0);
-				}
+				mod.ControlDeselect();
 			},
 			
 		};
@@ -159,9 +178,11 @@ const mod = {
 	},
 
 	ControlFilterWithNoThrottle (inputData) {
-		mod.ValueItemsVisible(mod._ValueItemsAll);
+		if (mod._ValueArchiveCount) {
+			(mod._ValueArchiveIsVisible = !!inputData) ? OLSKCatalogDispatchArchivedShow() : OLSKCatalogDispatchArchivedHide();
+		}
 
-		OLSKCatalogDispatchFilterWithNoThrottle(inputData);
+		mod.ValueItemsVisible(mod._ValueItemsAll);
 
 		if (!inputData) {
 			return mod.ControlSelect(null);
@@ -182,6 +203,16 @@ const mod = {
 
 	ControlFocusMaster () {
 		document.querySelector('.OLSKMasterListFilterField').focus();
+	},
+
+	ControlDeselect () {
+		mod.ValueArchiveCount(mod._ValueItemsAll);
+
+		mod.ControlFilterWithNoThrottle(mod._ValueFilterText = '');
+
+		if (typeof OLSK_SPEC_UI !== 'undefined' && !OLSK_SPEC_UI()) {
+			document.querySelector('.OLSKMasterListBody').scrollTo(0, 0);
+		}
 	},
 
 	// MESSAGE

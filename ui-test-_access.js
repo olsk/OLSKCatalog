@@ -150,5 +150,4 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 	});
-
 });

@@ -21,14 +21,23 @@ const mod = {
 		mod._OLSKCatalog.modPublic.OLSKCatalogFocusMaster();
 	},
 
+	InterfaceArchiveButtonDidClick () {
+		mod.ControlItemArchive(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
+	},
+
+	InterfaceUnarchiveButtonDidClick () {
+		mod.ControlItemUnarchive(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
+	},
+
 	InterfaceDiscardButtonDidClick () {
 		mod.ControlItemDiscard(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
 	},
 
 	InterfaceFieldDidInput () {
-		mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected().XYZItemBlurb = this.value;
-
-		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected());
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(Object.assign(mod._OLSKCatalog.modPublic.OLSKCatalogDataItemSelected(), {
+			XYZItemBlurb: this.value,
+			XYZItemDate: new Date(),
+		}));
 	},
 
 	// CONTROL
@@ -37,21 +46,40 @@ const mod = {
 		mod.ControlItemSelect(mod._OLSKCatalog.modPublic.OLSKCatalogInsert(mod.DataItemValid()));
 	},
 
-	ControlItemDiscard (inputData) {
-		mod._OLSKCatalog.modPublic.OLSKCatalogRemove(inputData);
-
-		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(null);
-	},
-
 	ControlItemSelect (inputData) {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 
 		mod._OLSKCatalog.modPublic.OLSKCatalogFocusDetail();
 	},
 
+	ControlItemArchive (inputData) {
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(Object.assign(inputData, {
+			XYZItemIsArchived: true,
+			XYZItemDate: new Date(),
+		}));
+	},
+
+	ControlItemUnarchive (inputData) {
+		delete inputData.XYZItemIsArchived;
+
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(Object.assign(inputData, {
+			XYZItemDate: new Date(),
+		}));
+	},
+
+	ControlItemDiscard (inputData) {
+		mod._OLSKCatalog.modPublic.OLSKCatalogRemove(inputData);
+
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(null);
+	},
+
 	// MESSAGE
 
 	OLSKCatalogSortFunction (a, b) {
+		if (a.XYZItemIsArchived !== b.XYZItemIsArchived) {
+			return a.XYZItemIsArchived ? 1 : -1;
+		}
+
 		return b.XYZItemDate - a.XYZItemDate;
 	},
 
@@ -79,14 +107,21 @@ const mod = {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 	},
 
-	OLSKCatalogDispatchFilterWithNoThrottle: (function  (inputData) {
-		window.TestOLSKCatalogDispatchFilterWithNoThrottle.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilterWithNoThrottle.innerHTML) + 1;
-		window.TestOLSKCatalogDispatchFilterWithNoThrottleData.innerHTML = inputData;
+	OLSKCatalogDispatchArchivedHide: (function  () {
+		window.TestOLSKCatalogDispatchArchivedHide.innerHTML = parseInt(window.TestOLSKCatalogDispatchArchivedHide.innerHTML) + 1;
+
+		mod._ValueRevealArchiveIsVisible = true;
+	}),
+
+	OLSKCatalogDispatchArchivedShow: (function  () {
+		window.TestOLSKCatalogDispatchArchivedShow.innerHTML = parseInt(window.TestOLSKCatalogDispatchArchivedShow.innerHTML) + 1;
+
+		mod._ValueRevealArchiveIsVisible = false;
 	}),
 
 };
 
-const inputData = Object.assign({}, Array.from((new window.URLSearchParams(window.location.search)).entries()));
+const inputData = Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()));
 
 import OLSKCatalog from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
@@ -105,9 +140,12 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 
 	_OLSKCatalogDispatchKey={ mod._OLSKCatalogDispatchKey }
 
+	_OLSKCatalogArchiveField={ 'XYZItemIsArchived' }
+
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
-	OLSKCatalogDispatchFilterWithNoThrottle={ mod.OLSKCatalogDispatchFilterWithNoThrottle }
+	OLSKCatalogDispatchArchivedHide={ mod.OLSKCatalogDispatchArchivedHide }
+	OLSKCatalogDispatchArchivedShow={ mod.OLSKCatalogDispatchArchivedShow }
 
 	{ ...inputData }
 
@@ -128,9 +166,14 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
 
-	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem">{ OLSKResultsListItem.XYZItemBlurb }</div>
+	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem" class:TestOLSKMasterListItemArchived={ OLSKResultsListItem.XYZItemIsArchived } >{ OLSKResultsListItem.XYZItemBlurb }</div>
 	
-	<em slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">TestOLSKMasterListBodyTail</em>
+	<div slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">
+		<em>TestOLSKMasterListBodyTail</em>
+		{#if mod._ValueRevealArchiveIsVisible }
+			<button class="TestRevealArchiveButton OLSKDecorPress" on:click={ mod._OLSKCatalog.modPublic.OLSKCatalogRevealArchive }>Reveal Archive</button>
+		{/if}
+	</div>
 
 	<!-- DETAIL -->
 	
@@ -140,13 +183,22 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 		<button class="TestItemBackButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceBackButtonDidClick }>
 			<div>{@html _OLSKSharedBack }</div>
 		</button>
+
+		{#if !OLSKCatalogItemSelected.XYZItemIsArchived }
+			<button class="TestItemArchiveButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceArchiveButtonDidClick }>Ar</button>
+		{/if}
+
+		{#if OLSKCatalogItemSelected.XYZItemIsArchived }
+			<button class="TestItemUnarchiveButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceUnarchiveButtonDidClick }>UAr</button>
+		{/if}
+		
 		<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>
 			<div>{@html _OLSKSharedDiscard }</div>
 		</button>
 	</header>
 
 	<div class="OLSKDecor">
-		<textarea class="TestOLSKCatalogItemSelected" on:input={ mod.InterfaceFieldDidInput }>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
+		<textarea class="TestOLSKCatalogItemSelected" on:input={ mod.InterfaceFieldDidInput } autofocus>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
 	</div>
 	
 	</div>
@@ -155,6 +207,11 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 <style>
 :root {
 	font-size: var(--OLSKCommonFontSize);
+}
+
+.TestOLSKMasterListItemArchived {
+	border-left: 3px grey solid;
+	padding-left: 3px;
 }
 
 em {
