@@ -51,14 +51,6 @@ const mod = {
 
 	// MESSAGE
 
-	OLSKCatalogDispatchClick (inputData) {
-		mod.ControlItemSelect(inputData);
-	},
-
-	OLSKCatalogDispatchArrow (inputData) {
-		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
-	},
-
 	OLSKCatalogDispatchSortFunction (a, b) {
 		return b.XYZItemDate - a.XYZItemDate;
 	},
@@ -77,13 +69,20 @@ const mod = {
 
 	_OLSKCatalogDispatchKey (inputData) {
 		return inputData.XYZItemID;
+	},	
+
+	OLSKCatalogDispatchClick (inputData) {
+		mod.ControlItemSelect(inputData);
 	},
+
+	OLSKCatalogDispatchArrow (inputData) {
+		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
+	},
+
 
 };
 
-const inputData = Object.assign({
-
-}, Array.from((new window.URLSearchParams(window.location.search)).entries()));
+const inputData = Object.assign({}, Array.from((new window.URLSearchParams(window.location.search)).entries()));
 
 import OLSKCatalog from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
@@ -93,15 +92,17 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 
 <OLSKCatalog
 	bind:this={ mod._OLSKCatalog }
-
-	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
-	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
 	
+	OLSKMasterListItemAccessibilitySummaryFor={ mod.OLSKMasterListItemAccessibilitySummaryFor }
+
 	OLSKCatalogDispatchSortFunction={ mod.OLSKCatalogDispatchSortFunction }
 	OLSKCatalogDispatchFilterFunction={ mod.OLSKCatalogDispatchFilterFunction }
 	OLSKCatalogDispatchExactFunction={ mod.OLSKCatalogDispatchExactFunction }
-	OLSKMasterListItemAccessibilitySummaryFor={ mod.OLSKMasterListItemAccessibilitySummaryFor }
+
 	_OLSKCatalogDispatchKey={ mod._OLSKCatalogDispatchKey }
+
+	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
+	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
 
 	{ ...inputData }
 

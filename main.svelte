@@ -5,15 +5,14 @@ export let OLSKMasterListFilterFieldPlaceholderText = '';
 
 export let _OLSKCatalogExcludeField = null;
 
-export let OLSKCatalogDispatchClick;
-export let OLSKCatalogDispatchArrow;
-
 export let OLSKCatalogDispatchSortFunction;
 export let OLSKCatalogDispatchFilterFunction;
 export let OLSKCatalogDispatchExactFunction;
 
 export let _OLSKCatalogDispatchKey;
 
+export let OLSKCatalogDispatchClick;
+export let OLSKCatalogDispatchArrow;
 import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
 
