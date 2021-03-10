@@ -1,5 +1,5 @@
 <script>
-export let OLSKMasterListItemAccessibilitySummaryFor;
+export let OLSKMasterListItemAccessibilitySummaryFunction;
 
 export let OLSKMasterListFilterFieldPlaceholderText = '';
 
@@ -231,7 +231,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	let:OLSKResultsListItem={ e }
 
-	OLSKMasterListItemAccessibilitySummaryFor={ OLSKMasterListItemAccessibilitySummaryFor }	
+	OLSKMasterListItemAccessibilitySummaryFunction={ OLSKMasterListItemAccessibilitySummaryFunction }	
 
 	OLSKMobileViewInactive={ mod.OLSKMobileViewInactive }
 	>

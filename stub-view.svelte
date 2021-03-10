@@ -63,7 +63,7 @@ const mod = {
 		return item.XYZItemBlurb.startsWith(text);
 	},
 
-	OLSKMasterListItemAccessibilitySummaryFor (inputData) {
+	OLSKMasterListItemAccessibilitySummaryFunction (inputData) {
 		return inputData.XYZItemBlurb.split('\n').shift();
 	},
 
@@ -97,7 +97,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 <OLSKCatalog
 	bind:this={ mod._OLSKCatalog }
 	
-	OLSKMasterListItemAccessibilitySummaryFor={ mod.OLSKMasterListItemAccessibilitySummaryFor }
+	OLSKMasterListItemAccessibilitySummaryFunction={ mod.OLSKMasterListItemAccessibilitySummaryFunction }
 
 	OLSKCatalogSortFunction={ mod.OLSKCatalogSortFunction }
 	OLSKCatalogFilterFunction={ mod.OLSKCatalogFilterFunction }
