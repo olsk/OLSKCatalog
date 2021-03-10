@@ -14,6 +14,9 @@ export let OLSKCatalogDispatchExactFunction;
 
 export let _OLSKCatalogDispatchKey;
 
+import OLSKThrottle from  'OLSKThrottle';
+import { OLSK_SPEC_UI } from  'OLSKSpec';
+
 export const modPublic = {
 
 	// DATA
@@ -113,7 +116,7 @@ const mod = {
 		const handlerFunctions = {
 
 			Escape () {
-				mod.ControlFilter('');
+				mod.ControlFilterWithThrottle('');
 
 				if (typeof OLSK_SPEC_UI !== 'undefined' && !OLSK_SPEC_UI()) {
 					document.querySelector('.OLSKMasterListBody').scrollTo(0, 0);
@@ -139,9 +142,22 @@ const mod = {
 		// setTimeout(mod.ControlFocusDetail);
 	},
 
-	ControlFilter (inputData) {
+	ControlFilterWithThrottle (inputData) {
 		mod._ValueFilterText = inputData;
 
+		OLSKThrottle.OLSKThrottleMappedTimeout(mod, '_ValueFilterThrottle', {
+			OLSKThrottleDuration: 200,
+			OLSKThrottleCallback: (function () {
+				return mod.ControlFilterWithNoThrottle(inputData);
+			}),
+		});
+
+		if (OLSK_SPEC_UI()) {
+			OLSKThrottle.OLSKThrottleSkip(mod._ValueFilterThrottle);
+		}
+	},
+
+	ControlFilterWithNoThrottle (inputData) {
 		mod.ValueItemsVisible(mod._ValueItemsAll);
 
 		if (!inputData) {
@@ -168,7 +184,7 @@ const mod = {
 	// MESSAGE
 
 	OLSKMasterListDispatchFilter (inputData) {
-		mod.ControlFilter(inputData);
+		mod.ControlFilterWithThrottle(inputData);
 	},
 
 	// SETUP
