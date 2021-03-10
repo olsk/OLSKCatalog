@@ -24,6 +24,26 @@ describe('OLSKCatalog_Filter', function () {
 		return browser.fill('.TestOLSKCatalogItemSelected', Math.random().toString() + item.slice(0, item.length / 2));
 	});
 
+	context('OLSKCatalogDispatchFilterWithNoThrottle', function () {
+
+		const item = Math.random().toString();
+
+		before(function () {
+			browser.assert.text('#TestOLSKCatalogDispatchFilterWithNoThrottle', '0');
+			browser.assert.text('#TestOLSKCatalogDispatchFilterWithNoThrottleData', 'undefined');
+		});
+		
+		before(function () {
+			browser.fill('.OLSKMasterListFilterField', item);
+		});
+
+		it('sends OLSKCatalogDispatchFilterWithNoThrottle', function () {
+			browser.assert.text('#TestOLSKCatalogDispatchFilterWithNoThrottle', '1');
+			browser.assert.text('#TestOLSKCatalogDispatchFilterWithNoThrottleData', item);
+		});
+
+	});
+
 	context('no match', function () {
 
 		before(function () {

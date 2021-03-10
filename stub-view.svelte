@@ -79,6 +79,10 @@ const mod = {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 	},
 
+	OLSKCatalogDispatchFilterWithNoThrottle: (function  (inputData) {
+		window.TestOLSKCatalogDispatchFilterWithNoThrottle.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilterWithNoThrottle.innerHTML) + 1;
+		window.TestOLSKCatalogDispatchFilterWithNoThrottleData.innerHTML = inputData;
+	}),
 
 };
 
@@ -103,6 +107,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 
 	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
+	OLSKCatalogDispatchFilterWithNoThrottle={ mod.OLSKCatalogDispatchFilterWithNoThrottle }
 
 	{ ...inputData }
 

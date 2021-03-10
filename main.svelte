@@ -13,6 +13,8 @@ export let _OLSKCatalogDispatchKey;
 
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
+export let OLSKCatalogDispatchFilterWithNoThrottle;
+
 import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
 
@@ -158,6 +160,8 @@ const mod = {
 
 	ControlFilterWithNoThrottle (inputData) {
 		mod.ValueItemsVisible(mod._ValueItemsAll);
+
+		OLSKCatalogDispatchFilterWithNoThrottle(inputData);
 
 		if (!inputData) {
 			return mod.ControlSelect(null);
