@@ -67,7 +67,7 @@ const mod = {
 		return item.XYZItemBlurb.match(text);
 	},
 
-	OLSKCatalogDispatchExact (item, text) {
+	OLSKCatalogDispatchExactFunction (item, text) {
 		return item.XYZItemBlurb.startsWith(text);
 	},
 
@@ -99,7 +99,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	
 	OLSKCatalogDispatchSort={ mod.OLSKCatalogDispatchSort }
 	OLSKCatalogDispatchFilterFunction={ mod.OLSKCatalogDispatchFilterFunction }
-	OLSKCatalogDispatchExact={ mod.OLSKCatalogDispatchExact }
+	OLSKCatalogDispatchExactFunction={ mod.OLSKCatalogDispatchExactFunction }
 	OLSKMasterListItemAccessibilitySummaryFor={ mod.OLSKMasterListItemAccessibilitySummaryFor }
 	_OLSKCatalogDispatchKey={ mod._OLSKCatalogDispatchKey }
 
