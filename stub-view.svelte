@@ -40,6 +40,10 @@ const mod = {
 		}));
 	},
 
+	InterfaceExternalFilterDidInput () {
+		mod._OLSKCatalog.modPublic.OLSKCatalogFilterWithNoThrottle(this.value);
+	},
+
 	// CONTROL
 
 	ControlItemCreate () {
@@ -203,6 +207,8 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	
 	</div>
 </OLSKCatalog>
+
+<input class="TestExternalFilter" on:input={ mod.InterfaceExternalFilterDidInput }>
 
 <style>
 :root {

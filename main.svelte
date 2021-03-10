@@ -56,6 +56,10 @@ export const modPublic = {
 			return _OLSKCatalogDispatchKey(e) !== _OLSKCatalogDispatchKey(inputData);
 		}));
 	},
+	
+	OLSKCatalogFilterWithNoThrottle (inputData) {
+		mod.ControlFilterWithNoThrottle(mod._ValueFilterText = inputData);
+	},
 
 	OLSKCatalogRevealArchive () {
 		mod._ValueArchiveIsVisible = true;

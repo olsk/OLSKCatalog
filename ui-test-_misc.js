@@ -162,4 +162,18 @@ describe('OLSKCatalog_Misc', function () {
 
 	});
 
+	context('OLSKCatalogFilterWithNoThrottle', function test_OLSKCatalogFilterWithNoThrottle() {
+
+		const item = Math.random().toString();
+
+		before(function () {
+			return browser.fill('.TestExternalFilter', item);
+		});
+
+		it('sets OLSKMasterListFilterField', function () {
+			browser.assert.input('.OLSKMasterListFilterField', item);
+		});
+
+	});
+
 });
