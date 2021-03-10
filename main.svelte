@@ -54,7 +54,7 @@ export const modPublic = {
 	OLSKCatalogRemove (inputData) {
 		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
 			return _OLSKCatalogDispatchKey(e) !== _OLSKCatalogDispatchKey(inputData);
-		}));
+		}), !mod._ValueItemSelected);
 	},
 	
 	OLSKCatalogFilterWithNoThrottle (inputData) {
@@ -88,10 +88,10 @@ const mod = {
 	// VALUE
 
 	_ValueItemsAll: [],
-	ValueItemsAll (inputData) {
+	ValueItemsAll (inputData, shouldSort = true) {
 		mod.ValueArchiveCount(inputData);
 
-		mod.ValueItemsVisible(mod._ValueItemsAll = inputData);
+		mod.ValueItemsVisible(mod._ValueItemsAll = inputData, shouldSort);
 	},
 
 	_ValueArchiveCount: 0,
@@ -213,6 +213,8 @@ const mod = {
 
 	ControlDeselect () {
 		mod.ValueArchiveCount(mod._ValueItemsAll);
+
+		mod._ValueItemsAll.sort(OLSKCatalogSortFunction);
 
 		mod.ControlFilterWithNoThrottle(mod._ValueFilterText = '');
 

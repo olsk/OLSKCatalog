@@ -42,6 +42,7 @@ const mod = {
 
 	InterfaceExternalFilterDidInput () {
 		mod._OLSKCatalog.modPublic.OLSKCatalogFilterWithNoThrottle(this.value);
+
 	},
 
 	// CONTROL
