@@ -94,7 +94,7 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		it('hides OLSKCatalogDetailContent', function () {
-			browser.assert.elements('.OLSKCatalogDetailContent', 0);
+			browser.assert.elements(OLSKCatalogDetailContent, 0);
 		});
 
 	});
@@ -118,7 +118,7 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		before(function () {
-			browser.assert.elements('.OLSKCatalogDetailContent', 0);
+			browser.assert.elements(OLSKCatalogDetailContent, 0);
 		});
 
 		before(function () {
@@ -144,7 +144,7 @@ describe('OLSKCatalog_Access', function () {
 			});
 
 			it('hides OLSKCatalogDetailContent', function () {
-				browser.assert.elements('.OLSKCatalogDetailContent', 0);
+				browser.assert.elements(OLSKCatalogDetailContent, 0);
 			});	
 
 		});

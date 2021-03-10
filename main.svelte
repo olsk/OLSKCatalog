@@ -55,6 +55,16 @@ export const modPublic = {
 		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
 			return _OLSKCatalogDispatchKey(e) !== _OLSKCatalogDispatchKey(inputData);
 		}), !mod._ValueItemSelected);
+
+		if (!mod._ValueItemSelected) {
+			return
+		}
+
+		if (_OLSKCatalogDispatchKey(inputData) !== _OLSKCatalogDispatchKey(mod._ValueItemSelected)) {
+			return;
+		}
+
+		modPublic.OLSKCatalogSelect(null);
 	},
 	
 	OLSKCatalogFilterWithNoThrottle (inputData) {

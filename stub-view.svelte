@@ -74,8 +74,6 @@ const mod = {
 
 	ControlItemDiscard (inputData) {
 		mod._OLSKCatalog.modPublic.OLSKCatalogRemove(inputData);
-
-		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(null);
 	},
 
 	// MESSAGE
