@@ -344,8 +344,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 @media screen and (max-width: 760px) {
 
-:global(.OLSKMasterList) {
-	/* OLSKCatalogDetail:Child */
+.OLSKCatalogDetail, :global(.OLSKMasterList) {
 	flex-grow: 1;
 }
 
