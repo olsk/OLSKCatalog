@@ -13,7 +13,7 @@ describe('OLSKCatalog_Filter', function () {
 	});
 
 	before(function () {
-		return browser.fill('.TestOLSKCatalogItemSelected', item);
+		return browser.fill('.TestItemField', item);
 	});
 
 	before(function () {
@@ -21,7 +21,7 @@ describe('OLSKCatalog_Filter', function () {
 	});
 
 	before(function () {
-		return browser.fill('.TestOLSKCatalogItemSelected', Math.random().toString() + item.slice(0, item.length / 2));
+		return browser.fill('.TestItemField', Math.random().toString() + item.slice(0, item.length / 2));
 	});
 
 	context('no match', function () {

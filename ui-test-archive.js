@@ -11,7 +11,7 @@ describe('OLSKCatalog_Archive', function () {
 	});
 
 	before(function () {
-		return browser.fill('.TestOLSKCatalogItemSelected', 'alfa');
+		return browser.fill('.TestItemField', 'alfa');
 	});
 
 	before(function () {
@@ -19,7 +19,7 @@ describe('OLSKCatalog_Archive', function () {
 	});
 
 	before(function () {
-		return browser.fill('.TestOLSKCatalogItemSelected', 'bravo');
+		return browser.fill('.TestItemField', 'bravo');
 	});
 
 	before(function () {
@@ -27,7 +27,7 @@ describe('OLSKCatalog_Archive', function () {
 	});
 
 	before(function () {
-		return browser.fill('.TestOLSKCatalogItemSelected', 'charlie');
+		return browser.fill('.TestItemField', 'charlie');
 	});
 
 	before(function () {
@@ -35,7 +35,7 @@ describe('OLSKCatalog_Archive', function () {
 	});
 
 	before(function () {
-		return browser.fill('.TestOLSKCatalogItemSelected', 'alfa2');
+		return browser.fill('.TestItemField', 'alfa2');
 	});
 
 	before(function () {
@@ -49,7 +49,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			return browser.fill('.TestOLSKCatalogItemSelected', 'charlie2');
+			return browser.fill('.TestItemField', 'charlie2');
 		});
 
 		before(function () {
@@ -151,7 +151,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			return browser.fill('.TestOLSKCatalogItemSelected', 'charlie3');
+			return browser.fill('.TestItemField', 'charlie3');
 		});
 
 		before(function () {

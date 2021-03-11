@@ -15,7 +15,7 @@ describe('OLSKCatalog_Sort', function () {
 			});
 
 			before(function () {
-				return browser.fill('.TestOLSKCatalogItemSelected', e);
+				return browser.fill('.TestItemField', e);
 			});
 
 		});
@@ -71,7 +71,7 @@ describe('OLSKCatalog_Sort', function () {
 			});
 
 			before(function () {
-				return browser.fill('.TestOLSKCatalogItemSelected', e);
+				return browser.fill('.TestItemField', e);
 			});
 
 		});
@@ -81,7 +81,7 @@ describe('OLSKCatalog_Sort', function () {
 		});
 
 		before(function () {
-			return browser.fill('.TestOLSKCatalogItemSelected', 'alfa2');
+			return browser.fill('.TestItemField', 'alfa2');
 		});
 
 		it('skips sort', function () {
@@ -151,7 +151,7 @@ describe('OLSKCatalog_Sort', function () {
 			});
 
 			before(function () {
-				return browser.fill('.TestOLSKCatalogItemSelected', e);
+				return browser.fill('.TestItemField', e);
 			});
 
 		});
@@ -161,7 +161,7 @@ describe('OLSKCatalog_Sort', function () {
 		});
 
 		before(function () {
-			return browser.fill('.TestOLSKCatalogItemSelected', 'bravo2');
+			return browser.fill('.TestItemField', 'bravo2');
 		});
 
 		before(function () {

@@ -87,7 +87,7 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		it('binds OLSKCatalogItemSelected', function () {
-			browser.assert.input('.OLSKCatalogDetail #TestOLSKCatalogDetailContent .TestOLSKCatalogItemSelected', browser.query('.TestOLSKMasterListItem').innerHTML);
+			browser.assert.input('.OLSKCatalogDetail #TestOLSKCatalogDetailContent .TestItemField', browser.query('.TestOLSKMasterListItem').innerHTML);
 		});
 
 		it('sends OLSKCatalogDispatchQuantity', function () {
@@ -103,7 +103,7 @@ describe('OLSKCatalog_Misc', function () {
 		const body = item + '\n' + Math.random().toString();
 
 		before(function () {
-			return browser.fill('.TestOLSKCatalogItemSelected', body);
+			return browser.fill('.TestItemField', body);
 		});
 
 		before(function () {
@@ -157,7 +157,7 @@ describe('OLSKCatalog_Misc', function () {
 		context('escape', function () {
 
 			before(function () {
-				return browser.focus('.TestOLSKCatalogItemSelected');
+				return browser.focus('.TestItemField');
 			});
 
 			before(function () {

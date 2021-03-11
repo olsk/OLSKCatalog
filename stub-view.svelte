@@ -215,7 +215,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</header>
 
 	<div class="OLSKDecor">
-		<textarea class="TestOLSKCatalogItemSelected" on:input={ mod.InterfaceFieldDidInput } autofocus>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
+		<textarea class="TestItemField" on:input={ mod.InterfaceFieldDidInput } autofocus>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
 	</div>
 	
 	</div>
