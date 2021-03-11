@@ -192,6 +192,10 @@ describe('OLSKCatalog_Misc', function () {
 			browser.assert.text('#TestOLSKCatalogDispatchQuantityData', '1');
 		});
 
+		it('focuses OLSKMasterListFilterField', function () {
+			browser.assert.hasFocus('.OLSKMasterListFilterField');
+		});
+
 	});
 
 	context('OLSKCatalogFilterWithNoThrottle', function test_OLSKCatalogFilterWithNoThrottle() {

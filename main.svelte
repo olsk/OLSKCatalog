@@ -71,6 +71,8 @@ export const modPublic = {
 		}
 
 		modPublic.OLSKCatalogSelect(null);
+
+		mod.ControlFocusMaster();
 	},
 	
 	OLSKCatalogFilterWithNoThrottle (inputData) {
