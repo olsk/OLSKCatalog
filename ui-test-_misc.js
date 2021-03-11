@@ -66,6 +66,11 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		before(function () {
+			browser.assert.text('#TestOLSKCatalogDispatchQuantity', '0');
+			browser.assert.text('#TestOLSKCatalogDispatchQuantityData', '0');
+		});
+
+		before(function () {
 			return browser.pressButton('.TestItemCreateButton');
 		});
 
@@ -83,6 +88,11 @@ describe('OLSKCatalog_Misc', function () {
 
 		it('binds OLSKCatalogItemSelected', function () {
 			browser.assert.input('.OLSKCatalogDetail #TestOLSKCatalogDetailContent .TestOLSKCatalogItemSelected', browser.query('.TestOLSKMasterListItem').innerHTML);
+		});
+
+		it('sends OLSKCatalogDispatchQuantity', function () {
+			browser.assert.text('#TestOLSKCatalogDispatchQuantity', '1');
+			browser.assert.text('#TestOLSKCatalogDispatchQuantityData', '1');
 		});
 
 	});
@@ -158,6 +168,28 @@ describe('OLSKCatalog_Misc', function () {
 				browser.assert.hasFocus('.OLSKMasterListFilterField');
 			});
 
+		});
+
+	});
+
+	context('ItemDiscard', function test_ItemDiscard() {
+
+		before(function () {
+			browser.assert.text('#TestOLSKCatalogDispatchQuantity', '2');
+			browser.assert.text('#TestOLSKCatalogDispatchQuantityData', '2');
+		});
+
+		before(function () {
+			return browser.click('.OLSKResultsListItem');
+		});
+
+		before(function () {
+			return browser.pressButton('.TestItemDiscardButton');
+		});
+
+		it('sends OLSKCatalogDispatchQuantity', function () {
+			browser.assert.text('#TestOLSKCatalogDispatchQuantity', '3');
+			browser.assert.text('#TestOLSKCatalogDispatchQuantityData', '1');
 		});
 
 	});

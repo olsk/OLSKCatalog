@@ -16,6 +16,7 @@ export let OLSKCatalogDispatchArrow;
 export let OLSKCatalogDispatchArchivedHide;
 export let OLSKCatalogDispatchArchivedShow;
 export let OLSKCatalogDispatchFilterSubmit = null;
+export let OLSKCatalogDispatchQuantity = null;
 
 import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
@@ -37,6 +38,8 @@ export const modPublic = {
 	OLSKCatalogInsert (inputData) {
 		mod.ValueItemsAll([inputData].concat(mod._ValueItemsAll), !mod._ValueItemSelected);
 
+		OLSKCatalogDispatchQuantity && OLSKCatalogDispatchQuantity(mod._ValueItemsAll.length);
+
 		return inputData;
 	},
 
@@ -56,6 +59,8 @@ export const modPublic = {
 		mod.ValueItemsAll(mod._ValueItemsAll.filter(function (e) {
 			return _OLSKCatalogDispatchKey(e) !== _OLSKCatalogDispatchKey(inputData);
 		}), !mod._ValueItemSelected);
+
+		OLSKCatalogDispatchQuantity && OLSKCatalogDispatchQuantity(mod._ValueItemsAll.length);
 
 		if (!mod._ValueItemSelected) {
 			return
