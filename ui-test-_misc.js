@@ -44,7 +44,7 @@ describe('OLSKCatalog_Misc', function () {
 				browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMobileViewInactive');
 				browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
 				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
-				browser.assert.hasClass('.OLSKMasterList', 'OLSKMasterListFocused');
+				// browser.assert.hasClass('.OLSKMasterList', 'OLSKMasterListFocused');
 			});
 
 		});

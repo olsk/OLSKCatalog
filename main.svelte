@@ -91,8 +91,6 @@ export const modPublic = {
 	
 	OLSKCatalogFocusMaster () {
 		mod.OLSKMobileViewInactive = false;
-
-		mod.ControlFocusMaster();
 	},
 
 };
