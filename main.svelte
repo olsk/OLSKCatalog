@@ -15,6 +15,7 @@ export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
 export let OLSKCatalogDispatchArchivedHide;
 export let OLSKCatalogDispatchArchivedShow;
+export let OLSKCatalogDispatchFilterSubmit = null;
 
 import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
@@ -239,6 +240,10 @@ const mod = {
 		mod.ControlFilterWithThrottle(inputData);
 	},
 
+	OLSKMasterListDispatchSubmit () {
+		mod._ValueFilterText && OLSKCatalogDispatchFilterSubmit && OLSKCatalogDispatchFilterSubmit(mod._ValueFilterText)
+	},
+
 	// SETUP
 
 	SetupEverything() {
@@ -277,6 +282,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListDispatchClick={ OLSKCatalogDispatchClick }
 	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
+	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }
 
 	let:OLSKResultsListItem={ e }
 

@@ -115,4 +115,45 @@ describe('OLSKCatalog_Filter', function () {
 
 	});
 
+	context('submit', function () {
+
+		const item = Math.random().toString();
+
+		context('blank', function () {
+			
+			before(function () {
+				browser.assert.text('#TestOLSKCatalogDispatchFilterSubmit', '0');
+				browser.assert.text('#TestOLSKCatalogDispatchFilterSubmitData', 'undefined');
+			});
+
+			before(function () {
+				return browser.fire('.OLSKMasterListForm', 'submit');
+			});
+
+			it('sends OLSKCatalogDispatchFilterSubmit', function () {
+				browser.assert.text('#TestOLSKCatalogDispatchFilterSubmit', '0');
+				browser.assert.text('#TestOLSKCatalogDispatchFilterSubmitData', 'undefined');
+			});
+		
+		});
+
+		context('filled', function () {
+			
+			before(function () {
+				browser.fill('.OLSKMasterListFilterField', item);
+			});
+
+			before(function () {
+				return browser.fire('.OLSKMasterListForm', 'submit');
+			});
+
+			it('sends OLSKCatalogDispatchFilterSubmit', function () {
+				browser.assert.text('#TestOLSKCatalogDispatchFilterSubmit', '1');
+				browser.assert.text('#TestOLSKCatalogDispatchFilterSubmitData', item);
+			});
+		
+		});
+
+	});
+
 });

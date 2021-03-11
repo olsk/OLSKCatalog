@@ -122,6 +122,13 @@ const mod = {
 		mod._ValueRevealArchiveIsVisible = false;
 	}),
 
+	OLSKCatalogDispatchFilterSubmit: (function  (inputData) {
+		window.TestOLSKCatalogDispatchFilterSubmit.innerHTML = parseInt(window.TestOLSKCatalogDispatchFilterSubmit.innerHTML) + 1;
+		window.TestOLSKCatalogDispatchFilterSubmitData.innerHTML = inputData;
+
+		mod._ValueRevealArchiveIsVisible = false;
+	}),
+
 };
 
 const inputData = Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()));
@@ -149,6 +156,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
 	OLSKCatalogDispatchArchivedHide={ mod.OLSKCatalogDispatchArchivedHide }
 	OLSKCatalogDispatchArchivedShow={ mod.OLSKCatalogDispatchArchivedShow }
+	OLSKCatalogDispatchFilterSubmit={ mod.OLSKCatalogDispatchFilterSubmit }
 
 	{ ...inputData }
 
