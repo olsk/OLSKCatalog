@@ -168,7 +168,7 @@ describe('OLSKCatalog_Sort', function () {
 			return browser.click('.OLSKResultsListItem:nth-child(5)');
 		});
 
-		before(async function () {
+		before(function () {
 			return browser.pressButton('.TestItemDiscardButton');
 		});
 
