@@ -33,6 +33,10 @@ export const modPublic = {
 		return mod._ValueItemSelected;
 	},
 
+	DataIsMobile () {
+		return window.innerWidth <= 760;
+	},
+
 	// CONTROL
 	
 	OLSKCatalogInsert (inputData) {
@@ -72,6 +76,8 @@ export const modPublic = {
 
 		modPublic.OLSKCatalogSelect(null);
 
+		modPublic.OLSKCatalogFocusMaster();
+
 		mod.ControlFocusMaster();
 	},
 	
@@ -93,6 +99,23 @@ export const modPublic = {
 	
 	OLSKCatalogFocusMaster () {
 		mod.OLSKMobileViewInactive = false;
+
+		if (!mod.DataIsMobile()) {
+			return;
+		}
+
+		const element = document.querySelector('.OLSKResultsListItemSelected');
+
+		if (!element) {
+			return;
+		}
+
+		setTimeout(function () {
+			element.scrollIntoView({
+				block: 'center',
+				inline: 'center',
+			});
+		});
 	},
 
 };
