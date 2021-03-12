@@ -13,8 +13,8 @@ export let _OLSKCatalogDispatchKey;
 
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
-export let OLSKCatalogDispatchArchivedHide;
-export let OLSKCatalogDispatchArchivedShow;
+export let OLSKCatalogDispatchArchivedHide = null;
+export let OLSKCatalogDispatchArchivedShow = null;
 export let OLSKCatalogDispatchFilterSubmit = null;
 export let OLSKCatalogDispatchQuantity = null;
 
