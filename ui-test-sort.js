@@ -190,7 +190,7 @@ describe('OLSKCatalog_Sort', function () {
 
 		context('remote', function () {
 			
-			context('with selection', function () {
+			context('without selection', function () {
 
 				before(function () {
 					return browser.pressButton('#FakeRemoteRemove');
