@@ -17,6 +17,7 @@ export let OLSKCatalogDispatchArchivedHide = null;
 export let OLSKCatalogDispatchArchivedShow = null;
 export let OLSKCatalogDispatchFilterSubmit = null;
 export let OLSKCatalogDispatchQuantity = null;
+export let OLSKCatalogDispatchEscapeOnEmpty = null;
 
 import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
@@ -189,6 +190,10 @@ const mod = {
 		const handlerFunctions = {
 
 			Escape () {
+				if (!mod._ValueFilterText && !mod._ValueItemSelected) {
+					OLSKCatalogDispatchEscapeOnEmpty && OLSKCatalogDispatchEscapeOnEmpty();
+				}
+
 				mod.ControlDeselect();
 			},
 			

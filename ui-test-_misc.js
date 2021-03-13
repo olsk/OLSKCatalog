@@ -198,6 +198,42 @@ describe('OLSKCatalog_Misc', function () {
 
 	});
 
+	context('escape', function test_escape () {
+
+		before(function () {
+			browser.fill('.OLSKMasterListFilterField', Math.random().toString());
+		});
+
+		before(function () {
+			browser.assert.text('#TestOLSKCatalogDispatchEscapeOnEmpty', '0');
+		});
+
+		before(function () {
+			return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
+		});
+
+		it('sends no OLSKCatalogDispatchEscapeOnEmpty', function () {
+			browser.assert.text('#TestOLSKCatalogDispatchEscapeOnEmpty', '0');
+		});
+
+		context('empty', function () {
+
+			before(function () {
+				browser.assert.input('.OLSKMasterListFilterField', '');
+			});
+
+			before(function () {
+				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
+			});
+
+			it('sends OLSKCatalogDispatchEscapeOnEmpty', function () {
+				browser.assert.text('#TestOLSKCatalogDispatchEscapeOnEmpty', '1');
+			});
+
+		});
+
+	});
+
 	context('OLSKCatalogFilterWithNoThrottle', function test_OLSKCatalogFilterWithNoThrottle() {
 
 		const item = Math.random().toString();

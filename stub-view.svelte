@@ -76,7 +76,13 @@ const mod = {
 		mod._OLSKCatalog.modPublic.OLSKCatalogRemove(inputData);
 	},
 
-	// MESSAGE
+};
+
+const inputData = Object.assign({
+
+	OLSKMasterListItemAccessibilitySummaryFunction (inputData) {
+		return inputData.XYZItemBlurb.split('\n').shift();
+	},
 
 	OLSKCatalogSortFunction (a, b) {
 		if (a.XYZItemIsArchived !== b.XYZItemIsArchived) {
@@ -94,13 +100,11 @@ const mod = {
 		return item.XYZItemBlurb.startsWith(text);
 	},
 
-	OLSKMasterListItemAccessibilitySummaryFunction (inputData) {
-		return inputData.XYZItemBlurb.split('\n').shift();
-	},
-
 	_OLSKCatalogDispatchKey (inputData) {
 		return inputData.XYZItemID;
-	},	
+	},
+
+	_OLSKCatalogArchiveField: 'XYZItemIsArchived',
 
 	OLSKCatalogDispatchClick (inputData) {
 		mod.ControlItemSelect(inputData);
@@ -134,9 +138,10 @@ const mod = {
 		window.TestOLSKCatalogDispatchQuantityData.innerHTML = inputData;
 	}),
 
-};
-
-const inputData = Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()));
+	OLSKCatalogDispatchEscapeOnEmpty: (function  () {
+		window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML = parseInt(window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML) + 1;
+	}),
+}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries())));
 
 import OLSKCatalog from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
@@ -147,23 +152,6 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 <OLSKCatalog
 	bind:this={ mod._OLSKCatalog }
 	
-	OLSKMasterListItemAccessibilitySummaryFunction={ mod.OLSKMasterListItemAccessibilitySummaryFunction }
-
-	OLSKCatalogSortFunction={ mod.OLSKCatalogSortFunction }
-	OLSKCatalogFilterFunction={ mod.OLSKCatalogFilterFunction }
-	OLSKCatalogExactFunction={ mod.OLSKCatalogExactFunction }
-
-	_OLSKCatalogDispatchKey={ mod._OLSKCatalogDispatchKey }
-
-	_OLSKCatalogArchiveField={ 'XYZItemIsArchived' }
-
-	OLSKCatalogDispatchClick={ mod.OLSKCatalogDispatchClick }
-	OLSKCatalogDispatchArrow={ mod.OLSKCatalogDispatchArrow }
-	OLSKCatalogDispatchArchivedHide={ mod.OLSKCatalogDispatchArchivedHide }
-	OLSKCatalogDispatchArchivedShow={ mod.OLSKCatalogDispatchArchivedShow }
-	OLSKCatalogDispatchFilterSubmit={ mod.OLSKCatalogDispatchFilterSubmit }
-	OLSKCatalogDispatchQuantity={ mod.OLSKCatalogDispatchQuantity }
-
 	{ ...inputData }
 
 	let:OLSKResultsListItem
