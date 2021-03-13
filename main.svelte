@@ -33,6 +33,10 @@ export const modPublic = {
 		return mod._ValueItemSelected;
 	},
 
+	_OLSKCatalogDataFilterText () {
+		return mod._ValueFilterText;
+	},
+
 	DataIsMobile () {
 		return window.innerWidth <= 760;
 	},
