@@ -135,7 +135,7 @@ const mod = {
 	ValueItemsAll (inputData, shouldSort = true) {
 		mod.ValueArchiveCount(inputData);
 
-		mod.ValueItemsVisible(mod._ValueItemsAll = inputData, shouldSort);
+		mod.ValueItemsVisible(mod._ValueItemsAll = (shouldSort ? inputData.sort(OLSKCatalogSortFunction) : inputData), shouldSort);
 	},
 
 	_ValueArchiveCount: 0,
