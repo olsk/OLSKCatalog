@@ -6,7 +6,7 @@ export let OLSKMasterListFilterFieldPlaceholderText = '';
 export let _OLSKCatalogArchiveField = null;
 
 export let OLSKCatalogSortFunction;
-export let OLSKCatalogFilterFunction;
+export let OLSKCatalogMatchIsResult;
 export let OLSKCatalogMatchIsExact;
 
 export let _OLSKCatalogDispatchKey;
@@ -167,7 +167,7 @@ const mod = {
 				return false;
 			}
 
-			return !mod._ValueFilterText || OLSKCatalogFilterFunction(e, mod._ValueFilterText);
+			return !mod._ValueFilterText || OLSKCatalogMatchIsResult(e, mod._ValueFilterText);
 		});
 
 		mod._ValueItemsVisible = shouldSort ? items.sort(OLSKCatalogSortFunction) : items;

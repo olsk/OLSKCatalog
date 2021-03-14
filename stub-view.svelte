@@ -94,7 +94,7 @@ const inputData = Object.assign({
 		return b.XYZItemDate - a.XYZItemDate;
 	},
 
-	OLSKCatalogFilterFunction (item, text) {
+	OLSKCatalogMatchIsResult (item, text) {
 		return item.XYZItemBlurb.match(text);
 	},
 
