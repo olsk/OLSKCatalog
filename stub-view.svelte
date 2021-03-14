@@ -98,7 +98,7 @@ const inputData = Object.assign({
 		return item.XYZItemBlurb.match(text);
 	},
 
-	OLSKCatalogExactFunction (item, text) {
+	OLSKCatalogMatchIsExact (item, text) {
 		return item.XYZItemBlurb.startsWith(text);
 	},
 

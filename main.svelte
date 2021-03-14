@@ -7,7 +7,7 @@ export let _OLSKCatalogArchiveField = null;
 
 export let OLSKCatalogSortFunction;
 export let OLSKCatalogFilterFunction;
-export let OLSKCatalogExactFunction;
+export let OLSKCatalogMatchIsExact;
 
 export let _OLSKCatalogDispatchKey;
 
@@ -264,7 +264,7 @@ const mod = {
 
 		mod.ValueItemSelected(mod._ValueItemsVisible.slice().sort(function (a, b) {
 			const isExact = function (e) {
-				return OLSKCatalogExactFunction(e, inputData);
+				return OLSKCatalogMatchIsExact(e, inputData);
 			};
 
 			return isExact(a) > isExact(b) ? -1 : 1;
