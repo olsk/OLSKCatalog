@@ -89,6 +89,10 @@ export const modPublic = {
 	},
 
 	OLSKCatalogActivateDetail () {
+		if (mod.DataIsMobile()) {
+			return;
+		}
+		
 		if (mod._OLSKCatalogDetail) {
 			return OLSKCatalogDispatchDetailActivate && OLSKCatalogDispatchDetailActivate();
 		}
