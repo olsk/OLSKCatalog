@@ -34,6 +34,14 @@ describe('OLSKCatalog_Misc', function () {
 
 		});
 
+		context('ItemActivate', function () {
+
+			it('calls OLSKCatalogDispatchDetailActivate', function () {
+				browser.assert.hasFocus('.TestItemField');
+			});
+		
+		});
+
 		context('back', function () {
 
 			before(function () {
@@ -166,6 +174,78 @@ describe('OLSKCatalog_Misc', function () {
 
 			it('focuses OLSKMasterListFilterField', function () {
 				browser.assert.hasFocus('.OLSKMasterListFilterField');
+			});
+
+		});
+
+	});
+
+	context.skip('Tab', function test_Tab() {
+
+		context('master focused', function () {
+
+			before(function () {
+				browser.focus('.OLSKMasterListFilterField');
+			});
+
+			before(function () {
+				return browser.OLSKFireKeyboardEvent(browser.window, 'ArrowDown');
+			});
+
+			before(function () {
+				browser.assert.hasFocus('.OLSKMasterListFilterField');
+			});
+
+			before(function () {
+				return browser.OLSKFireKeyboardEvent(browser.window, 'Tab');
+			});
+
+			it('calls OLSKCatalogDispatchDetailActivate', function () {
+				browser.assert.hasFocus('.TestItemField');
+			});
+
+		});
+
+		context('master not focused', function () {
+
+			before(function () {
+				return browser.OLSKFireKeyboardEvent(browser.window, 'Tab');
+			});
+
+			it('does default', function () {
+				browser.assert.hasFocus('.TestItemField2');
+			});
+
+		});
+
+		context('shiftKey', function () {
+
+			context('other field focused', function () {
+
+				before(function () {
+					return browser.OLSKFireKeyboardEvent(browser.window, 'Tab', {
+						shiftKey: true,
+					});
+				});
+
+				it('does default', function () {
+					browser.assert.hasFocus('.TestItemField');
+				});
+
+			});
+
+			context('OLSKCatalogDispatchMasterShouldActivate', function () {
+
+				before(function () {
+					return browser.OLSKFireKeyboardEvent(browser.window, 'Tab', {
+						shiftKey: true,
+					});
+				});
+
+				it('focuses OLSKMasterListFilterField', function () {
+					browser.assert.hasFocus('.OLSKMasterListFilterField');
+				});
+
 			});
 
 		});

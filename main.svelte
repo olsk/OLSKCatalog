@@ -13,6 +13,8 @@ export let _OLSKCatalogDispatchKey;
 
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
+export let OLSKCatalogDispatchDetailActivate;
+export let OLSKCatalogDispatchMasterShouldActivate;
 export let OLSKCatalogDispatchArchivedHide = null;
 export let OLSKCatalogDispatchArchivedShow = null;
 export let OLSKCatalogDispatchFilterSubmit = null;
@@ -84,6 +86,14 @@ export const modPublic = {
 		modPublic.OLSKCatalogFocusMaster();
 
 		mod.ControlFocusMaster();
+	},
+
+	OLSKCatalogActivateDetail () {
+		if (mod._OLSKCatalogDetail) {
+			return OLSKCatalogDispatchDetailActivate();
+		}
+
+		mod._ValueShouldActivate = true;
 	},
 	
 	OLSKCatalogFilterWithNoThrottle (inputData) {
@@ -196,6 +206,16 @@ const mod = {
 
 				mod.ControlDeselect();
 			},
+
+			Tab () {
+				if (document.activeElement === document.querySelector('.OLSKMasterListFilterField') && mod._ValueItemSelected) {
+					return event.preventDefault(OLSKCatalogDispatchDetailActivate());
+				}
+
+				if (event.shiftKey && document.activeElement !== document.querySelector('.OLSKMasterListFilterField') && OLSKCatalogDispatchMasterShouldActivate()) {
+					return event.preventDefault(mod.ControlFocusMaster());
+				}
+			},
 			
 		};
 
@@ -210,10 +230,6 @@ const mod = {
 		if (!inputData) {
 			return !mod.DataIsMobile() && mod.ControlFocusMaster();
 		}
-
-		// mod.OLSKMobileViewInactive = true;
-
-		// setTimeout(mod.ControlFocusDetail);
 	},
 
 	ControlFilterWithThrottle (inputData) {
@@ -257,6 +273,14 @@ const mod = {
 
 	ControlFocusMaster () {
 		document.querySelector('.OLSKMasterListFilterField').focus();
+
+		mod.OLSKMobileViewInactive = false;
+	},
+
+	ControlFocusDetail () {
+		mod.OLSKMobileViewInactive = true;
+
+		setTimeout(mod.ControlFocusDetail);
 	},
 
 	ControlDeselect () {
@@ -295,6 +319,15 @@ const mod = {
 
 	LifecycleModuleWillMount() {
 		mod.SetupEverything();
+	},
+
+	LifecycleDetailDidCreate () {
+		if (!mod._ValueShouldActivate) {
+			return;
+		}
+
+		delete mod._ValueShouldActivate;
+		OLSKCatalogDispatchDetailActivate();
 	},
 
 };
@@ -361,6 +394,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	{#if mod._ValueItemSelected }
 		{#if $$slots.OLSKCatalogDetailContent }
+			<div style="display: none;" use:mod.LifecycleDetailDidCreate bind:this={ mod._OLSKCatalogDetail }></div>
 			<slot name="OLSKCatalogDetailContent" OLSKCatalogItemSelected={ mod._ValueItemSelected }></slot>	
 		{/if}
 	{/if}

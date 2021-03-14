@@ -48,13 +48,15 @@ const mod = {
 	// CONTROL
 
 	ControlItemCreate () {
-		mod.ControlItemSelect(mod._OLSKCatalog.modPublic.OLSKCatalogInsert(mod.DataItemValid()));
+		mod.ControlItemActivate(mod._OLSKCatalog.modPublic.OLSKCatalogInsert(mod.DataItemValid()));
 	},
 
-	ControlItemSelect (inputData) {
+	ControlItemActivate (inputData) {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 
 		mod._OLSKCatalog.modPublic.OLSKCatalogFocusDetail();
+
+		mod._OLSKCatalog.modPublic.OLSKCatalogActivateDetail();
 	},
 
 	ControlItemArchive (inputData) {
@@ -107,11 +109,19 @@ const inputData = Object.assign({
 	_OLSKCatalogArchiveField: 'XYZItemIsArchived',
 
 	OLSKCatalogDispatchClick (inputData) {
-		mod.ControlItemSelect(inputData);
+		mod.ControlItemActivate(inputData);
 	},
 
 	OLSKCatalogDispatchArrow (inputData) {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
+	},
+
+	OLSKCatalogDispatchDetailActivate () {
+		document.querySelector('.TestItemField').focus();
+	},
+
+	OLSKCatalogDispatchMasterShouldActivate () {
+		return document.activeElement === document.querySelector('.TestItemField');
 	},
 
 	OLSKCatalogDispatchArchivedHide: (function  () {
@@ -141,6 +151,7 @@ const inputData = Object.assign({
 	OLSKCatalogDispatchEscapeOnEmpty: (function  () {
 		window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML = parseInt(window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML) + 1;
 	}),
+
 }, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries())));
 
 import OLSKCatalog from './main.svelte';
@@ -203,7 +214,8 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	</header>
 
 	<div class="OLSKDecor">
-		<textarea class="TestItemField" on:input={ mod.InterfaceFieldDidInput } autofocus>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
+		<textarea class="TestItemField" on:input={ mod.InterfaceFieldDidInput }>{ OLSKCatalogItemSelected.XYZItemBlurb }</textarea>
+		<textarea class="TestItemField2"></textarea>
 	</div>
 	
 	</div>
