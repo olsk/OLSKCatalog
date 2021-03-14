@@ -198,7 +198,7 @@ describe('OLSKCatalog_Misc', function () {
 
 	});
 
-	context('escape', function test_escape () {
+	context('OLSKCatalogDispatchEscapeOnEmpty', function test_OLSKCatalogDispatchEscapeOnEmpty () {
 
 		before(function () {
 			browser.fill('.OLSKMasterListFilterField', Math.random().toString());
