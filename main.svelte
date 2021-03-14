@@ -13,8 +13,8 @@ export let _OLSKCatalogDispatchKey;
 
 export let OLSKCatalogDispatchClick;
 export let OLSKCatalogDispatchArrow;
-export let OLSKCatalogDispatchDetailActivate;
-export let OLSKCatalogDispatchMasterShouldActivate;
+export let OLSKCatalogDispatchDetailActivate = null;
+export let OLSKCatalogDispatchMasterShouldActivate = null;
 export let OLSKCatalogDispatchArchivedHide = null;
 export let OLSKCatalogDispatchArchivedShow = null;
 export let OLSKCatalogDispatchFilterSubmit = null;
@@ -90,7 +90,7 @@ export const modPublic = {
 
 	OLSKCatalogActivateDetail () {
 		if (mod._OLSKCatalogDetail) {
-			return OLSKCatalogDispatchDetailActivate();
+			return OLSKCatalogDispatchDetailActivate && OLSKCatalogDispatchDetailActivate();
 		}
 
 		mod._ValueShouldActivate = true;
@@ -209,10 +209,10 @@ const mod = {
 
 			Tab () {
 				if (document.activeElement === document.querySelector('.OLSKMasterListFilterField') && mod._ValueItemSelected) {
-					return event.preventDefault(OLSKCatalogDispatchDetailActivate());
+					return event.preventDefault(OLSKCatalogDispatchDetailActivate && OLSKCatalogDispatchDetailActivate());
 				}
 
-				if (event.shiftKey && document.activeElement !== document.querySelector('.OLSKMasterListFilterField') && OLSKCatalogDispatchMasterShouldActivate()) {
+				if (event.shiftKey && document.activeElement !== document.querySelector('.OLSKMasterListFilterField') && OLSKCatalogDispatchMasterShouldActivate && OLSKCatalogDispatchMasterShouldActivate()) {
 					return event.preventDefault(mod.ControlFocusMaster());
 				}
 			},
@@ -327,7 +327,7 @@ const mod = {
 		}
 
 		delete mod._ValueShouldActivate;
-		OLSKCatalogDispatchDetailActivate();
+		OLSKCatalogDispatchDetailActivate && OLSKCatalogDispatchDetailActivate();
 	},
 
 };
