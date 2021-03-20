@@ -242,7 +242,7 @@ const mod = {
 		OLSKThrottle.OLSKThrottleMappedTimeout(mod, '_ValueFilterThrottle', {
 			OLSKThrottleDuration: 200,
 			OLSKThrottleCallback: (function () {
-				return mod.ControlFilterWithNoThrottle(inputData);
+				return mod.ControlFilterWithNoThrottle(mod._ValueFilterText);
 			}),
 		});
 
@@ -271,7 +271,7 @@ const mod = {
 				return OLSKCatalogMatchIsExact(e, inputData);
 			};
 
-			return isExact(a) > isExact(b) ? -1 : 1;
+			return (isExact(b) && !isExact(a)) ? 1 : -1;
 		}).shift());
 	},
 
