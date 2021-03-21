@@ -6,8 +6,8 @@ export let OLSKMasterListFilterFieldPlaceholderText = '';
 export let _OLSKCatalogArchiveField = null;
 
 export let OLSKCatalogSortFunction;
-export let OLSKCatalogMatchIsResult;
-export let OLSKCatalogMatchIsExact;
+export let OLSKCatalogIsMatch;
+export let OLSKCatalogExactSortFunction;
 
 export let _OLSKCatalogDispatchKey;
 
@@ -171,7 +171,7 @@ const mod = {
 				return false;
 			}
 
-			return !mod._ValueFilterText || OLSKCatalogMatchIsResult(e, mod._ValueFilterText);
+			return !mod._ValueFilterText || OLSKCatalogIsMatch(e, mod._ValueFilterText);
 		});
 
 		mod._ValueItemsVisible = shouldSort ? items.sort(OLSKCatalogSortFunction) : items;
@@ -267,11 +267,7 @@ const mod = {
 		}
 
 		mod.ValueItemSelected(mod._ValueItemsVisible.slice().sort(function (a, b) {
-			const isExact = function (e) {
-				return OLSKCatalogMatchIsExact(e, inputData);
-			};
-
-			return (isExact(b) && !isExact(a)) ? 1 : -1;
+			return OLSKCatalogExactSortFunction(inputData, a, b);
 		}).shift());
 	},
 

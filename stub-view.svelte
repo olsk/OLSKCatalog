@@ -1,4 +1,8 @@
 <script>
+const uDescending = function (a, b) {
+  return (a > b) ? -1 : ((a < b) ? 1 : 0);
+};
+
 const mod = {
 
 	// DATA
@@ -94,12 +98,12 @@ const inputData = Object.assign({
 		return b.XYZItemDate - a.XYZItemDate;
 	},
 
-	OLSKCatalogMatchIsResult (item, text) {
+	OLSKCatalogIsMatch (item, text) {
 		return item.XYZItemBlurb.match(text);
 	},
 
-	OLSKCatalogMatchIsExact (item, text) {
-		return item.XYZItemBlurb.startsWith(text);
+	OLSKCatalogExactSortFunction (needle, a, b) {
+		return uDescending(a.XYZItemBlurb.startsWith(needle), b.XYZItemBlurb.startsWith(needle));
 	},
 
 	_OLSKCatalogDispatchKey (inputData) {
