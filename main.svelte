@@ -59,9 +59,17 @@ export const modPublic = {
 	},
 	
 	OLSKCatalogUpdate (inputData) {
-		mod.ValueItemsAll(mod._ValueItemsAll.map(function (e) {
+		mod._ValueItemsAll = mod._ValueItemsAll.map(function (e) {
 			return _OLSKCatalogDispatchKey(e) === _OLSKCatalogDispatchKey(inputData) ? inputData : e;
-		}), !mod._ValueItemSelected);
+		});
+
+		mod._ValueItemsVisible = mod._ValueItemsVisible.map(function (e) {
+			return _OLSKCatalogDispatchKey(e) === _OLSKCatalogDispatchKey(inputData) ? inputData : e;
+		});
+
+		if (!mod._ValueItemSelected) {
+			mod.ValueItemsAll(mod._ValueItemsAll);
+		}
 
 		return inputData;
 	},
