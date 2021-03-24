@@ -1,6 +1,6 @@
 exports.OLSKControllerRoutes = function() {
 	return [{
-		OLSKRoutePath: '/stub/OLSKCatalog',
+		OLSKRoutePath: '/',
 		OLSKRouteMethod: 'get',
 		OLSKRouteSignature: 'OLSKCatalogStubRoute',
 		OLSKRouteFunction (req, res, next) {
