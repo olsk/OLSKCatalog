@@ -156,7 +156,13 @@ const inputData = Object.assign({
 		window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML = parseInt(window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML) + 1;
 	}),
 
-}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries())));
+}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()).map(function (e) {
+	if (e[0] === 'OLSKCatalogItems') {
+		e[1] = JSON.parse(e[1]);
+	}
+
+	return e;
+})));
 
 import OLSKCatalog from './main.svelte';
 import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';

@@ -150,4 +150,25 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 	});
+
+	context('OLSKCatalogItems', function test_OLSKCatalogItems() {
+
+		const item = Date.now() % 10;
+
+		before(function () {
+			return browser.OLSKVisit(kDefaultRoute, {
+				OLSKCatalogItems: JSON.stringify(Array.from(Array(item)).map(function () {
+					return {
+						XYZItemBlurb: '',
+					};
+				})),
+			});
+		});
+
+		it('shows OLSKMasterListItem', function () {
+			browser.assert.elements('.OLSKMasterListItem', item);
+		});
+
+	});
+
 });

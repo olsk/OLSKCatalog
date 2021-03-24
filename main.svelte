@@ -21,6 +21,8 @@ export let OLSKCatalogDispatchFilterSubmit = null;
 export let OLSKCatalogDispatchQuantity = null;
 export let OLSKCatalogDispatchEscapeOnEmpty = null;
 
+export let OLSKCatalogItems = [];
+
 import { OLSK_SPEC_UI } from  'OLSKSpec';
 
 import OLSKThrottle from  'OLSKThrottle';
@@ -318,10 +320,16 @@ const mod = {
 
 	SetupEverything() {
 		mod.SetupFocus();
+
+		mod.SetupItems();
 	},
 
 	SetupFocus() {
 		setTimeout(mod.ControlFocusMaster);
+	},
+
+	SetupItems () {
+		mod.ValueItemsAll(OLSKCatalogItems);
 	},
 
 	// LIFECYCLE
