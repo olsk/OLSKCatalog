@@ -21,8 +21,9 @@ export let OLSKCatalogDispatchFilterSubmit = null;
 export let OLSKCatalogDispatchQuantity = null;
 export let OLSKCatalogDispatchEscapeOnEmpty = null;
 
-import OLSKThrottle from  'OLSKThrottle';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
+
+import OLSKThrottle from  'OLSKThrottle';
 
 export const modPublic = {
 
