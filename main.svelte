@@ -423,6 +423,8 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 .OLSKCatalog {
 	width: 100%;
 	display: flex;
+
+	background: var(--OLSKCommonBackground);
 }
 
 @media screen and (max-width: 760px) {
