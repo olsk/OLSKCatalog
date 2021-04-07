@@ -31,7 +31,7 @@ describe('OLSKCatalog_Archive', function () {
 	});
 
 	before(function () {
-		return browser.click('.OLSKResultsListItem:nth-child(3)');
+		return browser.click('.OLSKCollectionItem:nth-child(3)');
 	});
 
 	before(function () {
@@ -45,7 +45,7 @@ describe('OLSKCatalog_Archive', function () {
 	describe('archive', function test_archive () {
 
 		before(function () {
-			return browser.click('.OLSKResultsListItem:nth-child(1)');
+			return browser.click('.OLSKCollectionItem:nth-child(1)');
 		});
 
 		before(function () {
@@ -57,7 +57,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		it('skips sort', function () {
-			browser.assert.text('.OLSKResultsListItem', 'charlie2 bravo alfa2');
+			browser.assert.text('.OLSKCollectionItem', 'charlie2 bravo alfa2');
 		});
 
 		describe('deselect', function () {
@@ -71,7 +71,7 @@ describe('OLSKCatalog_Archive', function () {
 			});
 
 			it('excludes archived', function () {
-				browser.assert.text('.OLSKResultsListItem', 'alfa2 bravo');
+				browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo');
 			});
 
 			it('sends OLSKCatalogDispatchArchivedHide', function () {
@@ -94,7 +94,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		it('sorts below others', function () {
-			browser.assert.text('.OLSKResultsListItem', 'alfa2 bravo charlie2');
+			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo charlie2');
 		});
 
 		it('sends OLSKCatalogDispatchArchivedShow', function () {
@@ -111,7 +111,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		it('hides archived', function () {
-			browser.assert.text('.OLSKResultsListItem', 'alfa2 bravo');
+			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo');
 		});
 
 	});
@@ -123,7 +123,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		it('shows archived', function () {
-			browser.assert.text('.OLSKResultsListItem', 'alfa2 bravo charlie2');
+			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo charlie2');
 		});
 
 		context('clear', function () {
@@ -133,7 +133,7 @@ describe('OLSKCatalog_Archive', function () {
 			});
 
 			it('hides archived', function () {
-				browser.assert.text('.OLSKResultsListItem', 'alfa2 bravo');
+				browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo');
 			});
 		
 		});
@@ -147,7 +147,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			return browser.click('.OLSKResultsListItem:nth-child(3)');
+			return browser.click('.OLSKCollectionItem:nth-child(3)');
 		});
 
 		before(function () {
@@ -159,7 +159,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		it('skips sort', function () {
-			browser.assert.text('.OLSKResultsListItem', 'alfa2 bravo charlie3');
+			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo charlie3');
 		});
 
 		describe('deselect', function () {
@@ -169,7 +169,7 @@ describe('OLSKCatalog_Archive', function () {
 			});
 
 			it('sorts above others', function () {
-				browser.assert.text('.OLSKResultsListItem', 'charlie3 alfa2 bravo');
+				browser.assert.text('.OLSKCollectionItem', 'charlie3 alfa2 bravo');
 			});
 
 		});
@@ -179,7 +179,7 @@ describe('OLSKCatalog_Archive', function () {
 	context('discard', function test_discard () {
 		
 		before(function () {
-			return browser.click('.OLSKResultsListItem');
+			return browser.click('.OLSKCollectionItem');
 		});
 
 		before(function () {
@@ -199,7 +199,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			return browser.click('.OLSKResultsListItem:nth-child(2)');
+			return browser.click('.OLSKCollectionItem:nth-child(2)');
 		});
 
 		before(function () {

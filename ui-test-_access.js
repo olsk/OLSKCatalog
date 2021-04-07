@@ -122,7 +122,7 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		before(function () {
-			return browser.click('.OLSKResultsListItem');
+			return browser.click('.OLSKCollectionItem');
 		});
 
 		it('hides OLSKDetailPlaceholder', function () {

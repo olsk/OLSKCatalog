@@ -55,7 +55,7 @@ describe('OLSKCatalog_Filter', function () {
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.hasClass('.OLSKResultsListItem:nth-child(2)', 'OLSKCollectionItemLocus');
+			browser.assert.hasClass('.OLSKCollectionItem:nth-child(2)', 'OLSKCollectionItemLocus');
 		});
 
 	});
@@ -71,7 +71,7 @@ describe('OLSKCatalog_Filter', function () {
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKCollectionItemLocus');
+			browser.assert.hasClass('.OLSKCollectionItem', 'OLSKCollectionItemLocus');
 			browser.assert.elements('.OLSKDetailPlaceholder', 0);
 		});
 

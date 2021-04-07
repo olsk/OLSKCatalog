@@ -172,7 +172,7 @@ import OLSKCatalog from './main.svelte';
 	
 	{ ...inputData }
 
-	let:OLSKResultsListItem
+	let:OLSKCollectionItem
 	>
 
 	<!-- MASTER -->
@@ -185,7 +185,7 @@ import OLSKCatalog from './main.svelte';
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
 
-	<div slot="OLSKCollectionItem" class="TestOLSKCollectionItem" class:TestOLSKCollectionItemArchived={ OLSKResultsListItem.XYZItemIsArchived } >{ OLSKResultsListItem.XYZItemBlurb }</div>
+	<div slot="OLSKCollectionItem" class="TestOLSKCollectionItem" class:TestOLSKCollectionItemArchived={ OLSKCollectionItem.XYZItemIsArchived } >{ OLSKCollectionItem.XYZItemBlurb }</div>
 	
 	<div slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">
 		<em>TestOLSKMasterListBodyTail</em>
