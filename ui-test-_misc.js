@@ -86,7 +86,7 @@ describe('OLSKCatalog_Misc', function () {
 			browser.assert.elements('.OLSKMasterListItem .TestOLSKMasterListItem', 1);
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKResultsListItemSelected');
 		});
 
@@ -118,7 +118,7 @@ describe('OLSKCatalog_Misc', function () {
 			return browser.wait({ element: '.OLSKMasterListItem' });
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.text('.TestOLSKMasterListItem', body.replace('\n', ' '));
 		});
 
@@ -142,7 +142,7 @@ describe('OLSKCatalog_Misc', function () {
 			return browser.click('.OLSKResultsListItem:nth-child(2)');
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.hasClass('.OLSKResultsListItem:nth-child(2)', 'OLSKResultsListItemSelected');
 		});
 
@@ -156,7 +156,7 @@ describe('OLSKCatalog_Misc', function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'ArrowUp');
 			});
 
-			it('binds OLSKMasterListItemSelected', function () {
+			it('binds OLSKCollectionItemsLocus', function () {
 				browser.assert.hasClass('.OLSKResultsListItem:nth-child(1)', 'OLSKResultsListItemSelected');
 			});
 

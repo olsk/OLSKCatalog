@@ -361,7 +361,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 <OLSKMasterList
 	OLSKMasterListItems={ mod._ValueItemsVisible }
-	OLSKMasterListItemSelected={ mod._ValueItemSelected }
+	OLSKCollectionItemsLocus={ mod._ValueItemSelected }
 
 	OLSKMasterListFilterText={ mod._ValueFilterText }
 	OLSKMasterListFilterFieldPlaceholderText={ OLSKMasterListFilterFieldPlaceholderText }

@@ -34,7 +34,7 @@ describe('OLSKCatalog_Filter', function () {
 			browser.assert.elements('.OLSKMasterListItem', 0);
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.elements('.OLSKDetailPlaceholder', 1);
 		});
 
@@ -50,11 +50,11 @@ describe('OLSKCatalog_Filter', function () {
 			browser.assert.elements('.OLSKMasterListItem', 2);
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.elements('.OLSKDetailPlaceholder', 0);
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.hasClass('.OLSKResultsListItem:nth-child(2)', 'OLSKResultsListItemSelected');
 		});
 
@@ -70,7 +70,7 @@ describe('OLSKCatalog_Filter', function () {
 			browser.assert.elements('.OLSKMasterListItem', 1);
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKResultsListItemSelected');
 			browser.assert.elements('.OLSKDetailPlaceholder', 0);
 		});
@@ -87,7 +87,7 @@ describe('OLSKCatalog_Filter', function () {
 			browser.assert.elements('.OLSKMasterListItem', 2);
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.elements('.OLSKResultsListItemSelected', 0);
 			browser.assert.elements('.OLSKDetailPlaceholder', 1);
 		});
@@ -108,7 +108,7 @@ describe('OLSKCatalog_Filter', function () {
 			browser.assert.input('.OLSKMasterListFilterField', '');
 		});
 
-		it('binds OLSKMasterListItemSelected', function () {
+		it('binds OLSKCollectionItemsLocus', function () {
 			browser.assert.elements('.OLSKResultsListItemSelected', 0);
 			browser.assert.elements('.OLSKDetailPlaceholder', 1);
 		});
