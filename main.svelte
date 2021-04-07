@@ -12,7 +12,7 @@ export let OLSKCatalogExactSortFunction;
 export let _OLSKCatalogDispatchKey;
 
 export let OLSKCollectionDispatchClick;
-export let OLSKCatalogDispatchArrow;
+export let OLSKCollectionDispatchArrow;
 export let OLSKCatalogDispatchDetailActivate = null;
 export let OLSKCatalogDispatchMasterShouldActivate = null;
 export let OLSKCatalogDispatchArchivedHide = null;
@@ -370,7 +370,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListFilterFieldPlaceholderText={ OLSKMasterListFilterFieldPlaceholderText }
 
 	OLSKCollectionDispatchClick={ OLSKCollectionDispatchClick }
-	OLSKCollectionDispatchArrow={ OLSKCatalogDispatchArrow }
+	OLSKCollectionDispatchArrow={ OLSKCollectionDispatchArrow }
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }
 

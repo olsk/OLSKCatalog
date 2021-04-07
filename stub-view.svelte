@@ -116,7 +116,7 @@ const inputData = Object.assign({
 		mod.ControlItemActivate(inputData);
 	},
 
-	OLSKCatalogDispatchArrow (inputData) {
+	OLSKCollectionDispatchArrow (inputData) {
 		mod._OLSKCatalog.modPublic.OLSKCatalogSelect(inputData);
 	},
 
