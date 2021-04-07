@@ -11,7 +11,7 @@ export let OLSKCatalogExactSortFunction;
 
 export let _OLSKCatalogDispatchKey;
 
-export let OLSKCatalogDispatchClick;
+export let OLSKCollectionDispatchClick;
 export let OLSKCatalogDispatchArrow;
 export let OLSKCatalogDispatchDetailActivate = null;
 export let OLSKCatalogDispatchMasterShouldActivate = null;
@@ -369,7 +369,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListFilterText={ mod._ValueFilterText }
 	OLSKMasterListFilterFieldPlaceholderText={ OLSKMasterListFilterFieldPlaceholderText }
 
-	OLSKCollectionDispatchClick={ OLSKCatalogDispatchClick }
+	OLSKCollectionDispatchClick={ OLSKCollectionDispatchClick }
 	OLSKCollectionDispatchArrow={ OLSKCatalogDispatchArrow }
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }

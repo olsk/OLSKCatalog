@@ -112,7 +112,7 @@ const inputData = Object.assign({
 
 	_OLSKCatalogArchiveField: 'XYZItemIsArchived',
 
-	OLSKCatalogDispatchClick (inputData) {
+	OLSKCollectionDispatchClick (inputData) {
 		mod.ControlItemActivate(inputData);
 	},
 
