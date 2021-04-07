@@ -360,7 +360,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <div class="OLSKCatalog">
 
 <OLSKMasterList
-	OLSKMasterListItems={ mod._ValueItemsVisible }
+	OLSKCollectionItems={ mod._ValueItemsVisible }
 	OLSKCollectionItemsLocus={ mod._ValueItemSelected }
 
 	OLSKMasterListFilterText={ mod._ValueFilterText }

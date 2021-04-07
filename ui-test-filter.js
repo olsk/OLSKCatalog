@@ -30,7 +30,7 @@ describe('OLSKCatalog_Filter', function () {
 			browser.fill('.OLSKMasterListFilterField', Math.random().toString());
 		});
 
-		it('binds OLSKMasterListItems', function () {
+		it('binds OLSKCollectionItems', function () {
 			browser.assert.elements('.OLSKMasterListItem', 0);
 		});
 
