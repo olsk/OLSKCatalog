@@ -82,8 +82,8 @@ describe('OLSKCatalog_Misc', function () {
 			return browser.pressButton('.TestItemCreateButton');
 		});
 
-		it('binds OLSKMasterListItem', function () {
-			browser.assert.elements('.OLSKMasterListItem .TestOLSKMasterListItem', 1);
+		it('binds OLSKCollectionItem', function () {
+			browser.assert.elements('.OLSKCollectionItem .TestOLSKCollectionItem', 1);
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
@@ -95,7 +95,7 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		it('binds OLSKCatalogItemSelected', function () {
-			browser.assert.input('.OLSKCatalogDetail #TestOLSKCatalogDetailContent .TestItemField', browser.query('.TestOLSKMasterListItem').innerHTML);
+			browser.assert.input('.OLSKCatalogDetail #TestOLSKCatalogDetailContent .TestItemField', browser.query('.TestOLSKCollectionItem').innerHTML);
 		});
 
 		it('sends OLSKCatalogDispatchQuantity', function () {
@@ -115,15 +115,15 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		before(function () {
-			return browser.wait({ element: '.OLSKMasterListItem' });
+			return browser.wait({ element: '.OLSKCollectionItem' });
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.text('.TestOLSKMasterListItem', body.replace('\n', ' '));
+			browser.assert.text('.TestOLSKCollectionItem', body.replace('\n', ' '));
 		});
 
 		it('calls OLSKCollectionItemAccessibilitySummaryFunction', function () {
-			browser.assert.attribute('.OLSKMasterListItem', 'aria-label', item);
+			browser.assert.attribute('.OLSKCollectionItem', 'aria-label', item);
 		});
 
 	});

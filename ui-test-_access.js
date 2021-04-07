@@ -23,8 +23,8 @@ describe('OLSKCatalog_Access', function () {
 		browser.assert.elements('.OLSKMasterList', 1);
 	});
 
-	it('hides OLSKMasterListItem', function () {
-		browser.assert.elements('.OLSKMasterListItem', 0);
+	it('hides OLSKCollectionItem', function () {
+		browser.assert.elements('.OLSKCollectionItem', 0);
 	});
 
 	it('shows OLSKCatalogDetail', function () {
@@ -65,8 +65,8 @@ describe('OLSKCatalog_Access', function () {
 			return browser.pressButton('.TestItemCreateButton');
 		});
 
-		it('shows OLSKMasterListItem', function () {
-			browser.assert.elements('.OLSKMasterListItem', 1);
+		it('shows OLSKCollectionItem', function () {
+			browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
 		it('hides OLSKDetailPlaceholder', function () {
@@ -85,8 +85,8 @@ describe('OLSKCatalog_Access', function () {
 			return browser.pressButton('.TestItemDiscardButton');
 		});
 
-		it('hides OLSKMasterListItem', function () {
-			browser.assert.elements('.OLSKMasterListItem', 0);
+		it('hides OLSKCollectionItem', function () {
+			browser.assert.elements('.OLSKCollectionItem', 0);
 		});
 
 		it('shows OLSKDetailPlaceholder', function () {
@@ -165,8 +165,8 @@ describe('OLSKCatalog_Access', function () {
 			});
 		});
 
-		it('shows OLSKMasterListItem', function () {
-			browser.assert.elements('.OLSKMasterListItem', item);
+		it('shows OLSKCollectionItem', function () {
+			browser.assert.elements('.OLSKCollectionItem', item);
 		});
 
 	});

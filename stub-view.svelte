@@ -185,7 +185,7 @@ import OLSKCatalog from './main.svelte';
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
 
-	<div slot="OLSKMasterListItem" class="TestOLSKMasterListItem" class:TestOLSKMasterListItemArchived={ OLSKResultsListItem.XYZItemIsArchived } >{ OLSKResultsListItem.XYZItemBlurb }</div>
+	<div slot="OLSKCollectionItem" class="TestOLSKCollectionItem" class:TestOLSKCollectionItemArchived={ OLSKResultsListItem.XYZItemIsArchived } >{ OLSKResultsListItem.XYZItemBlurb }</div>
 	
 	<div slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">
 		<em>TestOLSKMasterListBodyTail</em>
@@ -244,7 +244,7 @@ import OLSKCatalog from './main.svelte';
 	font-size: var(--OLSKCommonFontSize);
 }
 
-.TestOLSKMasterListItemArchived {
+.TestOLSKCollectionItemArchived {
 	border-left: 3px grey solid;
 	padding-left: 3px;
 }

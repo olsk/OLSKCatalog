@@ -391,9 +391,9 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	<slot></slot>
 
-	<div slot="OLSKMasterListItem">
-		{#if $$slots.OLSKMasterListItem}
-			<slot name="OLSKMasterListItem" OLSKResultsListItem={ e }></slot>	
+	<div slot="OLSKCollectionItem">
+		{#if $$slots.OLSKCollectionItem}
+			<slot name="OLSKCollectionItem" OLSKResultsListItem={ e }></slot>	
 		{/if}
 	</div>
 
