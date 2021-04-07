@@ -86,7 +86,7 @@ const mod = {
 
 const inputData = Object.assign({
 
-	OLSKMasterListItemAccessibilitySummaryFunction (inputData) {
+	OLSKCollectionItemAccessibilitySummaryFunction (inputData) {
 		return inputData.XYZItemBlurb.split('\n').shift();
 	},
 

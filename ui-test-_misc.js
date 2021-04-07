@@ -122,7 +122,7 @@ describe('OLSKCatalog_Misc', function () {
 			browser.assert.text('.TestOLSKMasterListItem', body.replace('\n', ' '));
 		});
 
-		it('calls OLSKMasterListItemAccessibilitySummaryFunction', function () {
+		it('calls OLSKCollectionItemAccessibilitySummaryFunction', function () {
 			browser.assert.attribute('.OLSKMasterListItem', 'aria-label', item);
 		});
 
