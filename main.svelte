@@ -360,6 +360,9 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <div class="OLSKCatalog">
 
 <OLSKMasterList
+	OLSKCollectionSortFunction={ OLSKCatalogSortFunction }
+	_OLSKCollectionDispatchKey={ _OLSKCatalogDispatchKey }
+	
 	OLSKCollectionItems={ mod._ValueItemsVisible }
 	OLSKCollectionItemsLocus={ mod._ValueItemSelected }
 
