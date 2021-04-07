@@ -374,7 +374,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }
 
-	let:OLSKResultsListItem={ e }
+	let:OLSKCollectionItem={ e }
 
 	OLSKCollectionItemAccessibilitySummaryFunction={ OLSKCollectionItemAccessibilitySummaryFunction }	
 
@@ -396,7 +396,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	<div slot="OLSKCollectionItem">
 		{#if $$slots.OLSKCollectionItem}
-			<slot name="OLSKCollectionItem" OLSKResultsListItem={ e }></slot>	
+			<slot name="OLSKCollectionItem" OLSKCollectionItem={ e }></slot>	
 		{/if}
 	</div>
 
