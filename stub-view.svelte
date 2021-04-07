@@ -165,9 +165,6 @@ const inputData = Object.assign({
 })));
 
 import OLSKCatalog from './main.svelte';
-import _OLSKSharedCreate from './node_modules/OLSKUIAssets/_OLSKSharedCreate.svg';
-import _OLSKSharedBack from './node_modules/OLSKUIAssets/_OLSKSharedBack.svg';
-import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.svg';
 </script>
 
 <OLSKCatalog
@@ -183,11 +180,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	<em slot="OLSKMasterListToolbarHead" id="TestOLSKMasterListToolbarHead">TestOLSKMasterListToolbarHead</em>
 	
 	<div class="OLSKToolbarElementGroup" slot="OLSKMasterListToolbarTail" id="TestOLSKMasterListToolbarTail">
-		<div>
-			<button class="TestItemCreateButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceCreateButtonDidClick } accesskey="n">
-				<div>{@html _OLSKSharedCreate }</div>
-			</button>
-		</div>
+		<button class="TestItemCreateButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceCreateButtonDidClick } accesskey="n">➕</button>
 	</div>
 	
 	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
@@ -206,9 +199,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 	<div slot="OLSKCatalogDetailContent" id="TestOLSKCatalogDetailContent" let:OLSKCatalogItemSelected>
 	
 	<header class="OLSKToolbar OLSKCommonEdgeBottom">
-		<button class="TestItemBackButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceBackButtonDidClick }>
-			<div>{@html _OLSKSharedBack }</div>
-		</button>
+		<button class="TestItemBackButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceBackButtonDidClick }>🔙</button>
 
 		{#if !OLSKCatalogItemSelected.XYZItemIsArchived }
 			<button class="TestItemArchiveButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceArchiveButtonDidClick }>Ar</button>
@@ -218,9 +209,7 @@ import _OLSKSharedDiscard from './node_modules/OLSKUIAssets/_OLSKSharedDiscard.s
 			<button class="TestItemUnarchiveButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceUnarchiveButtonDidClick }>UAr</button>
 		{/if}
 		
-		<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>
-			<div>{@html _OLSKSharedDiscard }</div>
-		</button>
+		<button class="TestItemDiscardButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceDiscardButtonDidClick }>🗑</button>
 	</header>
 
 	<div class="OLSKDecor">
