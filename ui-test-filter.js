@@ -55,7 +55,7 @@ describe('OLSKCatalog_Filter', function () {
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.hasClass('.OLSKResultsListItem:nth-child(2)', 'OLSKResultsListItemSelected');
+			browser.assert.hasClass('.OLSKResultsListItem:nth-child(2)', 'OLSKCollectionItemLocus');
 		});
 
 	});
@@ -71,7 +71,7 @@ describe('OLSKCatalog_Filter', function () {
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKResultsListItemSelected');
+			browser.assert.hasClass('.OLSKResultsListItem', 'OLSKCollectionItemLocus');
 			browser.assert.elements('.OLSKDetailPlaceholder', 0);
 		});
 
@@ -88,7 +88,7 @@ describe('OLSKCatalog_Filter', function () {
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.elements('.OLSKResultsListItemSelected', 0);
+			browser.assert.elements('.OLSKCollectionItemLocus', 0);
 			browser.assert.elements('.OLSKDetailPlaceholder', 1);
 		});
 
@@ -109,7 +109,7 @@ describe('OLSKCatalog_Filter', function () {
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
-			browser.assert.elements('.OLSKResultsListItemSelected', 0);
+			browser.assert.elements('.OLSKCollectionItemLocus', 0);
 			browser.assert.elements('.OLSKDetailPlaceholder', 1);
 		});
 

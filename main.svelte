@@ -134,7 +134,7 @@ export const modPublic = {
 			return;
 		}
 
-		const element = document.querySelector('.OLSKResultsListItemSelected');
+		const element = document.querySelector('.OLSKCollectionItemLocus');
 
 		if (!element) {
 			return;
