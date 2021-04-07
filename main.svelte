@@ -367,7 +367,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKMasterListFilterFieldPlaceholderText={ OLSKMasterListFilterFieldPlaceholderText }
 
 	OLSKResultsDispatchClick={ OLSKCatalogDispatchClick }
-	OLSKMasterListDispatchArrow={ OLSKCatalogDispatchArrow }
+	OLSKResultsDispatchArrow={ OLSKCatalogDispatchArrow }
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }
 
