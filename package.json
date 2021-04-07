@@ -5,7 +5,6 @@
   	"normalize.css": "latest",
     "OLSKDecor": "olsk/OLSKDecor",
     "OLSKMasterList": "olsk/OLSKMasterList",
-    "OLSKResults": "olsk/OLSKResults",
     "OLSKThrottle": "olsk/OLSKThrottle",
     "OLSKDetailPlaceholder": "olsk/OLSKDetailPlaceholder"
   }
