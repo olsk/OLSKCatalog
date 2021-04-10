@@ -11,6 +11,7 @@ export let OLSKCatalogExactSortFunction;
 
 export let _OLSKCatalogDispatchKey;
 
+export let OLSKCollectionChunkFunction = null;
 export let OLSKCollectionDispatchClick;
 export let OLSKCollectionDispatchArrow;
 export let OLSKCatalogDispatchDetailActivate = null;
@@ -362,6 +363,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <OLSKMasterList
 	OLSKCollectionSortFunction={ OLSKCatalogSortFunction }
 	_OLSKCollectionDispatchKey={ _OLSKCatalogDispatchKey }
+	OLSKCollectionChunkFunction={ OLSKCollectionChunkFunction }
 	
 	OLSKCollectionItems={ mod._ValueItemsVisible }
 	OLSKCollectionItemsLocus={ mod._ValueItemSelected }
