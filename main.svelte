@@ -1,5 +1,6 @@
 <script>
 export let OLSKCollectionItemAccessibilitySummaryFunction;
+export let OLSKCollectionItemClass = '';
 
 export let OLSKMasterListFilterFieldPlaceholderText = '';
 
@@ -387,6 +388,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKCollectionSortFunction={ OLSKCatalogSortFunction }
 	_OLSKCollectionDispatchKey={ _OLSKCatalogDispatchKey }
 	OLSKCollectionChunkFunction={ OLSKCollectionChunkFunction }
+	OLSKCollectionItemClass={ OLSKCollectionItemClass }
 	
 	OLSKCollectionItems={ mod._ValueItemsVisible }
 	OLSKCollectionItemsLocus={ mod._ValueItemSelected }
