@@ -25,6 +25,8 @@ export let OLSKCatalogDispatchEscapeOnEmpty = null;
 
 export let OLSKCatalogItems = [];
 
+import { OLSKLocalized } from 'OLSKInternational';
+import { OLSKFormatted } from 'OLSKString';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
 
 import OLSKThrottle from  'OLSKThrottle';
@@ -340,6 +342,10 @@ const mod = {
 		mod._ValueFilterText && OLSKCatalogDispatchFilterSubmit && OLSKCatalogDispatchFilterSubmit(mod._ValueFilterText)
 	},
 
+	OLSKCollectionDispatchStash (inputData) {
+		mod._ValueStashCount = inputData.length;
+	},
+
 	// SETUP
 
 	SetupEverything() {
@@ -398,6 +404,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	OLSKCollectionDispatchClick={ OLSKCollectionDispatchClick }
 	OLSKCollectionDispatchArrow={ OLSKCollectionDispatchArrow }
+	OLSKCollectionDispatchStash={ mod.OLSKCollectionDispatchStash }
 	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
 	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }
 
@@ -440,7 +447,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 <div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ mod.OLSKMobileViewInactive ? true : null }>
 	{#if !mod._ValueItemSelected }
-		<OLSKDetailPlaceholder />
+		<OLSKDetailPlaceholder OLSKDetailPlaceholderHTML={ !mod._ValueStashEnabled ? '' : OLSKFormatted(OLSKLocalized('OLSKCatalogStashPlaceholderTextFormat'), mod._ValueStashCount) } />
 	{/if}
 
 	{#if mod._ValueItemSelected }
