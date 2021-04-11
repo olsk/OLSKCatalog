@@ -15,6 +15,7 @@ export let _OLSKCatalogDispatchKey;
 export let OLSKCollectionChunkFunction = null;
 export let OLSKCollectionDispatchClick;
 export let OLSKCollectionDispatchArrow;
+export let OLSKCollectionDispatchStash = null;
 export let OLSKCatalogDispatchDetailActivate = null;
 export let OLSKCatalogDispatchMasterShouldActivate = null;
 export let OLSKCatalogDispatchArchivedHide = null;
@@ -344,6 +345,8 @@ const mod = {
 
 	OLSKCollectionDispatchStash (inputData) {
 		mod._ValueStashCount = inputData.length;
+
+		OLSKCollectionDispatchStash && OLSKCollectionDispatchStash(inputData);
 	},
 
 	// SETUP
