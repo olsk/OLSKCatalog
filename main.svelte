@@ -149,6 +149,14 @@ export const modPublic = {
 		});
 	},
 
+	OLSKCatalogStashEnabled (inputData) {
+		if (typeof inputData === 'undefined') {
+			return mod._ValueStashEnabled;
+		}
+
+		modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic.OLSKCollectionStashEnabled(mod._ValueStashEnabled = inputData);
+	},
+
 };
 
 const mod = {
@@ -200,6 +208,8 @@ const mod = {
 
 	_ValueFilterText: '',
 
+	_ValueStashEnabled: false,
+
 	// DATA
 
 	DataIsMobile () {
@@ -207,6 +217,10 @@ const mod = {
 	},
 
 	// INTERFACE
+
+	InterfaceStashDoneButtonDidClick () {
+		modPublic.OLSKCatalogStashEnabled(false);
+	},
 
 	InterfaceWindowDidKeydown (event) {
 		if (document.querySelector('.LCHLauncher')) { // #spec
@@ -389,7 +403,9 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	</div>
 
 	<div slot="OLSKMasterListToolbarTail">
-		{#if $$slots.OLSKMasterListToolbarTail}
+		{#if mod._ValueStashEnabled }
+			<button class="OLSKCatalogStashDoneButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceStashDoneButtonDidClick }>OK</button>
+		{:else if $$slots.OLSKMasterListToolbarTail}
 			<slot name="OLSKMasterListToolbarTail"></slot>	
 		{/if}
 	</div>

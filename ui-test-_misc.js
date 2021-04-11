@@ -328,4 +328,28 @@ describe('OLSKCatalog_Misc', function () {
 
 	});
 
+	context('OLSKCatalogStashDoneButton', function test_OLSKCatalogStashDoneButton() {
+
+		before(function () {
+			return browser.pressButton('.TestItemStashButton');
+		});
+
+		it('classes OLSKDecorButtonNoStyle', function () {
+			browser.assert.hasClass(OLSKCatalogStashDoneButton, 'OLSKDecorButtonNoStyle');
+		});
+
+		it('classes OLSKDecorTappable', function () {
+			browser.assert.hasClass(OLSKCatalogStashDoneButton, 'OLSKDecorTappable');
+		});
+
+		it('classes OLSKToolbarButton', function () {
+			browser.assert.hasClass(OLSKCatalogStashDoneButton, 'OLSKToolbarButton');
+		});
+
+		it('sets text', function () {
+			browser.assert.text(OLSKCatalogStashDoneButton, 'OK');
+		});
+
+	});
+
 });

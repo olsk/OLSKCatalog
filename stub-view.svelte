@@ -49,6 +49,10 @@ const mod = {
 
 	},
 
+	InterfaceStashButtonDidClick () {
+		mod._OLSKCatalog.modPublic.OLSKCatalogStashEnabled(true);
+	},
+
 	// CONTROL
 
 	ControlItemCreate () {
@@ -180,6 +184,7 @@ import OLSKCatalog from './main.svelte';
 	<em slot="OLSKMasterListToolbarHead" id="TestOLSKMasterListToolbarHead">TestOLSKMasterListToolbarHead</em>
 	
 	<div class="OLSKToolbarElementGroup" slot="OLSKMasterListToolbarTail" id="TestOLSKMasterListToolbarTail">
+		<button class="TestItemStashButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceStashButtonDidClick }>✔️</button>
 		<button class="TestItemCreateButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceCreateButtonDidClick } accesskey="n">➕</button>
 	</div>
 	

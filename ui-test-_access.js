@@ -3,6 +3,8 @@ const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 Object.entries({
 	OLSKCatalog: '.OLSKCatalog',
 	
+	OLSKCatalogStashDoneButton: '.OLSKCatalogStashDoneButton',
+	
 	OLSKCatalogDetail: '.OLSKCatalogDetail',
 	OLSKCatalogDetailContent: '[slot="OLSKCatalogDetailContent"]',
 }).map(function (e) {
@@ -17,6 +19,10 @@ describe('OLSKCatalog_Access', function () {
 
 	it('shows OLSKCatalog', function () {
 		browser.assert.elements(OLSKCatalog, 1);
+	});
+
+	it('hides OLSKCatalogStashDoneButton', function () {
+		browser.assert.elements(OLSKCatalogStashDoneButton, 0);
 	});
 
 	it('shows OLSKMasterList', function () {
@@ -167,6 +173,38 @@ describe('OLSKCatalog_Access', function () {
 
 		it('shows OLSKCollectionItem', function () {
 			browser.assert.elements('.OLSKCollectionItem', item);
+		});
+
+	});
+
+	context('OLSKCatalogStashEnabled', function test_OLSKCatalogStashEnabled() {
+
+		before(function () {
+			return browser.pressButton('.TestItemStashButton');
+		});
+
+		it('hides OLSKMasterListToolbarTail', function () {
+			browser.assert.elements('#TestOLSKMasterListToolbarTail', 0);
+		});
+
+		it('shows OLSKCatalogStashDoneButton', function () {
+			browser.assert.elements(OLSKCatalogStashDoneButton, 1);
+		});
+
+		context('OLSKCatalogStashDoneButton', function () {
+			
+			before(function () {
+				return browser.pressButton(OLSKCatalogStashDoneButton);
+			});
+
+			it('shows OLSKMasterListToolbarTail', function () {
+				browser.assert.elements('#TestOLSKMasterListToolbarTail', 1);
+			});
+
+			it('hides OLSKCatalogStashDoneButton', function () {
+				browser.assert.elements(OLSKCatalogStashDoneButton, 0);
+			});
+		
 		});
 
 	});
