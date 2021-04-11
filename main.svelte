@@ -154,7 +154,15 @@ export const modPublic = {
 			return mod._ValueStashEnabled;
 		}
 
-		modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic.OLSKCollectionStashEnabled(mod._ValueStashEnabled = inputData);
+		const selected = mod._ValueItemSelected;
+
+		if (!modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic.OLSKCollectionStashEnabled(mod._ValueStashEnabled = inputData) || !selected) {
+			return;
+		}
+
+		mod._ValueItemSelected = null;
+
+		modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic._OLSKCollectionStashToggle(selected);
 	},
 
 };
@@ -375,6 +383,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 <div class="OLSKCatalog">
 
 <OLSKMasterList
+	bind:this={ modPublic._OLSKMasterList }
 	OLSKCollectionSortFunction={ OLSKCatalogSortFunction }
 	_OLSKCollectionDispatchKey={ _OLSKCatalogDispatchKey }
 	OLSKCollectionChunkFunction={ OLSKCollectionChunkFunction }
