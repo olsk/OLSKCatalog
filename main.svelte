@@ -404,7 +404,9 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	<div slot="OLSKMasterListToolbarTail">
 		{#if mod._ValueStashEnabled }
-			<button class="OLSKCatalogStashDoneButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceStashDoneButtonDidClick }>OK</button>
+			<div class="OLSKToolbarElementGroup">
+				<button class="OLSKCatalogStashDoneButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceStashDoneButtonDidClick }>OK</button>
+			</div>
 		{:else if $$slots.OLSKMasterListToolbarTail}
 			<slot name="OLSKMasterListToolbarTail"></slot>	
 		{/if}
@@ -469,5 +471,9 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	flex-grow: 1;
 }
 
+}
+
+.OLSKCatalogStashDoneButton {
+	color: var(--OLSKCommonForeground);
 }
 </style>
