@@ -160,6 +160,11 @@ const inputData = Object.assign({
 		window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML = parseInt(window.TestOLSKCatalogDispatchEscapeOnEmpty.innerHTML) + 1;
 	}),
 
+	OLSKCatalogDispatchStash: (function  (inputData) {
+		window.TestOLSKCatalogDispatchStash.innerHTML = parseInt(window.TestOLSKCatalogDispatchStash.innerHTML) + 1;
+		window.TestOLSKCatalogDispatchStashData.innerHTML = inputData.length;
+	}),
+
 }, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()).map(function (e) {
 	if (e[0] === 'OLSKCatalogItems') {
 		e[1] = JSON.parse(e[1]);

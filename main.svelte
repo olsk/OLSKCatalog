@@ -23,6 +23,7 @@ export let OLSKCatalogDispatchArchivedShow = null;
 export let OLSKCatalogDispatchFilterSubmit = null;
 export let OLSKCatalogDispatchQuantity = null;
 export let OLSKCatalogDispatchEscapeOnEmpty = null;
+export let OLSKCatalogDispatchStash = null;
 
 export let OLSKCatalogItems = [];
 
@@ -231,6 +232,8 @@ const mod = {
 	// INTERFACE
 
 	InterfaceStashDoneButtonDidClick () {
+		OLSKCatalogDispatchStash && OLSKCatalogDispatchStash(modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic._OLSKCollectionStashItems);
+
 		modPublic.OLSKCatalogStashEnabled(false);
 	},
 

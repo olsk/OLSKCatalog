@@ -330,6 +330,29 @@ describe('OLSKCatalog_Misc', function () {
 
 	context('OLSKCatalogStashDoneButton', function test_OLSKCatalogStashDoneButton() {
 
+		const count = Math.max(1, uRandomInt(10));
+		const selection = Math.max(1, uRandomInt(count));
+		
+		before(function() {
+			return browser.OLSKVisit(kDefaultRoute);
+		});
+
+		Array.from(Array(count)).forEach(function () {
+			
+			before(function () {
+				return browser.pressButton('.TestItemCreateButton');
+			});
+
+			before(function () {
+				return browser.fill('.TestItemField', Math.random().toString());
+			});
+
+		});
+
+		before(function () {
+			return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
+		});
+
 		before(function () {
 			return browser.pressButton('.TestItemStashButton');
 		});
@@ -348,6 +371,32 @@ describe('OLSKCatalog_Misc', function () {
 
 		it('sets text', function () {
 			browser.assert.text(OLSKCatalogStashDoneButton, 'OK');
+		});
+
+		context('click', function () {
+
+			Array.from(Array(selection)).forEach(function (e, i) {
+				
+				before(function () {
+					return browser.click(`.OLSKCollectionItem:nth-child(${ i + 1 })`);
+				});
+
+			});
+			
+			before(function () {
+				browser.assert.text('#TestOLSKCatalogDispatchStash', '0');
+				browser.assert.text('#TestOLSKCatalogDispatchStashData', 'undefined');
+			});
+
+			before(function () {
+				return browser.click(OLSKCatalogStashDoneButton);
+			});
+
+			it('sends OLSKCatalogDispatchStash', function () {
+				browser.assert.text('#TestOLSKCatalogDispatchStash', '1');
+				browser.assert.text('#TestOLSKCatalogDispatchStashData', selection);
+			});
+		
 		});
 
 	});
