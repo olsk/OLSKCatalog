@@ -63,6 +63,14 @@ export const modPublic = {
 		return inputData;
 	},
 
+	_OLSKCatalogInsertAndSort (inputData) {
+		modPublic.OLSKCatalogInsert(inputData);
+		
+		mod.ValueItemsAll([].concat(mod._ValueItemsAll), true);
+
+		return inputData;
+	},
+
 	OLSKCatalogSelect (inputData) {
 		return (mod._ValueItemSelected = inputData);
 	},
