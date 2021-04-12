@@ -397,7 +397,7 @@ import { onMount } from 'svelte';
 onMount(mod.LifecycleModuleWillMount);
 
 import OLSKNarrow from 'OLSKNarrow';
-import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
+import OLSKPlaceholder from 'OLSKPlaceholder';
 </script>
 <svelte:window on:keydown={ mod.InterfaceWindowDidKeydown } />
 
@@ -461,7 +461,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 <div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ mod.OLSKMobileViewInactive ? true : null }>
 	{#if !mod._ValueItemSelected }
-		<OLSKDetailPlaceholder OLSKDetailPlaceholderHTML={ !mod._ValueStashEnabled ? '' : OLSKFormatted(OLSKLocalized('OLSKCatalogStashPlaceholderTextFormat'), mod._ValueStashCount) } />
+		<OLSKPlaceholder OLSKPlaceholderHTML={ !mod._ValueStashEnabled ? '' : OLSKFormatted(OLSKLocalized('OLSKCatalogStashPlaceholderTextFormat'), mod._ValueStashCount) } />
 	{/if}
 
 	{#if mod._ValueItemSelected }
@@ -498,7 +498,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 @media screen and (min-width: 760px) {
 
-.OLSKCatalogDetail > :global(.OLSKDetailPlaceholder) {
+.OLSKCatalogDetail > :global(.OLSKPlaceholder) {
 	/* OLSKCatalogDetail:Child */
 	flex-grow: 1;
 }

@@ -37,8 +37,8 @@ describe('OLSKCatalog_Access', function () {
 		browser.assert.elements(OLSKCatalogDetail, 1);
 	});
 
-	it('shows OLSKDetailPlaceholder', function () {
-		browser.assert.elements('.OLSKDetailPlaceholder', 1);
+	it('shows OLSKPlaceholder', function () {
+		browser.assert.elements('.OLSKPlaceholder', 1);
 	});
 
 	it('hides OLSKCatalogDetailContent', function () {
@@ -75,8 +75,8 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
-		it('hides OLSKDetailPlaceholder', function () {
-			browser.assert.elements('.OLSKDetailPlaceholder', 0);
+		it('hides OLSKPlaceholder', function () {
+			browser.assert.elements('.OLSKPlaceholder', 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
@@ -95,8 +95,8 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKCollectionItem', 0);
 		});
 
-		it('shows OLSKDetailPlaceholder', function () {
-			browser.assert.elements('.OLSKDetailPlaceholder', 1);
+		it('shows OLSKPlaceholder', function () {
+			browser.assert.elements('.OLSKPlaceholder', 1);
 		});
 
 		it('hides OLSKCatalogDetailContent', function () {
@@ -120,7 +120,7 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		before(function () {
-			browser.assert.elements('.OLSKDetailPlaceholder', 1);
+			browser.assert.elements('.OLSKPlaceholder', 1);
 		});
 
 		before(function () {
@@ -131,8 +131,8 @@ describe('OLSKCatalog_Access', function () {
 			return browser.click('.OLSKCollectionItem');
 		});
 
-		it('hides OLSKDetailPlaceholder', function () {
-			browser.assert.elements('.OLSKDetailPlaceholder', 0);
+		it('hides OLSKPlaceholder', function () {
+			browser.assert.elements('.OLSKPlaceholder', 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
@@ -145,8 +145,8 @@ describe('OLSKCatalog_Access', function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 			});
 
-			it('shows OLSKDetailPlaceholder', function () {
-				browser.assert.elements('.OLSKDetailPlaceholder', 1);
+			it('shows OLSKPlaceholder', function () {
+				browser.assert.elements('.OLSKPlaceholder', 1);
 			});
 
 			it('hides OLSKCatalogDetailContent', function () {

@@ -6,6 +6,6 @@
     "OLSKDecor": "olsk/OLSKDecor",
     "OLSKNarrow": "olsk/OLSKNarrow",
     "OLSKThrottle": "olsk/OLSKThrottle",
-    "OLSKDetailPlaceholder": "olsk/OLSKDetailPlaceholder"
+    "OLSKPlaceholder": "olsk/OLSKPlaceholder"
   }
 }

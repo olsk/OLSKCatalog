@@ -30,8 +30,8 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			return browser.pressButton('.TestItemStashButton');
 		});
 
-		it('sets OLSKDetailPlaceholderHTML', function () {
-			browser.assert.text('.OLSKDetailPlaceholder', OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 1));
+		it('sets OLSKPlaceholderHTML', function () {
+			browser.assert.text('.OLSKPlaceholder', OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 1));
 		});
 
 		context('none', function () {
@@ -40,8 +40,8 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 				return browser.click('.OLSKCollectionItem:nth-child(1)');
 			});
 
-			it('sets OLSKDetailPlaceholderHTML', function () {
-				browser.assert.text('.OLSKDetailPlaceholder', OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 0));
+			it('sets OLSKPlaceholderHTML', function () {
+				browser.assert.text('.OLSKPlaceholder', OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 0));
 			});
 		
 		});
@@ -56,8 +56,8 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 				return browser.click('.OLSKCollectionItem:nth-child(2)');
 			});
 
-			it('sets OLSKDetailPlaceholderHTML', function () {
-				browser.assert.text('.OLSKDetailPlaceholder', OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 2));
+			it('sets OLSKPlaceholderHTML', function () {
+				browser.assert.text('.OLSKPlaceholder', OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 2));
 			});
 		
 		});
