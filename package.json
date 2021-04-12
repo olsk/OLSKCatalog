@@ -4,7 +4,7 @@
   "dependencies": {
   	"normalize.css": "latest",
     "OLSKDecor": "olsk/OLSKDecor",
-    "OLSKMasterList": "olsk/OLSKMasterList",
+    "OLSKNarrow": "olsk/OLSKNarrow",
     "OLSKThrottle": "olsk/OLSKThrottle",
     "OLSKDetailPlaceholder": "olsk/OLSKDetailPlaceholder"
   }

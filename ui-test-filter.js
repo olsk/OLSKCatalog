@@ -27,7 +27,7 @@ describe('OLSKCatalog_Filter', function () {
 	context('no match', function () {
 
 		before(function () {
-			browser.fill('.OLSKMasterListFilterField', Math.random().toString());
+			browser.fill('.OLSKNarrowFilterField', Math.random().toString());
 		});
 
 		it('binds OLSKCollectionItems', function () {
@@ -43,7 +43,7 @@ describe('OLSKCatalog_Filter', function () {
 	context('partial match', function () {
 
 		before(function () {
-			browser.fill('.OLSKMasterListFilterField', item.slice(0, item.length / 2));
+			browser.fill('.OLSKNarrowFilterField', item.slice(0, item.length / 2));
 		});
 
 		it('binds OLSKCollectionItem', function () {
@@ -63,7 +63,7 @@ describe('OLSKCatalog_Filter', function () {
 	context('exact match', function () {
 
 		before(function () {
-			browser.fill('.OLSKMasterListFilterField', item);
+			browser.fill('.OLSKNarrowFilterField', item);
 		});
 
 		it('binds OLSKCollectionItem', function () {
@@ -97,15 +97,15 @@ describe('OLSKCatalog_Filter', function () {
 	context('escape', function () {
 
 		before(function () {
-			browser.fill('.OLSKMasterListFilterField', item);
+			browser.fill('.OLSKNarrowFilterField', item);
 		});
 
 		before(function () {
 			return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 		});
 
-		it('binds OLSKMasterListFilterText', function () {
-			browser.assert.input('.OLSKMasterListFilterField', '');
+		it('binds OLSKNarrowFilterText', function () {
+			browser.assert.input('.OLSKNarrowFilterField', '');
 		});
 
 		it('binds OLSKCollectionItemsLocus', function () {
@@ -127,7 +127,7 @@ describe('OLSKCatalog_Filter', function () {
 			});
 
 			before(function () {
-				return browser.fire('.OLSKMasterListForm', 'submit');
+				return browser.fire('.OLSKNarrowForm', 'submit');
 			});
 
 			it('sends OLSKCatalogDispatchFilterSubmit', function () {
@@ -140,11 +140,11 @@ describe('OLSKCatalog_Filter', function () {
 		context('filled', function () {
 			
 			before(function () {
-				browser.fill('.OLSKMasterListFilterField', item);
+				browser.fill('.OLSKNarrowFilterField', item);
 			});
 
 			before(function () {
-				return browser.fire('.OLSKMasterListForm', 'submit');
+				return browser.fire('.OLSKNarrowForm', 'submit');
 			});
 
 			it('sends OLSKCatalogDispatchFilterSubmit', function () {

@@ -119,7 +119,7 @@ describe('OLSKCatalog_Archive', function () {
 	context('filter', function test_filter () {
 
 		before(function () {
-			browser.fill('.OLSKMasterListFilterField', 'a');
+			browser.fill('.OLSKNarrowFilterField', 'a');
 		});
 
 		it('shows archived', function () {

@@ -9,14 +9,14 @@ describe('OLSKCatalog_Misc', function () {
 		});
 
 		it('sets OLSKMobileViewInactive', function () {
-			browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMobileViewInactive');
+			browser.assert.hasNoClass('.OLSKNarrow', 'OLSKMobileViewInactive');
 			browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
 			browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
-			browser.assert.hasClass('.OLSKMasterList', 'OLSKMasterListFocused');
+			browser.assert.hasClass('.OLSKNarrow', 'OLSKNarrowFocused');
 		});
 
-		it('focuses OLSKMasterListFilterField', function () {
-			browser.assert.hasFocus('.OLSKMasterListFilterField');
+		it('focuses OLSKNarrowFilterField', function () {
+			browser.assert.hasFocus('.OLSKNarrowFilterField');
 		});
 
 		context('ItemSelect', function () {
@@ -26,10 +26,10 @@ describe('OLSKCatalog_Misc', function () {
 			});
 
 			it('sets OLSKMobileViewInactive', function () {
-				browser.assert.hasClass('.OLSKMasterList', 'OLSKMobileViewInactive');
+				browser.assert.hasClass('.OLSKNarrow', 'OLSKMobileViewInactive');
 				browser.assert.hasNoClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
 				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', 'true');
-				browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMasterListFocused');
+				browser.assert.hasNoClass('.OLSKNarrow', 'OLSKNarrowFocused');
 			});
 
 		});
@@ -49,10 +49,10 @@ describe('OLSKCatalog_Misc', function () {
 			});
 
 			it('sets OLSKMobileViewInactive', function () {
-				browser.assert.hasNoClass('.OLSKMasterList', 'OLSKMobileViewInactive');
+				browser.assert.hasNoClass('.OLSKNarrow', 'OLSKMobileViewInactive');
 				browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
 				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
-				// browser.assert.hasClass('.OLSKMasterList', 'OLSKMasterListFocused');
+				// browser.assert.hasClass('.OLSKNarrow', 'OLSKNarrowFocused');
 			});
 
 		});
@@ -149,7 +149,7 @@ describe('OLSKCatalog_Misc', function () {
 		context('arrow', function () {
 
 			before(function () {
-				return browser.focus('.OLSKMasterListFilterField');
+				return browser.focus('.OLSKNarrowFilterField');
 			});
 
 			before(function () {
@@ -172,8 +172,8 @@ describe('OLSKCatalog_Misc', function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 			});
 
-			it('focuses OLSKMasterListFilterField', function () {
-				browser.assert.hasFocus('.OLSKMasterListFilterField');
+			it('focuses OLSKNarrowFilterField', function () {
+				browser.assert.hasFocus('.OLSKNarrowFilterField');
 			});
 
 		});
@@ -185,7 +185,7 @@ describe('OLSKCatalog_Misc', function () {
 		context('master focused', function () {
 
 			before(function () {
-				browser.focus('.OLSKMasterListFilterField');
+				browser.focus('.OLSKNarrowFilterField');
 			});
 
 			before(function () {
@@ -193,7 +193,7 @@ describe('OLSKCatalog_Misc', function () {
 			});
 
 			before(function () {
-				browser.assert.hasFocus('.OLSKMasterListFilterField');
+				browser.assert.hasFocus('.OLSKNarrowFilterField');
 			});
 
 			before(function () {
@@ -242,8 +242,8 @@ describe('OLSKCatalog_Misc', function () {
 					});
 				});
 
-				it('focuses OLSKMasterListFilterField', function () {
-					browser.assert.hasFocus('.OLSKMasterListFilterField');
+				it('focuses OLSKNarrowFilterField', function () {
+					browser.assert.hasFocus('.OLSKNarrowFilterField');
 				});
 
 			});
@@ -272,8 +272,8 @@ describe('OLSKCatalog_Misc', function () {
 			browser.assert.text('#TestOLSKCatalogDispatchQuantityData', '1');
 		});
 
-		it('focuses OLSKMasterListFilterField', function () {
-			browser.assert.hasFocus('.OLSKMasterListFilterField');
+		it('focuses OLSKNarrowFilterField', function () {
+			browser.assert.hasFocus('.OLSKNarrowFilterField');
 		});
 
 	});
@@ -281,7 +281,7 @@ describe('OLSKCatalog_Misc', function () {
 	context('OLSKCatalogDispatchEscapeOnEmpty', function test_OLSKCatalogDispatchEscapeOnEmpty () {
 
 		before(function () {
-			browser.fill('.OLSKMasterListFilterField', Math.random().toString());
+			browser.fill('.OLSKNarrowFilterField', Math.random().toString());
 		});
 
 		before(function () {
@@ -299,7 +299,7 @@ describe('OLSKCatalog_Misc', function () {
 		context('empty', function () {
 
 			before(function () {
-				browser.assert.input('.OLSKMasterListFilterField', '');
+				browser.assert.input('.OLSKNarrowFilterField', '');
 			});
 
 			before(function () {
@@ -322,8 +322,8 @@ describe('OLSKCatalog_Misc', function () {
 			return browser.fill('.TestExternalFilter', item);
 		});
 
-		it('sets OLSKMasterListFilterField', function () {
-			browser.assert.input('.OLSKMasterListFilterField', item);
+		it('sets OLSKNarrowFilterField', function () {
+			browser.assert.input('.OLSKNarrowFilterField', item);
 		});
 
 	});

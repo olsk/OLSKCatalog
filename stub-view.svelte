@@ -186,19 +186,19 @@ import OLSKCatalog from './main.svelte';
 
 	<!-- MASTER -->
 
-	<em slot="OLSKMasterListToolbarHead" id="TestOLSKMasterListToolbarHead">TestOLSKMasterListToolbarHead</em>
+	<em slot="OLSKNarrowToolbarHead" id="TestOLSKNarrowToolbarHead">TestOLSKNarrowToolbarHead</em>
 	
-	<div class="OLSKToolbarElementGroup" slot="OLSKMasterListToolbarTail" id="TestOLSKMasterListToolbarTail">
+	<div class="OLSKToolbarElementGroup" slot="OLSKNarrowToolbarTail" id="TestOLSKNarrowToolbarTail">
 		<button class="TestItemStashButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceStashButtonDidClick }>✔️</button>
 		<button class="TestItemCreateButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton"on:click={ mod.InterfaceCreateButtonDidClick } accesskey="n">➕</button>
 	</div>
 	
-	<em id="TestOLSKMasterListMain">TestOLSKMasterListMain</em>
+	<em id="TestOLSKNarrowMain">TestOLSKNarrowMain</em>
 
 	<div slot="OLSKCollectionItem" class="TestOLSKCollectionItem" class:TestOLSKCollectionItemArchived={ OLSKCollectionItem.XYZItemIsArchived } >{ OLSKCollectionItem.XYZItemBlurb }</div>
 	
-	<div slot="OLSKMasterListBodyTail" id="TestOLSKMasterListBodyTail">
-		<em>TestOLSKMasterListBodyTail</em>
+	<div slot="OLSKNarrowBodyTail" id="TestOLSKNarrowBodyTail">
+		<em>TestOLSKNarrowBodyTail</em>
 		{#if mod._ValueRevealArchiveIsVisible }
 			<button class="TestRevealArchiveButton OLSKDecorPress" on:click={ mod._OLSKCatalog.modPublic.OLSKCatalogRevealArchive }>Reveal Archive</button>
 		{/if}

@@ -2,7 +2,7 @@
 export let OLSKCollectionItemAccessibilitySummaryFunction;
 export let OLSKCollectionItemClass = '';
 
-export let OLSKMasterListFilterFieldPlaceholderText = '';
+export let OLSKNarrowFilterFieldPlaceholderText = '';
 
 export let _OLSKCatalogArchiveField = null;
 
@@ -169,13 +169,13 @@ export const modPublic = {
 
 		const selected = mod._ValueItemSelected;
 
-		if (!modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic.OLSKCollectionStashEnabled(mod._ValueStashEnabled = inputData) || !selected) {
+		if (!modPublic._OLSKNarrow.modPublic._OLSKCollection.modPublic.OLSKCollectionStashEnabled(mod._ValueStashEnabled = inputData) || !selected) {
 			return;
 		}
 
 		mod._ValueItemSelected = null;
 
-		modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic._OLSKCollectionStashToggle(selected);
+		modPublic._OLSKNarrow.modPublic._OLSKCollection.modPublic._OLSKCollectionStashToggle(selected);
 	},
 
 };
@@ -240,7 +240,7 @@ const mod = {
 	// INTERFACE
 
 	InterfaceStashDoneButtonDidClick () {
-		OLSKCatalogDispatchStash && OLSKCatalogDispatchStash(modPublic._OLSKMasterList.modPublic._OLSKCollection.modPublic._OLSKCollectionStashItems);
+		OLSKCatalogDispatchStash && OLSKCatalogDispatchStash(modPublic._OLSKNarrow.modPublic._OLSKCollection.modPublic._OLSKCollectionStashItems);
 
 		modPublic.OLSKCatalogStashEnabled(false);
 	},
@@ -261,11 +261,11 @@ const mod = {
 			},
 
 			Tab () {
-				if (document.activeElement === document.querySelector('.OLSKMasterListFilterField') && mod._ValueItemSelected) {
+				if (document.activeElement === document.querySelector('.OLSKNarrowFilterField') && mod._ValueItemSelected) {
 					return event.preventDefault(OLSKCatalogDispatchDetailActivate && OLSKCatalogDispatchDetailActivate());
 				}
 
-				if (event.shiftKey && document.activeElement !== document.querySelector('.OLSKMasterListFilterField') && OLSKCatalogDispatchMasterShouldActivate && OLSKCatalogDispatchMasterShouldActivate()) {
+				if (event.shiftKey && document.activeElement !== document.querySelector('.OLSKNarrowFilterField') && OLSKCatalogDispatchMasterShouldActivate && OLSKCatalogDispatchMasterShouldActivate()) {
 					return event.preventDefault(mod.ControlFocusMaster());
 				}
 			},
@@ -321,7 +321,7 @@ const mod = {
 	},
 
 	ControlFocusMaster () {
-		document.querySelector('.OLSKMasterListFilterField').focus();
+		document.querySelector('.OLSKNarrowFilterField').focus();
 
 		mod.OLSKMobileViewInactive = false;
 	},
@@ -340,17 +340,17 @@ const mod = {
 		mod.ControlFilterWithNoThrottle(mod._ValueFilterText = '');
 
 		if (typeof OLSK_SPEC_UI !== 'undefined' && !OLSK_SPEC_UI()) {
-			document.querySelector('.OLSKMasterListBody').scrollTo(0, 0);
+			document.querySelector('.OLSKNarrowBody').scrollTo(0, 0);
 		}
 	},
 
 	// MESSAGE
 
-	OLSKMasterListDispatchFilter (inputData) {
+	OLSKNarrowDispatchFilter (inputData) {
 		mod.ControlFilterWithThrottle(inputData);
 	},
 
-	OLSKMasterListDispatchSubmit () {
+	OLSKNarrowDispatchSubmit () {
 		mod._ValueFilterText && OLSKCatalogDispatchFilterSubmit && OLSKCatalogDispatchFilterSubmit(mod._ValueFilterText)
 	},
 
@@ -396,15 +396,15 @@ const mod = {
 import { onMount } from 'svelte';
 onMount(mod.LifecycleModuleWillMount);
 
-import OLSKMasterList from 'OLSKMasterList';
+import OLSKNarrow from 'OLSKNarrow';
 import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 </script>
 <svelte:window on:keydown={ mod.InterfaceWindowDidKeydown } />
 
 <div class="OLSKCatalog">
 
-<OLSKMasterList
-	bind:this={ modPublic._OLSKMasterList }
+<OLSKNarrow
+	bind:this={ modPublic._OLSKNarrow }
 	OLSKCollectionSortFunction={ OLSKCatalogSortFunction }
 	_OLSKCollectionDispatchKey={ _OLSKCatalogDispatchKey }
 	OLSKCollectionChunkFunction={ OLSKCollectionChunkFunction }
@@ -413,14 +413,14 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 	OLSKCollectionItems={ mod._ValueItemsVisible }
 	OLSKCollectionItemsLocus={ mod._ValueItemSelected }
 
-	OLSKMasterListFilterText={ mod._ValueFilterText }
-	OLSKMasterListFilterFieldPlaceholderText={ OLSKMasterListFilterFieldPlaceholderText }
+	OLSKNarrowFilterText={ mod._ValueFilterText }
+	OLSKNarrowFilterFieldPlaceholderText={ OLSKNarrowFilterFieldPlaceholderText }
 
 	OLSKCollectionDispatchClick={ OLSKCollectionDispatchClick }
 	OLSKCollectionDispatchArrow={ OLSKCollectionDispatchArrow }
 	OLSKCollectionDispatchStash={ mod.OLSKCollectionDispatchStash }
-	OLSKMasterListDispatchFilter={ mod.OLSKMasterListDispatchFilter }
-	OLSKMasterListDispatchSubmit={ mod.OLSKMasterListDispatchSubmit }
+	OLSKNarrowDispatchFilter={ mod.OLSKNarrowDispatchFilter }
+	OLSKNarrowDispatchSubmit={ mod.OLSKNarrowDispatchSubmit }
 
 	let:OLSKCollectionItem={ e }
 
@@ -428,19 +428,19 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 	OLSKMobileViewInactive={ mod.OLSKMobileViewInactive }
 	>
-	<div slot="OLSKMasterListToolbarHead">
-		{#if $$slots.OLSKMasterListToolbarHead}
-			<slot name="OLSKMasterListToolbarHead"></slot>	
+	<div slot="OLSKNarrowToolbarHead">
+		{#if $$slots.OLSKNarrowToolbarHead}
+			<slot name="OLSKNarrowToolbarHead"></slot>	
 		{/if}
 	</div>
 
-	<div slot="OLSKMasterListToolbarTail">
+	<div slot="OLSKNarrowToolbarTail">
 		{#if mod._ValueStashEnabled }
 			<div class="OLSKToolbarElementGroup">
 				<button class="OLSKCatalogStashDoneButton OLSKDecorButtonNoStyle OLSKDecorTappable OLSKToolbarButton" on:click={ mod.InterfaceStashDoneButtonDidClick }>OK</button>
 			</div>
-		{:else if $$slots.OLSKMasterListToolbarTail}
-			<slot name="OLSKMasterListToolbarTail"></slot>	
+		{:else if $$slots.OLSKNarrowToolbarTail}
+			<slot name="OLSKNarrowToolbarTail"></slot>	
 		{/if}
 	</div>
 
@@ -452,12 +452,12 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 		{/if}
 	</div>
 
-	<div slot="OLSKMasterListBodyTail">
-		{#if $$slots.OLSKMasterListBodyTail}
-			<slot name="OLSKMasterListBodyTail"></slot>	
+	<div slot="OLSKNarrowBodyTail">
+		{#if $$slots.OLSKNarrowBodyTail}
+			<slot name="OLSKNarrowBodyTail"></slot>	
 		{/if}
 	</div>
-</OLSKMasterList>
+</OLSKNarrow>
 
 <div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ mod.OLSKMobileViewInactive ? true : null }>
 	{#if !mod._ValueItemSelected }
@@ -484,7 +484,7 @@ import OLSKDetailPlaceholder from 'OLSKDetailPlaceholder';
 
 @media screen and (max-width: 760px) {
 
-.OLSKCatalogDetail, :global(.OLSKMasterList) {
+.OLSKCatalogDetail, :global(.OLSKNarrow) {
 	flex-grow: 1;
 }
 
