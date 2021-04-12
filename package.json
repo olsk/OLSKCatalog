@@ -2,10 +2,12 @@
   "name": "OLSKCatalog",
   "main": "main.svelte",
   "dependencies": {
-  	"normalize.css": "latest",
-    "OLSKDecor": "olsk/OLSKDecor",
-    "OLSKNarrow": "olsk/OLSKNarrow",
+  	"OLSKNarrow": "olsk/OLSKNarrow",
     "OLSKThrottle": "olsk/OLSKThrottle",
     "OLSKPlaceholder": "olsk/OLSKPlaceholder"
+  },
+  "devDependencies": {
+		"normalize.css": "latest",
+	  "OLSKDecor": "olsk/OLSKDecor"
   }
 }
