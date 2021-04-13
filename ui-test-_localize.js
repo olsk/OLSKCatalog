@@ -14,24 +14,28 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 		});
 
-		Array.from(Array(2)).forEach(function () {
+		context('stash', function () {
 			
-			before(function () {
-				return browser.pressButton('.TestItemCreateButton');
+			Array.from(Array(2)).forEach(function () {
+				
+				before(function () {
+					return browser.pressButton('.TestItemCreateButton');
+				});
+
+				before(function () {
+					return browser.fill('.TestItemField', Math.random().toString());
+				});
+
 			});
 
 			before(function () {
-				return browser.fill('.TestItemField', Math.random().toString());
+				return browser.pressButton('.TestItemStashButton');
 			});
 
-		});
-
-		before(function () {
-			return browser.pressButton('.TestItemStashButton');
-		});
-
-		it('sets OLSKPlaceholderHTML', function () {
-			browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 1));
+			it('sets OLSKPlaceholderHTML', function () {
+				browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 1));
+			});
+		
 		});
 
 		context('none', function () {
