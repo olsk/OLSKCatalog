@@ -500,6 +500,20 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 
 }
 
+.OLSKCatalog :global(.OLSKCollectionItem) {
+	max-width: var(--OLSKViewportMasterWidth);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 760px) {
+
+	.OLSKCatalog :global(.OLSKCollectionItem) {
+		max-width: 99vw;
+	}
+
+}
+
 .OLSKCatalogDetail {
 	/* OLSKCatalogDetail:Parent */
 	display: flex;
