@@ -8,7 +8,7 @@ export let _OLSKCatalogArchiveField = null;
 
 export let OLSKCatalogSortFunction;
 export let OLSKCatalogIsMatch;
-export let OLSKCatalogExactSortFunction;
+export let OLSKCatalogExactSortFunction = null;
 
 export let _OLSKCatalogDispatchKey;
 
@@ -315,7 +315,7 @@ const mod = {
 			return mod.ControlSelect(null);
 		}
 
-		mod.ValueItemSelected(mod._ValueItemsVisible.slice().sort(function (a, b) {
+		OLSKCatalogExactSortFunction && mod.ValueItemSelected(mod._ValueItemsVisible.slice().sort(function (a, b) {
 			return OLSKCatalogExactSortFunction(inputData, a, b);
 		}).shift());
 	},
