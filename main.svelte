@@ -531,5 +531,6 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 
 .OLSKCatalogStashDoneButton {
 	color: var(--OLSKCommonForeground);
+	font-weight: bold;
 }
 </style>
