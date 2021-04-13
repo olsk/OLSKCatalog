@@ -5,6 +5,8 @@ Object.entries({
 	
 	OLSKCatalogStashDoneButton: '.OLSKCatalogStashDoneButton',
 	
+	OLSKCatalogMasterPlaceholder: '.OLSKCatalog .OLSKNarrow .OLSKPlaceholder',
+
 	OLSKCatalogDetail: '.OLSKCatalogDetail',
 	OLSKCatalogDetailPlaceholder: '.OLSKCatalogDetail .OLSKPlaceholder',
 	OLSKCatalogDetailContent: '[slot="OLSKCatalogDetailContent"]',
@@ -32,6 +34,10 @@ describe('OLSKCatalog_Access', function () {
 
 	it('hides OLSKCollectionItem', function () {
 		browser.assert.elements('.OLSKCollectionItem', 0);
+	});
+
+	it('shows OLSKCatalogMasterPlaceholder', function () {
+		browser.assert.elements(OLSKCatalogMasterPlaceholder, 1);
 	});
 
 	it('shows OLSKCatalogDetail', function () {
@@ -76,6 +82,10 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
+		it('hides OLSKCatalogMasterPlaceholder', function () {
+			browser.assert.elements(OLSKCatalogMasterPlaceholder, 0);
+		});
+
 		it('hides OLSKCatalogDetailPlaceholder', function () {
 			browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
 		});
@@ -94,6 +104,10 @@ describe('OLSKCatalog_Access', function () {
 
 		it('hides OLSKCollectionItem', function () {
 			browser.assert.elements('.OLSKCollectionItem', 0);
+		});
+
+		it('shows OLSKCatalogMasterPlaceholder', function () {
+			browser.assert.elements(OLSKCatalogMasterPlaceholder, 1);
 		});
 
 		it('shows OLSKCatalogDetailPlaceholder', function () {
@@ -174,6 +188,10 @@ describe('OLSKCatalog_Access', function () {
 
 		it('shows OLSKCollectionItem', function () {
 			browser.assert.elements('.OLSKCollectionItem', item);
+		});
+
+		it('hides OLSKCatalogMasterPlaceholder', function () {
+			browser.assert.elements(OLSKCatalogMasterPlaceholder, 0);
 		});
 
 	});

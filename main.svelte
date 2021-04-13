@@ -452,6 +452,10 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 		{/if}
 	</div>
 
+	<div slot="OLSKCollectionEmpty">
+		<OLSKPlaceholder OLSKPlaceholderHTML={ OLSKLocalized('OLSKCatalogMasterPlaceholderText') } />
+	</div>
+
 	<div slot="OLSKNarrowBodyTail">
 		{#if $$slots.OLSKNarrowBodyTail}
 			<slot name="OLSKNarrowBodyTail"></slot>	
@@ -480,6 +484,12 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 	display: flex;
 
 	background: var(--OLSKCommonBackground);
+}
+
+.OLSKCatalog :global(.OLSKNarrowBody, .OLSKCollection, .OLSKCollectionEmpty, .OLSKCollectionEmpty *) {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 @media screen and (max-width: 760px) {

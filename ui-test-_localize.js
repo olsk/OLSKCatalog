@@ -14,6 +14,10 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 		});
 
+		it('localizes OLSKCatalogMasterPlaceholder', function () {
+			browser.assert.OLSKInnerHTML(OLSKCatalogMasterPlaceholder, uLocalized('OLSKCatalogMasterPlaceholderText'));
+		});
+
 		context('stash', function () {
 			
 			Array.from(Array(2)).forEach(function () {
