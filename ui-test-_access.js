@@ -6,6 +6,7 @@ Object.entries({
 	OLSKCatalogStashDoneButton: '.OLSKCatalogStashDoneButton',
 	
 	OLSKCatalogDetail: '.OLSKCatalogDetail',
+	OLSKCatalogDetailPlaceholder: '.OLSKCatalogDetail .OLSKPlaceholder',
 	OLSKCatalogDetailContent: '[slot="OLSKCatalogDetailContent"]',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
@@ -37,8 +38,8 @@ describe('OLSKCatalog_Access', function () {
 		browser.assert.elements(OLSKCatalogDetail, 1);
 	});
 
-	it('shows OLSKPlaceholder', function () {
-		browser.assert.elements('.OLSKPlaceholder', 1);
+	it('shows OLSKCatalogDetailPlaceholder', function () {
+		browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 	});
 
 	it('hides OLSKCatalogDetailContent', function () {
@@ -75,8 +76,8 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
-		it('hides OLSKPlaceholder', function () {
-			browser.assert.elements('.OLSKPlaceholder', 0);
+		it('hides OLSKCatalogDetailPlaceholder', function () {
+			browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
@@ -95,8 +96,8 @@ describe('OLSKCatalog_Access', function () {
 			browser.assert.elements('.OLSKCollectionItem', 0);
 		});
 
-		it('shows OLSKPlaceholder', function () {
-			browser.assert.elements('.OLSKPlaceholder', 1);
+		it('shows OLSKCatalogDetailPlaceholder', function () {
+			browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 		});
 
 		it('hides OLSKCatalogDetailContent', function () {
@@ -120,7 +121,7 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		before(function () {
-			browser.assert.elements('.OLSKPlaceholder', 1);
+			browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 		});
 
 		before(function () {
@@ -131,8 +132,8 @@ describe('OLSKCatalog_Access', function () {
 			return browser.click('.OLSKCollectionItem');
 		});
 
-		it('hides OLSKPlaceholder', function () {
-			browser.assert.elements('.OLSKPlaceholder', 0);
+		it('hides OLSKCatalogDetailPlaceholder', function () {
+			browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
@@ -145,8 +146,8 @@ describe('OLSKCatalog_Access', function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 			});
 
-			it('shows OLSKPlaceholder', function () {
-				browser.assert.elements('.OLSKPlaceholder', 1);
+			it('shows OLSKCatalogDetailPlaceholder', function () {
+				browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 			});
 
 			it('hides OLSKCatalogDetailContent', function () {
