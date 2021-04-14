@@ -321,9 +321,13 @@ const mod = {
 	},
 
 	ControlFocusMaster () {
-		document.querySelector('.OLSKNarrowFilterField').focus();
-
 		mod.OLSKMobileViewInactive = false;
+		
+		if (mod.DataIsMobile()) {
+			return;
+		}
+
+		document.querySelector('.OLSKNarrowFilterField').focus();
 	},
 
 	ControlFocusDetail () {
