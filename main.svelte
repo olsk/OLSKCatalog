@@ -495,6 +495,8 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 @media screen and (max-width: 760px) {
 
 .OLSKCatalogDetail, :global(.OLSKNarrow) {
+	border: none;
+	
 	flex-grow: 1;
 }
 
