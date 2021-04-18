@@ -212,4 +212,55 @@ describe('OLSKCatalog_Archive', function () {
 	
 	});
 
+	describe('preloaded items', function () {	
+
+		before(function() {
+			return browser.OLSKVisit(kDefaultRoute, {
+				OLSKCatalogItems: JSON.stringify([{
+					XYZItemID: Math.random().toString(),
+					XYZItemBlurb: Math.random().toString(),
+					XYZItemDate: new Date(),
+				}, {
+					XYZItemID: Math.random().toString(),
+					XYZItemBlurb: Math.random().toString(),
+					XYZItemDate: new Date(),
+					XYZItemIsArchived: true,
+				}]),
+			});
+		});
+
+		before(function () {
+			browser.assert.elements('.OLSKCollectionItem', 1);
+		});
+
+		it('shows reveal archive', function () {
+			browser.assert.elements('.TestRevealArchiveButton', 1);
+		});
+
+	});
+
+	describe('late loaded items', function () {	
+
+		before(function() {
+			return browser.OLSKVisit(kDefaultRoute);
+		});
+
+		before(function () {
+			return browser.pressButton('#FakeRemoteInsert');
+		});
+
+		before(function () {
+			return browser.pressButton('#FakeArchivedInsert');
+		});
+
+		before(function () {
+			browser.assert.elements('.OLSKCollectionItem', 1);
+		});
+
+		it('shows reveal archive', function () {
+			browser.assert.elements('.TestRevealArchiveButton', 1);
+		});
+
+	});
+
 });

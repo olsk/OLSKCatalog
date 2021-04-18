@@ -60,6 +60,10 @@ export const modPublic = {
 
 		OLSKCatalogDispatchQuantity && OLSKCatalogDispatchQuantity(mod._ValueItemsAll.length);
 
+		if (inputData[_OLSKCatalogArchiveField]) {
+			OLSKCatalogDispatchArchivedHide();
+		}
+
 		return inputData;
 	},
 
@@ -378,6 +382,10 @@ const mod = {
 
 	SetupItems () {
 		mod.ValueItemsAll(OLSKCatalogItems);
+
+		if (mod._ValueArchiveCount) {
+			OLSKCatalogDispatchArchivedHide()
+		}
 	},
 
 	// LIFECYCLE

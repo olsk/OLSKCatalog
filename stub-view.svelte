@@ -248,6 +248,13 @@ import OLSKCatalog from './main.svelte';
 <p>
 	<button id="FakeRemoteRemove" on:click={ () => mod._OLSKCatalog.modPublic.OLSKCatalogRemove(mod._OLSKCatalog.modPublic._OLSKCatalogDataItemsAll().sort(mod.OLSKCatalogSortFunction).pop()) }></button>
 </p>
+<p>
+	<button id="FakeArchivedInsert" on:click={ () => mod._OLSKCatalog.modPublic.OLSKCatalogInsert(mod.DataItemValid({
+		XYZItemBlurb: 'archived',
+		XYZItemDate: new Date(Date.now() - 1000 * 60 * 60 * 24),
+		XYZItemIsArchived: true,
+	})) }></button>
+</p>
 
 <style>
 :root {
