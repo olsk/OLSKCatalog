@@ -490,6 +490,14 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 	background: var(--OLSKCommonBackground);
 }
 
+@media screen and (max-width: 760px) {
+
+.OLSKCatalog {
+	height: 100%;
+}
+
+}
+
 .OLSKCatalog :global(.OLSKNarrowBody, .OLSKCollection, .OLSKCollectionEmpty, .OLSKCollectionEmpty *) {
 	display: flex;
 	flex-direction: column;
