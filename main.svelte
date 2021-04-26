@@ -175,7 +175,7 @@ export const modPublic = {
 		const selected = mod._ValueItemSelected;
 
 		if (!modPublic._OLSKNarrow.modPublic._OLSKCollection.modPublic.OLSKCollectionStashEnabled(mod._ValueStashEnabled = inputData) || !selected) {
-			return;
+			return (mod._ValueStashCount = 0);
 		}
 
 		mod._ValueItemSelected = null;
