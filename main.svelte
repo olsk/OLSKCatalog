@@ -551,6 +551,11 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 	flex-grow: 1;
 }
 
+.OLSKCatalogDetail > :global(*) {
+	display: flex;
+	flex-direction: column;
+}
+
 }
 
 .OLSKCatalogStashDoneButton {
