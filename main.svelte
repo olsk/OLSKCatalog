@@ -508,7 +508,7 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 
 }
 
-.OLSKCatalog :global(.OLSKNarrowBody, .OLSKCollection, .OLSKCollectionEmpty, .OLSKCollectionEmpty *) {
+.OLSKCatalog :global(.OLSKNarrowBody), .OLSKCatalog :global(.OLSKCollection), .OLSKCatalog :global(.OLSKCollectionEmpty), .OLSKCatalog :global(.OLSKCollectionEmpty *) {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
