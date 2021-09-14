@@ -552,6 +552,8 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 }
 
 .OLSKCatalogDetail > :global(*) {
+	max-height: 100%;
+	
 	display: flex;
 	flex-direction: column;
 }
