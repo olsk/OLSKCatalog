@@ -477,7 +477,7 @@ import OLSKPlaceholder from 'OLSKPlaceholder';
 	</div>
 </OLSKNarrow>
 
-<div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ mod.OLSKMobileViewInactive ? true : null }>
+<div class="OLSKCatalogDetail OLSKViewportDetail" class:OLSKMobileViewInactive={ !mod.OLSKMobileViewInactive } aria-hidden={ !mod.OLSKMobileViewInactive ? true : null }>
 	{#if !mod._ValueItemSelected }
 		<OLSKPlaceholder OLSKPlaceholderHTML={ !mod._ValueStashEnabled ? '' : OLSKFormatted(OLSKLocalized('OLSKCatalogStashPlaceholderTextFormat'), mod._ValueStashCount) } />
 	{/if}

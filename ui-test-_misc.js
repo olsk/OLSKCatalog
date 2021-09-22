@@ -11,7 +11,7 @@ describe('OLSKCatalog_Misc', function () {
 		it('sets OLSKMobileViewInactive', function () {
 			browser.assert.hasNoClass('.OLSKNarrow', 'OLSKMobileViewInactive');
 			browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
-			browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
+			browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', 'true');
 			browser.assert.hasClass('.OLSKNarrow', 'OLSKNarrowFocused');
 		});
 
@@ -28,7 +28,7 @@ describe('OLSKCatalog_Misc', function () {
 			it('sets OLSKMobileViewInactive', function () {
 				browser.assert.hasClass('.OLSKNarrow', 'OLSKMobileViewInactive');
 				browser.assert.hasNoClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
-				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', 'true');
+				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
 				browser.assert.hasNoClass('.OLSKNarrow', 'OLSKNarrowFocused');
 			});
 
@@ -51,7 +51,7 @@ describe('OLSKCatalog_Misc', function () {
 			it('sets OLSKMobileViewInactive', function () {
 				browser.assert.hasNoClass('.OLSKNarrow', 'OLSKMobileViewInactive');
 				browser.assert.hasClass(OLSKCatalogDetail, 'OLSKMobileViewInactive');
-				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', null);
+				browser.assert.attribute(OLSKCatalogDetail, 'aria-hidden', 'true');
 				// browser.assert.hasClass('.OLSKNarrow', 'OLSKNarrowFocused');
 			});
 
