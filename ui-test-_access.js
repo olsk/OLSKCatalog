@@ -11,7 +11,7 @@ Object.entries({
 	OLSKCatalogDetailPlaceholder: '.OLSKCatalogDetail .OLSKPlaceholder',
 	OLSKCatalogDetailContent: '[slot="OLSKCatalogDetailContent"]',
 }).map(function (e) {
-	return global[e.shift()]  = e.pop();
+	return global[e.shift()] = e.pop();
 });
 
 describe('OLSKCatalog_Access', function () {
