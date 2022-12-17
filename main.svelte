@@ -28,6 +28,8 @@ export let OLSKCatalogDispatchStash = null;
 
 export let OLSKCatalogItems = [];
 
+export let OLSKCatalogDisableEscape = false;
+
 import { OLSKLocalized } from 'OLSKInternational';
 import { OLSKFormatted } from 'OLSKString';
 import { OLSK_SPEC_UI } from  'OLSKSpec';
@@ -35,6 +37,10 @@ import { OLSK_SPEC_UI } from  'OLSKSpec';
 import OLSKThrottle from  'OLSKThrottle';
 
 export const modPublic = {
+
+	// VALUE
+
+	OLSKCatalogDisableEscape,
 
 	// DATA
 
@@ -258,6 +264,10 @@ const mod = {
 		const handlerFunctions = {
 
 			Escape () {
+				if (modPublic.OLSKCatalogDisableEscape) {
+					return;
+				}
+				
 				if (!mod._ValueFilterText && !mod._ValueItemSelected) {
 					OLSKCatalogDispatchEscapeOnEmpty && OLSKCatalogDispatchEscapeOnEmpty();
 				}
