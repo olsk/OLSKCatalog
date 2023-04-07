@@ -31,7 +31,7 @@ describe('OLSKCatalog_Shortcuts', function () {
 		});
 
 		it('does nothing', function () {
-			browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
+			return browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
 		});
 
 	});

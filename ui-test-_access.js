@@ -21,53 +21,53 @@ describe('OLSKCatalog_Access', function () {
 	});
 
 	it('shows OLSKCatalog', function () {
-		browser.assert.elements(OLSKCatalog, 1);
+		return browser.assert.elements(OLSKCatalog, 1);
 	});
 
 	it('hides OLSKCatalogStashDoneButton', function () {
-		browser.assert.elements(OLSKCatalogStashDoneButton, 0);
+		return browser.assert.elements(OLSKCatalogStashDoneButton, 0);
 	});
 
 	it('shows OLSKNarrow', function () {
-		browser.assert.elements('.OLSKNarrow', 1);
+		return browser.assert.elements('.OLSKNarrow', 1);
 	});
 
 	it('hides OLSKCollectionItem', function () {
-		browser.assert.elements('.OLSKCollectionItem', 0);
+		return browser.assert.elements('.OLSKCollectionItem', 0);
 	});
 
 	it('shows OLSKCatalogMasterPlaceholder', function () {
-		browser.assert.elements(OLSKCatalogMasterPlaceholder, 1);
+		return browser.assert.elements(OLSKCatalogMasterPlaceholder, 1);
 	});
 
 	it('shows OLSKCatalogDetail', function () {
-		browser.assert.elements(OLSKCatalogDetail, 1);
+		return browser.assert.elements(OLSKCatalogDetail, 1);
 	});
 
 	it('shows OLSKCatalogDetailPlaceholder', function () {
-		browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
+		return browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 	});
 
 	it('hides OLSKCatalogDetailContent', function () {
-		browser.assert.elements(OLSKCatalogDetailContent, 0);
+		return browser.assert.elements(OLSKCatalogDetailContent, 0);
 	});
 
 	describe('OLSKNarrow', function test_OLSKNarrow () {
 		
 		it('binds OLSKNarrowToolbarHead', function () {
-			browser.assert.elements('.OLSKNarrowToolbar #TestOLSKNarrowToolbarHead', 1);
+			return browser.assert.elements('.OLSKNarrowToolbar #TestOLSKNarrowToolbarHead', 1);
 		});
 
 		it('binds OLSKNarrowToolbarTail', function () {
-			browser.assert.elements('.OLSKNarrowToolbar #TestOLSKNarrowToolbarTail', 1);
+			return browser.assert.elements('.OLSKNarrowToolbar #TestOLSKNarrowToolbarTail', 1);
 		});
 		
 		it('binds OLSKNarrowMain', function () {
-			browser.assert.elements('.OLSKNarrowBody #TestOLSKNarrowMain', 1);
+			return browser.assert.elements('.OLSKNarrowBody #TestOLSKNarrowMain', 1);
 		});
 
 		it('binds OLSKNarrowBodyTail', function () {
-			browser.assert.elements('.OLSKNarrowBody #TestOLSKNarrowBodyTail', 1);
+			return browser.assert.elements('.OLSKNarrowBody #TestOLSKNarrowBodyTail', 1);
 		});
 	
 	});
@@ -79,19 +79,19 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		it('shows OLSKCollectionItem', function () {
-			browser.assert.elements('.OLSKCollectionItem', 1);
+			return browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
 		it('hides OLSKCatalogMasterPlaceholder', function () {
-			browser.assert.elements(OLSKCatalogMasterPlaceholder, 0);
+			return browser.assert.elements(OLSKCatalogMasterPlaceholder, 0);
 		});
 
 		it('hides OLSKCatalogDetailPlaceholder', function () {
-			browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
+			return browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
-			browser.assert.elements(OLSKCatalogDetailContent, 1);
+			return browser.assert.elements(OLSKCatalogDetailContent, 1);
 		});
 
 	});
@@ -103,19 +103,19 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		it('hides OLSKCollectionItem', function () {
-			browser.assert.elements('.OLSKCollectionItem', 0);
+			return browser.assert.elements('.OLSKCollectionItem', 0);
 		});
 
 		it('shows OLSKCatalogMasterPlaceholder', function () {
-			browser.assert.elements(OLSKCatalogMasterPlaceholder, 1);
+			return browser.assert.elements(OLSKCatalogMasterPlaceholder, 1);
 		});
 
 		it('shows OLSKCatalogDetailPlaceholder', function () {
-			browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
+			return browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 		});
 
 		it('hides OLSKCatalogDetailContent', function () {
-			browser.assert.elements(OLSKCatalogDetailContent, 0);
+			return browser.assert.elements(OLSKCatalogDetailContent, 0);
 		});
 
 	});
@@ -135,11 +135,11 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		before(function () {
-			browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
+			return browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 		});
 
 		before(function () {
-			browser.assert.elements(OLSKCatalogDetailContent, 0);
+			return browser.assert.elements(OLSKCatalogDetailContent, 0);
 		});
 
 		before(function () {
@@ -147,11 +147,11 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		it('hides OLSKCatalogDetailPlaceholder', function () {
-			browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
+			return browser.assert.elements(OLSKCatalogDetailPlaceholder, 0);
 		});
 
 		it('shows OLSKCatalogDetailContent', function () {
-			browser.assert.elements(OLSKCatalogDetailContent, 1);
+			return browser.assert.elements(OLSKCatalogDetailContent, 1);
 		});		
 
 		context('escape', function () {
@@ -161,11 +161,11 @@ describe('OLSKCatalog_Access', function () {
 			});
 
 			it('shows OLSKCatalogDetailPlaceholder', function () {
-				browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
+				return browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 			});
 
 			it('hides OLSKCatalogDetailContent', function () {
-				browser.assert.elements(OLSKCatalogDetailContent, 0);
+				return browser.assert.elements(OLSKCatalogDetailContent, 0);
 			});	
 
 		});
@@ -187,11 +187,11 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		it('shows OLSKCollectionItem', function () {
-			browser.assert.elements('.OLSKCollectionItem', item);
+			return browser.assert.elements('.OLSKCollectionItem', item);
 		});
 
 		it('hides OLSKCatalogMasterPlaceholder', function () {
-			browser.assert.elements(OLSKCatalogMasterPlaceholder, 0);
+			return browser.assert.elements(OLSKCatalogMasterPlaceholder, 0);
 		});
 
 	});
@@ -203,11 +203,11 @@ describe('OLSKCatalog_Access', function () {
 		});
 
 		it('hides OLSKNarrowToolbarTail', function () {
-			browser.assert.elements('#TestOLSKNarrowToolbarTail', 0);
+			return browser.assert.elements('#TestOLSKNarrowToolbarTail', 0);
 		});
 
 		it('shows OLSKCatalogStashDoneButton', function () {
-			browser.assert.elements(OLSKCatalogStashDoneButton, 1);
+			return browser.assert.elements(OLSKCatalogStashDoneButton, 1);
 		});
 
 		context('OLSKCatalogStashDoneButton', function () {
@@ -217,11 +217,11 @@ describe('OLSKCatalog_Access', function () {
 			});
 
 			it('shows OLSKNarrowToolbarTail', function () {
-				browser.assert.elements('#TestOLSKNarrowToolbarTail', 1);
+				return browser.assert.elements('#TestOLSKNarrowToolbarTail', 1);
 			});
 
 			it('hides OLSKCatalogStashDoneButton', function () {
-				browser.assert.elements(OLSKCatalogStashDoneButton, 0);
+				return browser.assert.elements(OLSKCatalogStashDoneButton, 0);
 			});
 		
 		});

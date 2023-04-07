@@ -15,7 +15,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 		});
 
 		it('localizes OLSKCatalogMasterPlaceholder', function () {
-			browser.assert.OLSKInnerHTML(OLSKCatalogMasterPlaceholder, uLocalized('OLSKCatalogMasterPlaceholderText'));
+			return browser.assert.OLSKInnerHTML(OLSKCatalogMasterPlaceholder, uLocalized('OLSKCatalogMasterPlaceholderText'));
 		});
 
 		context('stash', function () {
@@ -37,7 +37,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 
 			it('sets OLSKPlaceholderHTML', function () {
-				browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 1));
+				return browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 1));
 			});
 		
 		});
@@ -49,7 +49,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 
 			it('sets OLSKPlaceholderHTML', function () {
-				browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 0));
+				return browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 0));
 			});
 		
 		});
@@ -65,7 +65,7 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			});
 
 			it('sets OLSKPlaceholderHTML', function () {
-				browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 2));
+				return browser.assert.text(OLSKCatalogDetailPlaceholder, OLSKTestingFormatted(uLocalized('OLSKCatalogStashPlaceholderTextFormat'), 2));
 			});
 		
 		});

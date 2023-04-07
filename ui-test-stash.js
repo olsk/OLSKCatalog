@@ -34,11 +34,11 @@ describe('OLSKCatalog_Stash', function () {
 	});
 
 	it('clears selected item', function () {
-		browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
+		return browser.assert.elements(OLSKCatalogDetailPlaceholder, 1);
 	});
 
 	it('adds to stash', function () {
-		browser.assert.hasClass(`.OLSKCollectionItem:nth-child(${ index })`, 'OLSKCollectionItemStash');
+		return browser.assert.hasClass(`.OLSKCollectionItem:nth-child(${ index })`, 'OLSKCollectionItemStash');
 	});
 
 });

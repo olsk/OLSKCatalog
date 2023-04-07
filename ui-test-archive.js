@@ -39,7 +39,7 @@ describe('OLSKCatalog_Archive', function () {
 	});
 
 	before(function () {
-		browser.assert.elements('.TestRevealArchiveButton', 0);
+		return browser.assert.elements('.TestRevealArchiveButton', 0);
 	});
 
 	describe('archive', function test_archive () {
@@ -56,22 +56,30 @@ describe('OLSKCatalog_Archive', function () {
 			return browser.pressButton('.TestItemArchiveButton');
 		});
 
-		it('skips sort', function () {
-			browser.assert.text('.OLSKCollectionItem', 'charlie2 bravo alfa2');
+		'charlie2 bravo alfa2'.split(' ').forEach(function (e, i, coll) {
+			
+			it('skips sort ' + e, function () {
+				return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+			});
+
 		});
 
 		describe('deselect', function () {
 
 			before(function () {
-				browser.assert.text('#TestOLSKCatalogDispatchArchivedHide', '0');
+				return browser.assert.text('#TestOLSKCatalogDispatchArchivedHide', '0');
 			});
 
 			before(function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 			});
 
-			it('excludes archived', function () {
-				browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo');
+			'alfa2 bravo'.split(' ').forEach(function (e, i, coll) {
+				
+				it('excludes archived, check ' + e, function () {
+					return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+				});
+
 			});
 
 			it('sends OLSKCatalogDispatchArchivedHide', function () {
@@ -86,15 +94,19 @@ describe('OLSKCatalog_Archive', function () {
 	describe('reveal', function test_reveal () {
 
 		before(function () {
-			browser.assert.text('#TestOLSKCatalogDispatchArchivedShow', '0');
+			return browser.assert.text('#TestOLSKCatalogDispatchArchivedShow', '0');
 		});
 
 		before(function () {
 			return browser.pressButton('.TestRevealArchiveButton');
 		});
 
-		it('sorts below others', function () {
-			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo charlie2');
+		'alfa2 bravo charlie2'.split(' ').forEach(function (e, i, coll) {
+			
+			it('sorts below others ' + e, function () {
+				return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+			});
+
 		});
 
 		it('sends OLSKCatalogDispatchArchivedShow', function () {
@@ -110,8 +122,12 @@ describe('OLSKCatalog_Archive', function () {
 			return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 		});
 
-		it('hides archived', function () {
-			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo');
+		'alfa2 bravo'.split(' ').forEach(function (e, i, coll) {
+			
+			it('hides archived, check ' + e, function () {
+				return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+			});
+
 		});
 
 	});
@@ -122,8 +138,12 @@ describe('OLSKCatalog_Archive', function () {
 			browser.fill('.OLSKNarrowFilterField', 'a');
 		});
 
-		it('shows archived', function () {
-			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo charlie2');
+		'alfa2 bravo charlie2'.split(' ').forEach(function (e, i, coll) {
+			
+			it('shows archived, check ' + e, function () {
+				return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+			});
+
 		});
 
 		context('clear', function () {
@@ -132,8 +152,12 @@ describe('OLSKCatalog_Archive', function () {
 				return browser.pressButton('.OLSKInputWrapperClearButton');
 			});
 
-			it('hides archived', function () {
-				browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo');
+			'alfa2 bravo'.split(' ').forEach(function (e, i, coll) {
+				
+				it('hides archived, check ' + e, function () {
+					return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+				});
+
 			});
 		
 		});
@@ -158,8 +182,12 @@ describe('OLSKCatalog_Archive', function () {
 			return browser.pressButton('.TestItemUnarchiveButton');
 		});
 
-		it('skips sort', function () {
-			browser.assert.text('.OLSKCollectionItem', 'alfa2 bravo charlie3');
+		'alfa2 bravo charlie3'.split(' ').forEach(function (e, i, coll) {
+			
+			it('skips sort ' + e, function () {
+				return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+			});
+
 		});
 
 		describe('deselect', function () {
@@ -168,8 +196,12 @@ describe('OLSKCatalog_Archive', function () {
 				return browser.OLSKFireKeyboardEvent(browser.window, 'Escape');
 			});
 
-			it('sorts above others', function () {
-				browser.assert.text('.OLSKCollectionItem', 'charlie3 alfa2 bravo');
+			'charlie3 alfa2 bravo'.split(' ').forEach(function (e, i, coll) {
+				
+				it('sorts above others ' + e, function () {
+					return browser.assert.text(`.OLSKCollectionItem:nth-child(${ i + 1 })`, e);
+				});
+
 			});
 
 		});
@@ -179,7 +211,7 @@ describe('OLSKCatalog_Archive', function () {
 	context('discard', function test_discard () {
 		
 		before(function () {
-			return browser.click('.OLSKCollectionItem');
+			return browser.click('.OLSKCollectionItem:nth-of-type(1)');
 		});
 
 		before(function () {
@@ -191,7 +223,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			browser.assert.elements('.TestRevealArchiveButton', 1);
+			return browser.assert.elements('.TestRevealArchiveButton', 1);
 		});
 
 		before(function () {
@@ -207,7 +239,7 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		it('hides button', function () {
-			browser.assert.elements('.TestRevealArchiveButton', 0);
+			return browser.assert.elements('.TestRevealArchiveButton', 0);
 		});
 	
 	});
@@ -230,11 +262,11 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			browser.assert.elements('.OLSKCollectionItem', 1);
+			return browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
 		it('shows reveal archive', function () {
-			browser.assert.elements('.TestRevealArchiveButton', 1);
+			return browser.assert.elements('.TestRevealArchiveButton', 1);
 		});
 
 	});
@@ -254,11 +286,11 @@ describe('OLSKCatalog_Archive', function () {
 		});
 
 		before(function () {
-			browser.assert.elements('.OLSKCollectionItem', 1);
+			return browser.assert.elements('.OLSKCollectionItem', 1);
 		});
 
 		it('shows reveal archive', function () {
-			browser.assert.elements('.TestRevealArchiveButton', 1);
+			return browser.assert.elements('.TestRevealArchiveButton', 1);
 		});
 
 	});
